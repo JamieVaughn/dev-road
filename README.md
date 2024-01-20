@@ -1,10 +1,10 @@
-# Dev Road
+# 🛣️ 🏔️ Dev Road
 
 https://monroecc.dev/
 
 A Learning Management System for MCC Frontend Developer Professional Certification.
 
-## Getting Started
+## ▶️ Getting Started
 
 clone the repo
 
@@ -14,24 +14,26 @@ pnpm
 pnpm dev
 ```
 
-# A guided educational resource for students enrolled in the Monroe Community College Professional Developer Certification Course.
+## 📚 LMS Content 
+This LMS is a guided educational resource for students enrolled in the Monroe Community College Professional Developer Certification Course.
 
 Create an account to gain access to the learning resources:
 
 - Lecture Slides
 - Course Timeline
 - Curated Resources and Web Assets
-- A student community on Slack to ask questions
+- A student community on discord to ask & answer questions
 - Homework Excercizes
+- Quiz Challenges
 - Guided Code Along Workshops
 - Portfolio Projects
 - Career Skills and Tips
 - Coding Problem Solutions
 - Recommended Job Boards
 - External Course Videos
+- More Courses!
 
-
-## 🚀 Project Structure
+## 🚧 Project Structure
 
 Inside this project, you'll see the following folders and files:
 
@@ -69,6 +71,6 @@ All commands are run from the root of the project, from a terminal:
 | `pnpm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `pnpm run astro -- --help` | Get help using the Astro CLI                     |
 
-# Deployment
+## 🚀 Deployment
 
 Deployed to Cloudflare pages (SSR) with cloudlfare adaptor & `directory` function page configuration.
