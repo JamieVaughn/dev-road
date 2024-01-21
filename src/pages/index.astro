@@ -1,44 +1,36 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import Home from '../layouts/Home.astro';
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header title={SITE_TITLE} />
-		<main>
-			<h1>MCC Web Developer Course Portal</h1>
-			<h2>Learn Modern Front End Development</h2>
-			<p>
-				This is a professional certification program offered through Monroe Community College. Its mission is to prepare you for being hired as a front end web developer, where you will create the next generation of web interfaces.
-			</p>
-			<div>
-				<button>Sign Up</button>
-				<a href="/syllabus" class="btn">See Syllabus</a>
-			</div>
-			<h2>Learn HTML, CSS, Javascript & React</h2>
-			<p>
-				Prepare yourself for one of the fastest growing industries out there! You'll be equipped with all the tools and best practices you'll need to succeed.
-			</p>
-			<h2>Become a UI Developer</h2>
-			<p>With HTML and CSS you will be able to create beautiful web interfaces that every company needs for their online presence.</p>
-			<div>
-				<h3>HTML</h3>
-				<p>HTML is the structure behind every web page!</p>
-				<h3>CSS</h3>
-				<p>Learn how to make those web pages look amazing with CSS!</p>
-			</div>
-			<h2>Accelerate your career with Javascript</h2>
-			<p>These days the web serves up to us far more than simple static web pages. With Javascript, you'll understand how to make sophisticated web application software.</p>
-			<h2>Learn Application Architecture with React</h2>
-			<p>As these web applications scale up in size, the best developers know that code organization and architecture is paramount. With frameworks like React.js, developer teams can break up their application into small components to easily manage complexity. You'll learn the industry best practices that guide writing and organizing components in React.</p>
-		</main>
-		<Footer />
-	</body>
-</html>
+<Home>
+	<main>
+		<h1>MCC Web Developer Course Portal</h1>
+		<h2>Learn Modern Front End Development</h2>
+		<p>
+			This is a professional certification program offered through Monroe Community College. Its mission is to prepare you for being hired as a front end web developer, where you will create the next generation of web interfaces.
+		</p>
+		<div>
+			<button>Sign Up</button>
+			<a href="/syllabus" class="btn">See Syllabus</a>
+		</div>
+		<h2>Learn HTML, CSS, Javascript & React</h2>
+		<p>
+			Prepare yourself for one of the fastest growing industries out there! You'll be equipped with all the tools and best practices you'll need to succeed.
+		</p>
+		<h2>Become a UI Developer</h2>
+		<p>With HTML and CSS you will be able to create beautiful web interfaces that every company needs for their online presence.</p>
+		<div>
+			<h3>HTML</h3>
+			<p>HTML is the structure behind every web page!</p>
+			<h3>CSS</h3>
+			<p>Learn how to make those web pages look amazing with CSS!</p>
+		</div>
+		<h2>Accelerate your career with Javascript</h2>
+		<p>These days the web serves up to us far more than simple static web pages. With Javascript, you'll understand how to make sophisticated web application software.</p>
+		<h2>Learn Application Architecture with React</h2>
+		<p>As these web applications scale up in size, the best developers know that code organization and architecture is paramount. With frameworks like React.js, developer teams can break up their application into small components to easily manage complexity. You'll learn the industry best practices that guide writing and organizing components in React.</p>
+	</main>
+</Home>

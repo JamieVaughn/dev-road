@@ -12,7 +12,7 @@ const posts = (await getCollection('blog')).sort(
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 		<style>
@@ -29,6 +29,7 @@ const posts = (await getCollection('blog')).sort(
 			}
 			ul li {
 				width: calc(50% - 1rem);
+				list-style: none;
 			}
 			ul li * {
 				text-decoration: none;
@@ -71,6 +72,7 @@ const posts = (await getCollection('blog')).sort(
 			@media (max-width: 720px) {
 				ul {
 					gap: 0.5em;
+
 				}
 				ul li {
 					width: 100%;

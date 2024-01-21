@@ -20,6 +20,9 @@ dependencies:
   '@astrojs/sitemap':
     specifier: ^3.0.5
     version: 3.0.5
+  '@picocss/pico':
+    specifier: ^1.5.11
+    version: 1.5.11
   astro:
     specifier: ^4.2.1
     version: 4.2.1(typescript@5.3.3)
@@ -790,6 +793,10 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.16.0
+    dev: false
+
+  /@picocss/pico@1.5.11:
+    resolution: {integrity: sha512-cDaFiSyNPtuSTwSQt/05xsw8+g2ek4/S58tgh9Nc7miJCCdUrY9PAyl4OPWRJtYgJDdEvkUA9GuGj0J4nDP4Cw==}
     dev: false
 
   /@rollup/rollup-android-arm-eabi@4.9.5:

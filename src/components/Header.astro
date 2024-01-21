@@ -1,32 +1,46 @@
 ---
 import HeaderLink from './HeaderLink.astro';
 import { SITE_TITLE } from '../consts';
-import SocialLinks from './SocialLinks.astro';
+import ThemeIcon from './ThemeIcon.astro';
 ---
 
 <header>
 	<nav>
-		<h2><a href="/">{SITE_TITLE}</a></h2>
-		<div class="internal-links">
-			<HeaderLink href="/">Home</HeaderLink>
+		<ul>
+		<li><h2><a href="/">{SITE_TITLE}</a></h2></li>
+		</ul>
+		<ul class="feature-links">
+			<HeaderLink href="/about">About</HeaderLink>
 			<HeaderLink href="/syllabus">Syllabus</HeaderLink>
+			<HeaderLink href="/courses">Courses</HeaderLink>
+			<HeaderLink href="/career">Career</HeaderLink>
+			<HeaderLink href="/blog">Articles</HeaderLink>
 			<HeaderLink href="/timeline">Timeline</HeaderLink>
 			<HeaderLink href="/calendar">Calendar</HeaderLink>
-			<HeaderLink href="/blog">Articles</HeaderLink>
-			<HeaderLink href="/career">Career</HeaderLink>
 			<HeaderLink href="/quiz">Quiz</HeaderLink>
-			<HeaderLink href="/courses">Courses</HeaderLink>
-			<HeaderLink href="/about">About</HeaderLink>
-		</div>
-		<SocialLinks />
+		</ul>
+		<ul>
+			<li>
+				<ThemeIcon />
+			</li>
+			<li>
+				<button role="button">Sign Up</button>
+			</li>
+			<li>
+				<button role="button" class="ghost">Log In</button>
+			</li>
+		</ul>
 	</nav>
 </header>
 <style>
 	header {
+		position: sticky;
+		top: 0;
 		margin: 0;
-		padding: 0 1em;
-		background: white;
+		padding: 0.5em 1em 0;
 		box-shadow: 0 2px 8px rgba(var(--black), 5%);
+		z-index: 99;
+		background-color: var(--background-color);
 	}
 	h2 {
 		margin: 0;
@@ -38,18 +52,21 @@ import SocialLinks from './SocialLinks.astro';
 		text-decoration: none;
 	}
 	nav {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
+		height: 60px;
 	}
 	nav a {
-		padding: 1em 0.5em;
-		color: var(--black);
-		border-bottom: 4px solid transparent;
+		border-bottom: 5px solid transparent;
 		text-decoration: none;
 	}
 	nav a.active {
 		text-decoration: none;
-		border-bottom-color: var(--accent);
+		border-bottom-color: var(--primary);
+	}
+	nav li {
+		padding: 0.25em;
+	}
+	.feature-links {
+		display: flex;
+		gap: 4px;
 	}
 </style>

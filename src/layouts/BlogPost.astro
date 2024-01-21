@@ -10,14 +10,15 @@ type Props = CollectionEntry<'blog'>['data'];
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="en" data-theme="light">
 	<head>
 		<BaseHead title={title} description={description} />
 		<style>
 			main {
 				width: calc(100% - 2em);
 				max-width: 100%;
-				margin: 0;
+				margin: 0 auto;
+				padding: 0;
 			}
 			.hero-image {
 				width: 100%;
@@ -56,10 +57,22 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 
 	<body>
 		<Header />
+		<style>
+			a.position {
+				position: absolute; 
+				padding: 8px;
+			}
+			@media (max-width: 1160px) and (min-width: 792px) {
+				a.position {
+					transform: translateX(100%);
+				}
+			}
+		</style>
 		<main>
 			<article>
+				<a href="/blog" class="date position">&larr; Back to articles</a>
 				<div class="hero-image">
-					{heroImage && <img width={1020} height={510} src={heroImage} alt="" />}
+					{heroImage && <img width={700} height={350} src={heroImage} alt="" />}
 				</div>
 				<div class="prose">
 					<div class="title">
@@ -83,3 +96,4 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		<Footer />
 	</body>
 </html>
+

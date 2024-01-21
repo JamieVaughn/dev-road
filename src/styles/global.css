@@ -7,6 +7,7 @@
 :root {
 	--accent: #2337ff;
 	--accent-dark: #000d8a;
+	--accent-light: 35, 55, 255, 0.1;
 	--black: 15, 18, 25;
 	--gray: 96, 115, 159;
 	--gray-light: 229, 233, 240;
@@ -34,13 +35,21 @@ body {
 	margin: 0;
 	padding: 0;
 	text-align: left;
-	background: linear-gradient(var(--gray-gradient)) no-repeat;
+	/* background: linear-gradient(var(--gray-gradient)) no-repeat; */
 	background-size: 100% 600px;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
-	color: rgb(var(--gray-dark));
+	/* color: rgb(var(--gray-dark)); */
 	font-size: 20px;
 	line-height: 1.7;
+}
+html.dark {
+  background-color: #0d0950;
+  color: #fff;
+}
+
+.dark .nav-links a {
+  color: #fff;
 }
 main {
 	width: 720px;
@@ -55,7 +64,6 @@ h4,
 h5,
 h6 {
 	margin: 0 0 0.5rem 0;
-	color: rgb(var(--black));
 	line-height: 1.2;
 }
 h1 {
@@ -77,11 +85,14 @@ strong,
 b {
 	font-weight: 700;
 }
-a {
-	color: var(--accent);
+a.ghost, button.ghost {
+	color: var(--primary);
+	background-color: transparent;
+	border: 1px solid var(--primary);
+	/* border-radius: 4px; */
 }
-a:hover {
-	color: var(--accent);
+a.ghost:hover, button.ghost:hover {
+	background-color: var(--primary-focus);
 }
 p {
 	margin-bottom: 1em;
@@ -106,7 +117,7 @@ img {
 }
 code {
 	padding: 2px 5px;
-	background-color: rgb(var(--gray-light));
+	/* background-color: rgb(var(--gray-light)); */
 	border-radius: 2px;
 }
 pre {
