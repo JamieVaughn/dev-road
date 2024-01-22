@@ -1,11 +1,31 @@
 ---
+import { Icon } from "astro-icon/components";
 import SocialLinks from "./SocialLinks.astro";
 const today = new Date();
 ---
 
 <footer>
-	<div>&copy; {today.getFullYear()} Dev Road. All rights reserved.</div>
-	<SocialLinks />
+	<section>
+		<ul>
+			<h6>Getting Started</h6>
+			<li>Computer Setup</li>
+			<li>Software</li>
+		</ul>
+		<ul>
+			<h6>Resources</h6>
+			<li><a href="https://vscode.dev">VSCode.dev</a></li>
+			<li><a href="https://code.visualstudio.com/">VS Code</a></li>
+			<li><a href="https://git-scm.com/">Git SCM</a></li>
+			<li><a href="/faq">FAQ</a></li>
+			<!-- <li><a href=""></a></li> -->
+		</ul>
+		<SocialLinks vertical withLabels />
+	</section>
+	<hr />
+	<div>
+		<Icon name="logo" />
+		<div>&copy; {today.getFullYear()} Dev Road. All rights reserved.</div>
+	</div>
 </footer>
 <style>
 	footer {
@@ -14,7 +34,33 @@ const today = new Date();
 		color: rgb(var(--gray));
 		text-align: center;
 	}
+	section {
+		display: flex;
+		justify-content: space-between;
+		color: black !important;
+	}
+	section h6 {
+		margin-bottom: 0.5em;
+	}
+	section ul {
+		text-align: left;
+	}
+	section ul li {
+		list-style: none;
+		padding-left: 2rem;
+		margin-bottom: 0;
+	}
+	footer hr {
+		margin: 2em 0;
+		border-bottom: 1px solid black;
+	}
 	footer div {
-		margin-bottom: 1em;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	footer svg {
+		height: 48px;
+		width: 200px;
 	}
 </style>

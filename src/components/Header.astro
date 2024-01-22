@@ -2,12 +2,20 @@
 import HeaderLink from './HeaderLink.astro';
 import { SITE_TITLE } from '../consts';
 import ThemeIcon from './ThemeIcon.astro';
+import { Icon } from 'astro-icon/components';
 ---
 
 <header>
 	<nav>
 		<ul>
-		<li><h2><a href="/">{SITE_TITLE}</a></h2></li>
+		<li>
+			<h2>
+				<a href="/">
+					<Icon name="mountain-road" />
+					{SITE_TITLE.split(' ').map(word => <div>{word}</div>)}
+				</a>
+			</h2>
+		</li>
 		</ul>
 		<ul class="feature-links">
 			<HeaderLink href="/about">About</HeaderLink>
@@ -49,7 +57,19 @@ import ThemeIcon from './ThemeIcon.astro';
 
 	h2 a,
 	h2 a.active {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		align-items: center;
+		align-content: center;
+		justify-content: center;
+		gap: 4px;
 		text-decoration: none;
+	}
+
+	svg {
+		grid-row: 1 / span 2;
+		height: 45px;
+		width: 45px;
 	}
 	nav {
 		height: 60px;
