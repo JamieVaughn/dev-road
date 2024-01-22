@@ -24,10 +24,10 @@ import ThemeIcon from './ThemeIcon.astro';
 				<ThemeIcon />
 			</li>
 			<li>
-				<button role="button">Sign Up</button>
+				<a href="/signup" role="button">Sign Up</a>
 			</li>
 			<li>
-				<button role="button" class="ghost">Log In</button>
+				<a href="login" role="button" class="ghost">Log In</a>
 			</li>
 		</ul>
 	</nav>
@@ -54,11 +54,11 @@ import ThemeIcon from './ThemeIcon.astro';
 	nav {
 		height: 60px;
 	}
-	nav a {
+	nav a:not(a[role=button]) {
 		border-bottom: 5px solid transparent;
 		text-decoration: none;
 	}
-	nav a.active {
+	nav a.active:not(a[role=button]) {
 		text-decoration: none;
 		border-bottom-color: var(--primary);
 	}
@@ -68,5 +68,8 @@ import ThemeIcon from './ThemeIcon.astro';
 	.feature-links {
 		display: flex;
 		gap: 4px;
+	}
+	a[role=button] {
+		height: 52px;
 	}
 </style>
