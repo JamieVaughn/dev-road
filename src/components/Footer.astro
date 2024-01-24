@@ -21,7 +21,7 @@ const today = new Date();
 		</ul>
 		<SocialLinks vertical withLabels />
 	</section>
-	<hr />
+	<hr id="footer-divider"/>
 	<div>
 		<Icon name="logo" />
 		<div>&copy; {today.getFullYear()} Dev Road. All rights reserved.</div>
@@ -29,7 +29,7 @@ const today = new Date();
 </footer>
 <style>
 	footer {
-		padding: 2em 1em 6em 1em;
+		padding: 2em 1em;
 		background: linear-gradient(var(--gray-gradient)) no-repeat;
 		color: rgb(var(--gray));
 		text-align: center;
@@ -50,9 +50,12 @@ const today = new Date();
 		padding-left: 2rem;
 		margin-bottom: 0;
 	}
-	footer hr {
+	footer hr#footer-divider {
 		margin: 2em 0;
-		border-bottom: 1px solid black;
+		height: 1px; 
+		border: 0;
+		background-image: -webkit-linear-gradient(left, transparent, rgb(var(--gray)), transparent);
+		background-image: -moz-linear-gradient(left, transparent, rgb(var(--gray)), transparent);
 	}
 	footer div {
 		display: flex;
