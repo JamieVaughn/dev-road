@@ -7,35 +7,32 @@ import { Icon } from 'astro-icon/components';
 
 <header>
 	<nav>
-		<ul>
-		<li>
-			<h2>
-				<a href="/">
-					<Icon name="mountain-road" />
-					{SITE_TITLE.split(' ').map(word => <div>{word}</div>)}
-				</a>
-			</h2>
-		</li>
+		<ul class="logo">
+			<li>
+				<h2>
+					<a href="/">
+						<Icon name="mountain-road" />
+						{SITE_TITLE.split(' ').map(word => <div>{word}</div>)}
+					</a>
+				</h2>
+			</li>
 		</ul>
 		<ul class="feature-links">
-			<HeaderLink href="/about">About</HeaderLink>
 			<HeaderLink href="/syllabus">Syllabus</HeaderLink>
-			<HeaderLink href="/courses">Courses</HeaderLink>
-			<HeaderLink href="/career">Career</HeaderLink>
-			<HeaderLink href="/blog">Articles</HeaderLink>
 			<HeaderLink href="/timeline">Timeline</HeaderLink>
 			<HeaderLink href="/calendar">Calendar</HeaderLink>
 			<HeaderLink href="/quiz">Quiz</HeaderLink>
 		</ul>
 		<ul>
-			<li>
-				<ThemeIcon />
-			</li>
+			
 			<li>
 				<a href="/signup" role="button">Sign Up</a>
 			</li>
 			<li>
-				<a href="login" role="button" class="ghost">Log In</a>
+				<a href="/login" role="button" class="ghost">Log In</a>
+			</li>
+			<li>
+				<ThemeIcon />
 			</li>
 		</ul>
 	</nav>
@@ -72,6 +69,8 @@ import { Icon } from 'astro-icon/components';
 		width: 45px;
 	}
 	nav {
+		justify-content: end;
+		gap: 3em;
 		height: 60px;
 	}
 	nav a:not(a[role=button]) {
@@ -84,6 +83,9 @@ import { Icon } from 'astro-icon/components';
 	}
 	nav li {
 		padding: 0.25em;
+	}
+	.logo {
+		margin-right: auto;
 	}
 	.feature-links {
 		display: flex;

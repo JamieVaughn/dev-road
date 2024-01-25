@@ -8,18 +8,22 @@ const today = new Date();
 	<section>
 		<ul>
 			<h6>Getting Started</h6>
-			<li>Computer Setup</li>
-			<li>Software</li>
-		</ul>
-		<ul>
-			<h6>Resources</h6>
-			<li><a href="https://vscode.dev">VSCode.dev</a></li>
-			<li><a href="https://code.visualstudio.com/">VS Code</a></li>
-			<li><a href="https://git-scm.com/">Git SCM</a></li>
 			<li><a href="/faq">FAQ</a></li>
-			<!-- <li><a href=""></a></li> -->
+			<li><a href="https://code.visualstudio.com/">VS Code</a></li>
+			<li><a href="https://vscode.dev">VSCode.dev</a></li>
+			<li><a href="https://git-scm.com/">Git SCM</a></li>
+			<li><a href="https://nodejs.org/">Node.js</a></li>
 		</ul>
 		<SocialLinks vertical withLabels />
+		<ul class="resources">
+			<h6>Resources</h6>
+			<li><a href="/articles">Articles</a></li>
+			<li><a href="/career">Career Center</a></li>
+			<li><a href="/courses">More Courses</a></li>
+			<li><a href="/about">About</a></li>
+			<!-- <li><a href=""></a></li> -->
+		</ul>
+		
 	</section>
 	<hr id="footer-divider"/>
 	<div>
@@ -36,8 +40,14 @@ const today = new Date();
 	}
 	section {
 		display: flex;
-		justify-content: space-between;
+		justify-content: start;
+		gap: 10%;
 		color: black !important;
+		margin: 0;
+		padding: 0 3em;
+	}
+	.resources {
+		margin-left: auto;
 	}
 	section h6 {
 		margin-bottom: 0.5em;

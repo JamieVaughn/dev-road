@@ -4,8 +4,9 @@ interface Props {
   withLabels?: boolean
 }
 const { vertical, withLabels } = Astro.props
+const style = vertical ? 'flex-direction: column; justify-content: start; margin-top: 1rem;' : ''
 ---
-<div class="social-links" style=`flex-direction: ${vertical ? 'column' : 'row'}`>
+<div class="social-links" style={style}>
   <a href="https://FreeCodeCamp.org" target="_blank">
     <svg viewBox="0 100 700 300" aria-hidden="true" width="32" height="32">
       <path

@@ -8,6 +8,8 @@ import FormattedDate from '../components/FormattedDate.astro';
 type Props = CollectionEntry<'blog'>['data'];
 
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { pathname } = Astro.url;
+const isBlogPath = !!pathname.includes('/blog');
 ---
 
 <html lang="en" data-theme="light">
@@ -70,7 +72,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		</style>
 		<main>
 			<article>
-				<a href="/blog" class="date position">&larr; Back to articles</a>
+				{isBlogPath && <a href="/blog" class="date position">&larr; Back to articles</a>}
 				<div class="hero-image">
 					{heroImage && <img width={700} height={350} src={heroImage} alt="" />}
 				</div>
