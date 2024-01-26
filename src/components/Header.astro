@@ -12,7 +12,7 @@ import { Icon } from 'astro-icon/components';
 				<h2>
 					<a href="/">
 						<Icon name="mountain-road" />
-						{SITE_TITLE.split(' ').map(word => <div>{word}</div>)}
+						{SITE_TITLE.split(' ').map(word => <span class="logo-text">{word}</span>)}
 					</a>
 				</h2>
 			</li>
@@ -86,6 +86,9 @@ import { Icon } from 'astro-icon/components';
 	}
 	.logo {
 		margin-right: auto;
+	}
+	html[data-theme=light] .logo-text {
+		color: var(--dark);
 	}
 	.feature-links {
 		display: flex;

@@ -30,7 +30,7 @@ import { Icon } from 'astro-icon/components';
 		</section>
 
 		<section>
-			<Icon name="graphs" />
+			<Icon name="graphs" class="bg" />
 			<div>
 				<h2>Become a UI Developer</h2>
 				<p>With HTML and CSS you will be able to create beautiful web interfaces that every company needs for their online presence.</p>
@@ -58,7 +58,7 @@ import { Icon } from 'astro-icon/components';
 		</section>
 		
 		<section>
-			<Icon name="developer" />
+			<Icon name="developer" class="bg" />
 			<div>
 				<h2>Learn Application Architecture with React</h2>
 				<p>As these web applications scale up in size, the best developers know that code organization and architecture is paramount. With frameworks like React.js, developer teams can break up their application into small components to easily manage complexity. You'll learn the industry best practices that guide writing and organizing components in React.</p>
@@ -87,6 +87,11 @@ import { Icon } from 'astro-icon/components';
 	section > svg {
 		height: 100%;
 		width: 100%;
+	}
+	section > svg.bg {
+		background: white; 
+		padding: 1em; 
+		border-radius: 1em;
 	}
 	.center {
 		text-align: center;
