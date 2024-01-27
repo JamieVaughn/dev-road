@@ -1,0 +1,17 @@
+---
+import Home from '../layouts/Home.astro'
+---
+
+<Home>
+  <h1>Would you like to receive the monthly Newsletter?</h1>
+  <p>It contains tips and articles about web development, javascript techniques and career advice.</p>
+  <p>In other words all the supplemental web dev content you need as you embark on your programming career!</p>
+  <p>It even includes an educational challenge and a small, but fully featured web app idea in each issue to inspire you to continue building your skills!</p>
+  <form name="newsletter" method="POST">
+    <h3>Subscribe to the Newsletter:</h3>
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" />
+    <button type="submit">Subscribe</button>
+  </form>
+
+</Home>

@@ -35,12 +35,12 @@ import { Icon } from 'astro-icon/components';
 				<h2>Become a UI Developer</h2>
 				<p>With HTML and CSS you will be able to create beautiful web interfaces that every company needs for their online presence.</p>
 				<section>
-					<div>
+					<div class="notes">
 						<Icon name="notes" />
 						<h3>HTML</h3>
 						<p>HTML is the structure behind every web page!</p>
 					</div>
-					<div>
+					<div class="notes">
 						<Icon name="notes" />
 						<h3>CSS</h3>
 						<p>Learn how to make those web pages look amazing with CSS!</p>
@@ -92,6 +92,17 @@ import { Icon } from 'astro-icon/components';
 		background: white; 
 		padding: 1em; 
 		border-radius: 1em;
+	}
+	section svg[data-icon=notes] {
+		height: 60px;
+		width: 60px;
+	}
+	section .notes h3 {
+		font-size: 1em;
+		margin-top: .5em;
+	}
+	section .notes p {
+		font-size: .8em;
 	}
 	.center {
 		text-align: center;
