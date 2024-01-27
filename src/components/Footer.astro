@@ -60,8 +60,11 @@ const today = new Date();
 		padding-left: 2rem;
 		margin-bottom: 0;
 	}
-	[data-theme="dark"] section ul li a {
-		color: var(--extra-dark) !important;
+	html[data-theme=light] section ul a {
+		color: var(--dark);
+	}
+	html[data-theme=light] section ul a {
+		color: var(--grey-5);
 	}
 	footer hr#footer-divider {
 		margin: 2em 0;

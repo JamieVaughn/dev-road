@@ -73,6 +73,9 @@ a.ghost, button.ghost {
 	border: 1px solid var(--primary);
 	/* border-radius: 4px; */
 }
+html[data-theme='dark'] a.ghost, html[data-theme='dark'] button.ghost {
+	color: white;
+}
 a.ghost:hover, button.ghost:hover {
 	background-color: var(--primary-focus);
 }

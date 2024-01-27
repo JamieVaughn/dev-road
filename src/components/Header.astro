@@ -90,6 +90,12 @@ import { Icon } from 'astro-icon/components';
 	html[data-theme=light] .logo-text {
 		color: var(--dark);
 	}
+	html[data-theme=dark] .feature-links a {
+		color: white;
+	}
+	html[data-theme=light] .feature-links a {
+		color: var(--extra-dark);
+	}
 	.feature-links {
 		display: flex;
 		gap: 4px;
