@@ -1,9 +1,122 @@
 ---
 import Home from '../layouts/Home.astro';
+import { Icon } from 'astro-icon/components';
+import { SyllabusTable } from '../components/SyllabusTable.tsx';
 ---
 
 <Home>
   <main>
-    <p>Syllabus</p>
+    <h1>MCC Front End Professional Certification</h1>
+    <p>Equip yourself with the modern skills and tools necessary to work as a professional Front End Developer or even launch your own online business venture! Certificates are awarded to students based on attendance and completion of homework & projects.</p>
+
+    <section class="justified-center">
+			<div>
+				<h2>Class Details</h2>
+				<p>Classes are held via Online Video Conferencing in our Discord Server</p>
+				<section>
+					<div class="notes">
+						<Icon name="notes" />
+						<h3>Time:</h3>
+						<p>Mondays, Wednesdays & Thursdays, <br/> 6:00pm - 9:00pm</p>
+					</div>
+					<div class="notes">
+						<Icon name="notes" />
+						<h3>Instructor:</h3>
+						<p>W. Jamie Vaughn <br /> jamie.vaughn4@gmail.com</p>
+					</div>
+				</section>
+			</div>
+		</section>
+
+    <section class="justified-center check-list">
+      <div>
+        <h2>Classroom Segments</h2>
+        <ul>
+          <li><strong><Icon name="checked_circle" />Tool Tips!</strong><p>Overview of the most useful web development tools for every developer</p></li>
+          <li><strong><Icon name="checked_circle" />Survey of Computer Science</strong><p>Practical computer science topics and concepts</p></li>
+          <li><strong><Icon name="checked_circle" />Assessments & Challenges</strong><p>Quizes and challenges to test comprehension</p></li>
+          <li><strong><Icon name="checked_circle" />Assigned Homework</strong><p>Homework exercises from Freecodecamp.org</p></li>
+          <li><strong><Icon name="checked_circle" />Main Lecture Topic</strong><p>Review of concepts and web standards via slides and documentation</p></li>
+          <li><strong><Icon name="checked_circle" />Code-Along</strong><p>Hands-on, guided coding exercises</p></li>
+          <li><strong><Icon name="checked_circle" />Project Workshops</strong><p>Advisory sessions for working on assigned projects</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <div style="margin-top: 8em;">
+      <h2>Course Syllabus</h2>
+      <SyllabusTable client:only="solid-js" />
+    </div>
   </main>
 </Home>
+
+
+<style>
+  h1, main > p {
+		text-align: center;
+    width: 600px;
+    max-width: 50vw;
+    margin: 0 auto;
+		margin-bottom: 1em;
+	}
+	section {
+		display: flex;
+		gap: 4em;
+	}
+	section > * {
+		flex: 1 1 50%;
+	}
+	section > svg {
+		height: 100%;
+		width: 100%;
+	}
+	section > svg.bg {
+		background: white; 
+		padding: 1em; 
+		border-radius: 1em;
+	}
+	section svg[data-icon=notes] {
+		height: 60px;
+		width: 60px;
+	}
+	section .notes h3 {
+		font-size: 1em;
+		margin-top: .5em;
+	}
+	section .notes p {
+		font-size: .8em;
+	}
+  section ul {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-height: 500px;
+    max-width: 400px;
+    gap: 1em;
+  }
+  section.check-list {
+    width: 50vw;
+    max-width: 700px;
+  }
+  section ul li {
+    list-style: none;
+  }
+  section ul li strong {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+  }
+  section ul li p {
+    font-size: .8em;
+  }
+	.center {
+		text-align: center;
+		max-width: 50%;
+		margin: 0 auto;
+	}
+  .justified-center {
+    margin: 0 auto;
+    width: fit-content;
+    margin-top: 8em;
+  }
+</style>
