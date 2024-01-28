@@ -81,7 +81,7 @@ export function SyllabusTable (props: any) {
           </For>
           <tr>
             <td></td>
-            <td>Total hours of selected levels:</td>
+            <td style="text-align: right">Total hours in Level {level()}:</td>
             <td>{total()}</td>
           </tr>
       </tbody>
