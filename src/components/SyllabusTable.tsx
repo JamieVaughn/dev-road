@@ -1,5 +1,6 @@
-import { For } from "solid-js";
+import { For, createEffect } from "solid-js";
 import { createSignal } from "solid-js";
+import { SelectMenu } from "./Select";
 
 const rows = [
   {level: ['i'], topic: 'Semantic HTML', hours: 9},
@@ -45,22 +46,27 @@ export function SyllabusTable (props: any) {
   const [filteredRows, setFilteredRows] = createSignal(rows.filter(row => row.level[0].length === level()));
   const [total, setTotal] = createSignal(filteredRows().reduce((acc, cur) => acc + cur.hours, 0));
   
-  const handleClick = () => {
-    setLevel(level() + 1)
-    setFilteredRows(rows.filter(row => row.level[0].length === (level()%3 || 3)))
+  // const handleClick = () => {
+  //   setLevel(level() + 1)
+  //   setFilteredRows(rows.filter(row => row.level[0].length === (level()%3 || 3)))
+  //   setTotal(filteredRows().reduce((acc, cur) => acc + cur.hours, 0))
+  //   console.log(level(), level()%3)
+  // }
+  createEffect(() => {
+    setFilteredRows(rows.filter(row => row.level[0].length === (level())))
     setTotal(filteredRows().reduce((acc, cur) => acc + cur.hours, 0))
-    console.log(level(), level()%3)
-  }
+  })
   return (
     <table role="grid">
       <thead>
         <tr>
-          <th scope="col" style="min-width: 400px">Topic</th>
-          <th  style="display: flex; justify-content: end; align-items: center; gap: 1em;">
-            <span>Level</span>
-            <button style="width: max-content;" class="ghost" onclick={handleClick}>filter level: {(level() + 1)%3 || 3}</button>
+          <th scope="col" style="min-width: 400px"><span style="margin-top: 16px">Topic</span></th>
+          <th  style="display: flex; justify-content: center; align-items: center; gap: 1em;">
+            <span style="margin-top: 16px">Level</span>
+            <SelectMenu level={level} setLevel={setLevel} />
+            {/* <button style="width: max-content;" class="ghost slim" onclick={handleClick}>filter level: {(level() + 1)%3 || 3}</button> */}
           </th>
-          <th>Hours</th>
+          <th><span style="margin-top: 16px">Hours</span></th>
         </tr>
       </thead>
       <tbody>
@@ -73,12 +79,23 @@ export function SyllabusTable (props: any) {
             </tr>
           )}
           </For>
+          <tr>
+            <td></td>
+            <td>Total hours of selected levels:</td>
+            <td>{total()}</td>
+          </tr>
       </tbody>
       <tfoot>
         <tr>
           <td></td>
-          <td>Total hours of selected levels:</td>
-          <td>{total()}</td>
+          <td style="display: flex; gap: 8px">
+            <button class="ghost slim" disabled={level() === 1} onclick={() => setLevel(level() <= 1 ? 1 : level() - 1)}>‹</button>
+            <button class="ghost slim" style="padding: 1px" onclick={() => setLevel(1)}>1</button>
+            <button class="ghost slim" style="padding: 1px" onclick={() => setLevel(2)}>2</button>
+            <button class="ghost slim" style="padding: 1px" onclick={() => setLevel(3)}>3</button>
+            <button class="ghost slim" disabled={level() === 3} onclick={() => setLevel(level() >= 3 ? 3: level() + 1)}>›</button>
+          </td>
+          <td></td>
         </tr>
       </tfoot>
     </table>

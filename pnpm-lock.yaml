@@ -23,6 +23,9 @@ dependencies:
   '@astrojs/solid-js':
     specifier: ^4.0.1
     version: 4.0.1(solid-js@1.8.12)(vite@5.0.12)
+  '@suid/material':
+    specifier: ^0.15.1
+    version: 0.15.1(solid-js@1.8.12)
   astro:
     specifier: ^4.2.1
     version: 4.2.1(typescript@5.3.3)
@@ -867,6 +870,10 @@ packages:
       fastq: 1.16.0
     dev: false
 
+  /@popperjs/core@2.11.8:
+    resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
+    dev: false
+
   /@rollup/rollup-android-arm-eabi@4.9.5:
     resolution: {integrity: sha512-idWaG8xeSRCfRq9KpRysDHJ/rEHBEXcHuJ82XY0yYFIWnLMjZv9vF/7DOq8djQ2n3Lk6+3qfSH8AqlmHlmi1MA==}
     cpu: [arm]
@@ -970,6 +977,79 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
+
+  /@suid/base@0.8.5(solid-js@1.8.12):
+    resolution: {integrity: sha512-34Nu44f71ALOb2GEaiyhzAO6cA2EdjsySLBGaI9cV4vuHZpCXDrYVH0DjqNGD+ryEzURUf/tGu+zSREjJS1KiA==}
+    peerDependencies:
+      solid-js: ^1.7.12
+    dependencies:
+      '@popperjs/core': 2.11.8
+      '@suid/css': 0.4.0
+      '@suid/system': 0.10.5(solid-js@1.8.12)
+      '@suid/types': 0.5.3(solid-js@1.8.12)
+      '@suid/utils': 0.8.0(solid-js@1.8.12)
+      clsx: 2.1.0
+      solid-js: 1.8.12
+    dev: false
+
+  /@suid/css@0.4.0:
+    resolution: {integrity: sha512-yzHAlf1CVi7n0SvUrMgs8Z49UiS9669+td1w1frekhRQuRbkXhHoyJkvovaDVJlWRmCPA8Q0f1OTr0uDCUg9mQ==}
+    dev: false
+
+  /@suid/material@0.15.1(solid-js@1.8.12):
+    resolution: {integrity: sha512-pHX4qmqqsaIcPmTEdJVurqwwbxoiRXpOzXdE+Q6PZ63xqugBn6iGXFvw5AgNTOw9CMCRhfzVwhn5V2sqASLu+Q==}
+    peerDependencies:
+      solid-js: ^1.7.12
+    dependencies:
+      '@suid/base': 0.8.5(solid-js@1.8.12)
+      '@suid/css': 0.4.0
+      '@suid/system': 0.10.5(solid-js@1.8.12)
+      '@suid/types': 0.5.3(solid-js@1.8.12)
+      '@suid/utils': 0.8.0(solid-js@1.8.12)
+      clsx: 2.1.0
+      solid-js: 1.8.12
+    dev: false
+
+  /@suid/styled-engine@0.6.1(solid-js@1.8.12):
+    resolution: {integrity: sha512-2pcqqz3ZS1mPkjaSiQqLgZs6SWBnyH/np8xZHWpdvNwavkZtsiDM9tuFnfi10JtSSAUvbnfyA0QUWRRrw56XjA==}
+    peerDependencies:
+      solid-js: ^1.7.12
+    dependencies:
+      '@suid/css': 0.4.0
+      '@suid/utils': 0.8.0(solid-js@1.8.12)
+      solid-js: 1.8.12
+    dev: false
+
+  /@suid/system@0.10.5(solid-js@1.8.12):
+    resolution: {integrity: sha512-56Q2MpIrOUoDn+OeN/QuO4Y+u7fhJ9IPJFpXXCG36n7KAzspQnFxTUZM+SdxPdSYuVwjeKfwMrXqhUkvTdrOzw==}
+    peerDependencies:
+      solid-js: ^1.7.12
+    dependencies:
+      '@suid/css': 0.4.0
+      '@suid/styled-engine': 0.6.1(solid-js@1.8.12)
+      '@suid/types': 0.5.3(solid-js@1.8.12)
+      '@suid/utils': 0.8.0(solid-js@1.8.12)
+      clsx: 2.1.0
+      csstype: 3.1.3
+      solid-js: 1.8.12
+    dev: false
+
+  /@suid/types@0.5.3(solid-js@1.8.12):
+    resolution: {integrity: sha512-lawR7jUYuvCjkqNeF+ptCAWCRukh3ocUBz3v+zdP/EzS6OHCmJiAzoYlMUgrqxkEcI3JfSpd6u3atZ8/pkDdpQ==}
+    peerDependencies:
+      solid-js: ^1.7.12
+    dependencies:
+      solid-js: 1.8.12
+    dev: false
+
+  /@suid/utils@0.8.0(solid-js@1.8.12):
+    resolution: {integrity: sha512-4HT5Ou6EWZviXQEm3DoX2BJZ3vASEmfKikXMWwSA5TaqKhU1dk7bSVaM0Ol8kch4Eyvl145KYmifKl9PD2cXAg==}
+    peerDependencies:
+      solid-js: ^1.7.12
+    dependencies:
+      '@suid/types': 0.5.3(solid-js@1.8.12)
+      solid-js: 1.8.12
+    dev: false
 
   /@trysound/sax@0.2.0:
     resolution: {integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==}

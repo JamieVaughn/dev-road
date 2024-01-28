@@ -67,11 +67,22 @@ strong,
 b {
 	font-weight: 700;
 }
+a[disabled], button[disabled] {
+	opacity: 0.5;
+	pointer-events: all !important;
+	cursor: not-allowed !important;
+}
 a.ghost, button.ghost {
 	color: var(--primary);
 	background-color: transparent;
 	border: 1px solid var(--primary);
-	/* border-radius: 4px; */
+}
+a.slim, button.slim {
+	max-height: 2rem;
+	padding: 1px 4px;
+}
+a.pill, button.pill {
+	border-radius: 10em;
 }
 html[data-theme='dark'] a.ghost, html[data-theme='dark'] button.ghost {
 	color: white;
