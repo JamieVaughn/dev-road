@@ -63,6 +63,9 @@ h4 {
 h5 {
 	font-size: 1.25em;
 }
+.center {
+	text-align: center;
+}
 strong,
 b {
 	font-weight: 700;
