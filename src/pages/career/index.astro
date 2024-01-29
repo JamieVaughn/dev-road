@@ -1,0 +1,54 @@
+---
+import Home from '../../layouts/Home.astro';
+import { Icon } from 'astro-icon/components';
+import {remoteJobs, freelance, govJobs, jobNetworks, otherJobs} from '../../lib/careerLinks';
+---
+
+<Home>
+	<h1 class="center">Developer Career Links</h1>
+	<article>
+		<h2 class="center">A Curated Catalog of Career Links & Resources</h2>
+		<div class="flex">
+			<div>
+				<strong class="tips"><a href="career/advice">Junior Developer Tips</a></strong>
+				<ul><strong>Remote Job Boards</strong>
+					{remoteJobs.map((j, i) => <li><a href={j.url}>{j.title}</a></li>)}
+				</ul>
+			</div>
+			<div>
+				<Icon name="coffee_break"/>
+				<ul><strong>Job Networks</strong>
+					{jobNetworks.map((j, i) => <li><a href={j.url}>{j.title}</a></li>)}
+				</ul>
+				<ul><strong>Freelance Jobs</strong>
+					{freelance.map((j, i) => <li><a href={j.url}>{j.title}</a></li>)}
+				</ul>
+				<ul><strong>Gov Jobs</strong>
+					{govJobs.map((j, i) => <li><a href={j.url}>{j.title}</a></li>)}
+				</ul>
+				<ul><strong>Niche Job Boards</strong>
+					{otherJobs.map((j, i) => <li><a href={j.url}>{j.title}</a></li>)}
+				</ul>
+			</div>
+		</div>
+	</article>
+</Home>
+
+<style>
+	h2 {
+		margin-bottom: 2em;
+	}
+	.flex {
+		display: flex;
+		justify-content: center;
+		gap: 5em;
+	}
+	strong.tips + ul{
+		margin-top: 1.5em;
+	}
+	article div svg {
+		height: auto;
+		width: 100%;
+		margin: 0 auto;
+	}
+</style>
