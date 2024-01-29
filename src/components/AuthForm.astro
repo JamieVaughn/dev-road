@@ -1,0 +1,52 @@
+---
+interface Props {
+  action: string
+  title: string;
+}
+const { action, title } = Astro.props;
+---
+
+<article>
+  <div>
+    <hgroup>
+      <h1>{title}</h1><span>to access to the course content.</span>
+    </hgroup>
+    <slot />
+    <form action={action} method="POST">
+      <label for="email">Email</label>
+      <input
+        type="text"
+        name="email"
+        id="email"
+        placeholder="Email"
+        aria-label="Email"
+        autocomplete="email"
+        required
+      />
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        placeholder="Password"
+        aria-label="Password"
+        autocomplete="current-password"
+        required
+      />
+      <button type="submit" class="contrast">{title}</button>
+    </form>
+  </div>
+</article>
+
+<style>
+  hgroup {
+    display: flex;
+    align-items: baseline;
+    gap: 1em;
+  }
+  article {
+    margin: 0 auto;
+    min-width: 600px;
+    width: 50vw;
+  }
+</style>

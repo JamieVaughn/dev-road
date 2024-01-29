@@ -1,8 +1,10 @@
 ---
 import Home from '../layouts/Home.astro';
-import Signin from '../components/Signin.astro';
+import AuthForm from '../components/AuthForm.astro';
 ---
 
 <Home>
-	<Signin title="Sign up" />
+	<AuthForm title="Sign up" action="/api/auth/register">
+    <p>Already have an account? <a href="/login">Sign in</a></p>
+  </AuthForm>
 </Home>
