@@ -21,6 +21,7 @@ import { Icon } from 'astro-icon/components';
 		</section>
 		
 		<section>
+			<img src="https://skillicons.dev/icons?i=html,css,javascript,react&perline=2&theme=light" alt="Web Technologies">
 			<div class="center">
 				<h2>Learn HTML, CSS, Javascript & React</h2>
 				<p>
@@ -30,7 +31,6 @@ import { Icon } from 'astro-icon/components';
 		</section>
 
 		<section>
-			<Icon name="graphs" class="bg" />
 			<div>
 				<h2>Become a UI Developer</h2>
 				<p>With HTML and CSS you will be able to create beautiful web interfaces that every company needs for their online presence.</p>
@@ -47,22 +47,23 @@ import { Icon } from 'astro-icon/components';
 					</div>
 				</section>
 			</div>
+			<Icon name="graphs" class="bg" />
 		</section>
 
 		<section>
+			<Icon name="product_launch" />
 			<div>
 				<h2>Accelerate your career with Javascript</h2>
 				<p>These days the web serves up to us far more than simple static web pages. With Javascript, you'll understand how to make sophisticated, interactive web application software.</p>
 			</div>
-			<Icon name="product-launch" />
 		</section>
 		
 		<section>
-			<Icon name="developer" class="bg" />
 			<div>
 				<h2>Learn Application Architecture with React</h2>
 				<p>As these web applications scale up in size, the best developers know that code organization and architecture is crucial. With frameworks like React.js, developer teams can break up their application into small components to easily manage complexity. You'll learn the industry best practices that guide writing and organizing components using React.</p>
 			</div>
+			<Icon name="developer" class="bg" />
 		</section>
 		
 		<section class="center vertical">
@@ -83,6 +84,10 @@ import { Icon } from 'astro-icon/components';
 	}
 	section > * {
 		flex: 1 1 50%;
+	}
+	section > img {
+		height: 250px;
+		width: auto;
 	}
 	section > svg {
 		height: 100%;
