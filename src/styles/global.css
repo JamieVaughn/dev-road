@@ -166,3 +166,10 @@ hr {
 astro-island:has(*) + [aria-busy=true] {
 	display: none;
 }
+[aria-busy=true].large:before {
+	margin-top: 5em;
+	border-radius: 100px;
+	border-width: 0.25em;
+	height: 3em;
+	width: 3em;
+}

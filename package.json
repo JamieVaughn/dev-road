@@ -20,6 +20,7 @@
     "@supabase/supabase-js": "^2.39.3",
     "astro": "^4.2.1",
     "astro-icon": "^1.0.2",
+    "dayjs": "^1.11.10",
     "solid-js": "^1.8.12",
     "typescript": "^5.3.3"
   }
