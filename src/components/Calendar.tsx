@@ -1,6 +1,6 @@
 import { For, createEffect } from "solid-js";
 import { createSignal } from "solid-js";
-import dayjs, { Dayjs } from "dayjs";
+import dayjs, { type Dayjs } from "dayjs";
 import weekday from "dayjs/plugin/weekday";
 import weekOfYear from "dayjs/plugin/weekOfYear";
 
@@ -8,7 +8,7 @@ dayjs.extend(weekday);
 dayjs.extend(weekOfYear);
 
 const createMonthDays = (year: number, month: number, num: number) =>
-  [...Array(num)].map((day, index) => {
+  [...Array(num)].map((_day, index) => {
     return {
       date: dayjs(`${year}-${month + 1}-${index + 1}`).format("YYYY-MM-DD"),
       dayOfMonth: index + 1,
@@ -79,13 +79,12 @@ const INITIAL_DAYS = createDaysArray(NOW);
 // Add click to open event page for the date.
 // designs for that page could be: https://codepen.io/davidkpiano/pen/xwyVXO or https://codepen.io/peanav/pen/ulkof
 
-export function Calendar() {
+export function Calendar () {
   const [days, setDays] = createSignal(INITIAL_DAYS);
   const [selectedDate, setSelectedDate] = createSignal(NOW);
 
-  const panMonth = (op?: string) => {
-    if (op)
-      return setSelectedDate((state) => dayjs(state)[op](1, "month") as Dayjs);
+  const panMonth = (op?: 'add' | 'subtract') => {
+    if (op) return setSelectedDate((state) => dayjs(state)[op](1, "month") );
     return setSelectedDate(NOW);
   };
 

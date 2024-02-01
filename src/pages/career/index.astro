@@ -12,22 +12,22 @@ import {remoteJobs, freelance, govJobs, jobNetworks, otherJobs} from './careerLi
 			<div>
 				<strong class="tips"><a href="career/advice">Junior Developer Tips</a></strong>
 				<ul><strong>Remote Job Boards</strong>
-					{remoteJobs.map((j, i) => <li><a href={j.url}>{j.title}</a></li>)}
+					{remoteJobs.map(j => <li><a href={j.url}>{j.title}</a></li>)}
 				</ul>
 			</div>
 			<div>
 				<Icon name="coffee_break"/>
 				<ul><strong>Job Networks</strong>
-					{jobNetworks.map((j, i) => <li><a href={j.url}>{j.title}</a></li>)}
+					{jobNetworks.map(j => <li><a href={j.url}>{j.title}</a></li>)}
 				</ul>
 				<ul><strong>Freelance Jobs</strong>
-					{freelance.map((j, i) => <li><a href={j.url}>{j.title}</a></li>)}
+					{freelance.map(j=> <li><a href={j.url}>{j.title}</a></li>)}
 				</ul>
 				<ul><strong>Gov Jobs</strong>
-					{govJobs.map((j, i) => <li><a href={j.url}>{j.title}</a></li>)}
+					{govJobs.map(j => <li><a href={j.url}>{j.title}</a></li>)}
 				</ul>
 				<ul><strong>Niche Job Boards</strong>
-					{otherJobs.map((j, i) => <li><a href={j.url}>{j.title}</a></li>)}
+					{otherJobs.map(j => <li><a href={j.url}>{j.title}</a></li>)}
 				</ul>
 			</div>
 		</div>

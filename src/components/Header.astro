@@ -29,13 +29,21 @@ const { auth } = Astro.props
 			)}
 		</ul>
 		<ul>
-			{auth?.user?.email ? <HeaderLink href="/profile"><Icon name="profile" size={24} /> {username}</HeaderLink> : ''}
+			{auth?.user?.email ? (
+			<HeaderLink href="/profile">
+				<Icon name="profile" size={24} /> {auth?.user?.email.split('@')[0]}
+			</HeaderLink>
+			<li>
+				<form action="/signout" method="POST"><button type="submit" class="ghost" >Log out</button></form>
+			</li>
+			) : (
 			<li>
 				<a href="/signup" role="button">Sign Up</a>
 			</li>
 			<li>
 				<a href="/login" role="button" class="ghost">Log In</a>
 			</li>
+		)}
 			<li>
 				<ThemeIcon />
 			</li>
