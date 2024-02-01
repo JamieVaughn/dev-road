@@ -3,6 +3,8 @@ import HeaderLink from './HeaderLink.astro';
 import { SITE_TITLE } from '../consts';
 import ThemeIcon from './ThemeIcon.astro';
 import { Icon } from 'astro-icon/components';
+
+const { username } = Astro.props
 ---
 
 <header>
@@ -11,7 +13,7 @@ import { Icon } from 'astro-icon/components';
 			<li>
 				<h2>
 					<a href="/">
-						<Icon name="mountain_road" />
+						<Icon name="mountain_road" size={45} />
 						{SITE_TITLE.split(' ').map(word => <span class="logo-text">{word}</span>)}
 					</a>
 				</h2>
@@ -19,13 +21,13 @@ import { Icon } from 'astro-icon/components';
 		</ul>
 		<ul class="feature-links">
 			<HeaderLink href="/syllabus">Syllabus</HeaderLink>
-			<HeaderLink href="/timeline">Timeline</HeaderLink>
 			<HeaderLink href="/calendar">Calendar</HeaderLink>
 			<HeaderLink href="/slides">Slides</HeaderLink>
 			<HeaderLink href="/quiz">Quiz</HeaderLink>
+			<HeaderLink href="/my_progress">My Progress</HeaderLink>
 		</ul>
 		<ul>
-			
+			{username ? <HeaderLink href="/profile"><Icon name="profile" size={24} /> {username}</HeaderLink> : ''}
 			<li>
 				<a href="/signup" role="button">Sign Up</a>
 			</li>
@@ -64,10 +66,8 @@ import { Icon } from 'astro-icon/components';
 		text-decoration: none;
 	}
 
-	svg {
+	.logo svg {
 		grid-row: 1 / span 2;
-		height: 45px;
-		width: 45px;
 	}
 	nav {
 		justify-content: end;

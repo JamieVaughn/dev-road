@@ -90,7 +90,7 @@ a.pill, button.pill {
 html[data-theme='dark'] a.ghost, html[data-theme='dark'] button.ghost {
 	color: white;
 }
-a.ghost:hover, button.ghost:hover {
+a.ghost:hover:not([disabled]), button.ghost:hover:not([disabled]) {
 	background-color: var(--primary-focus);
 }
 p {
