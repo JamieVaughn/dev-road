@@ -1,30 +1,25 @@
 # 🛣️ 🏔️ Dev Road
 
-https://monroecc.dev/
-
 A Learning Management System for MCC Frontend Developer Professional Certification.
 
-## ▶️ Getting Started
+[Dev Road home page](https://dev-road.pages.dev/)
 
-clone the repo
+View the [course syllabus](https://dev-road.pages.dev/syllabus)
 
-```
-cd dev-road
-pnpm
-pnpm dev
-```
+Submit a request at [Apply page](https://dev-road.pages.dev/apply) to register with the instructor-led course through Monroe Community College.
 
 ## 📚 LMS Content 
+
 This LMS is a guided educational resource for students enrolled in the Monroe Community College Professional Developer Certification Course.
 
-Create an account to gain access to the learning resources:
+Create an account & Login with email/password to gain access to the learning resources & content:
 
 - Lecture Slides
-- Course Timeline
-- Curated Resources and Web Assets
-- A student community on discord to ask & answer questions
-- Homework Excercizes
+- A student community on Discord to ask & answer questions
 - Quiz Challenges
+- Homework Exercizes
+- Course Progress
+- Curated Resources and Web Assets
 - Guided Code Along Workshops
 - Portfolio Projects
 - Career Skills and Tips
@@ -33,44 +28,8 @@ Create an account to gain access to the learning resources:
 - External Course Videos
 - More Courses!
 
-## 🚧 Project Structure
+# Section 1: HTML & CSS
 
-Inside this project, you'll see the following folders and files:
+# Section 2: Javascript & MVC
 
-```text
-├── public/
-├── src/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                    | Action                                           |
-| :------------------------- | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm run dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm run build`           | Build your production site to `./dist/`          |
-| `pnpm run preview`         | Preview your build locally, before deploying     |
-| `pnpm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 🚀 Deployment
-
-Deployed to Cloudflare pages (SSR) with cloudlfare adaptor & `directory` function page configuration.
+# Section 3: React & Application Architecture
