@@ -1,0 +1,14 @@
+---
+import Home from '../layouts/Home.astro';
+import AuthForm from '../components/AuthForm.astro';
+---
+
+<Home>
+  <h2 class="center">Coming soon...</h2>
+  <div style="pointer-events: none; filter: blur(3px)">
+	<AuthForm title="Apply" action="/api/auth/apply">
+    <p>Send your info to our course admin to apply for a spot in the next instructor-led offering!</p>
+    <p>...or just <a href="/signup">sign up</a> now!</p>
+  </AuthForm>
+  </div>
+</Home>
