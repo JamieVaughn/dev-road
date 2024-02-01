@@ -4,7 +4,7 @@ import { SITE_TITLE } from '../consts';
 import ThemeIcon from './ThemeIcon.astro';
 import { Icon } from 'astro-icon/components';
 
-const { username } = Astro.props
+const { auth } = Astro.props
 ---
 
 <header>
@@ -21,13 +21,15 @@ const { username } = Astro.props
 		</ul>
 		<ul class="feature-links">
 			<HeaderLink href="/syllabus">Syllabus</HeaderLink>
-			<HeaderLink href="/calendar">Calendar</HeaderLink>
-			<HeaderLink href="/slides">Slides</HeaderLink>
-			<HeaderLink href="/quiz">Quiz</HeaderLink>
-			<HeaderLink href="/my_progress">My Progress</HeaderLink>
+			{auth?.user?.email && (
+				<HeaderLink href="/calendar">Calendar</HeaderLink>
+				<HeaderLink href="/slides">Slides</HeaderLink>
+				<HeaderLink href="/quiz">Quiz</HeaderLink>
+				<HeaderLink href="/my_progress">My Progress</HeaderLink>
+			)}
 		</ul>
 		<ul>
-			{username ? <HeaderLink href="/profile"><Icon name="profile" size={24} /> {username}</HeaderLink> : ''}
+			{auth?.user?.email ? <HeaderLink href="/profile"><Icon name="profile" size={24} /> {username}</HeaderLink> : ''}
 			<li>
 				<a href="/signup" role="button">Sign Up</a>
 			</li>

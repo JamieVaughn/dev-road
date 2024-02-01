@@ -1,10 +1,19 @@
 ---
 import Home from '../layouts/Home.astro';
 import AuthForm from '../components/AuthForm.astro';
+
+const { cookies, redirect } = Astro;
+
+const accessToken = cookies.get("sb-access-token");
+const refreshToken = cookies.get("sb-refresh-token");
+
+if (accessToken && refreshToken) {
+  return redirect("/my_progress");
+}
 ---
 
 <Home>
-  <AuthForm title="Log in" action="/api/auth/signin">
+  <AuthForm title="Log in" action="/api/auth/login">
       <p>Don't have an account yet? <a href="/signup">Sign up</a></p>
   </AuthForm>
 </Home>

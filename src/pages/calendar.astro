@@ -1,9 +1,10 @@
 ---
-import Home from '../layouts/Home.astro';
-import { Calendar } from '../components/Calendar.tsx';
+import AuthedHome from '../layouts/AuthedHome.astro';
+import { Calendar } from '../components/Calendar';
+
 ---
 
-<Home>
+<AuthedHome>
   <Calendar client:only/>
   <article aria-busy="true" class="large" style="height: 742px"></article>
-</Home>
+</AuthedHome>

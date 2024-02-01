@@ -2,7 +2,7 @@ import { For, createEffect } from "solid-js";
 import { createSignal } from "solid-js";
 import { SelectMenu } from "./Select";
 
-const rows = [
+const rows: Array<{ level: Array<'i' | 'ii' | 'iii'>, project: string, topic: string, hours: number }> = [
   {level: ['i'], project: 'HTML Resume', topic: 'Semantic HTML', hours: 9},
   {level: ['i'], project: 'Survey Form', topic: 'Accessibility & UI/UX', hours: 3},
   {level: ['i'], project: 'Tribute Page', topic: 'Basic CSS', hours: 9},
@@ -40,23 +40,16 @@ const rows = [
   {level: ['iii'], project: '', topic: 'Resume, Interviewing and Career Skills', hours: 3},
 ]
 
-// type row = Array<{ level: Array<'i' | 'ii' | 'iii'>, topic: string, hours: number }>
-
-export function SyllabusTable (props: any) {
+export function SyllabusTable () {
   const [level, setLevel] = createSignal(1);
   const [filteredRows, setFilteredRows] = createSignal(rows.filter(row => row.level[0].length === level()));
   const [total, setTotal] = createSignal(filteredRows().reduce((acc, cur) => acc + cur.hours, 0));
   
-  // const handleClick = () => {
-  //   setLevel(level() + 1)
-  //   setFilteredRows(rows.filter(row => row.level[0].length === (level()%3 || 3)))
-  //   setTotal(filteredRows().reduce((acc, cur) => acc + cur.hours, 0))
-  //   console.log(level(), level()%3)
-  // }
   createEffect(() => {
     setFilteredRows(rows.filter(row => row.level[0].length === (level())))
     setTotal(filteredRows().reduce((acc, cur) => acc + cur.hours, 0))
   })
+
   return (
     <table role="grid">
       <thead>

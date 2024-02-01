@@ -1,9 +1,13 @@
 ---
-import Home from '../layouts/Home.astro';
+import AuthedHome from '../layouts/AuthedHome.astro';
+
+const { auth } = Astro.props;
 ---
 
-<Home>
+<AuthedHome>
   <main>
     <h1>My Progress</h1>
+    <h2>Welcome {auth?.user?.email}</h2>
+    <pre>{auth}</pre>
   </main>
-</Home>
+</AuthedHome>
