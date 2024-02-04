@@ -17,6 +17,7 @@ export default defineConfig({
   ],
   output: "server",
   adapter: cloudflare({
-    mode: "directory", // directory | advanced
+    mode: "advanced", // directory | advanced
+    functionPerRoute: true,
   })
 });
