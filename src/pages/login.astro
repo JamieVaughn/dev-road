@@ -11,7 +11,7 @@ if (accessToken && refreshToken) return Astro.redirect("/my_progress");
 ---
 
 <Home>
-  <AuthForm title="Log in" action="/api/auth/login">
+  <AuthForm title="Log in" action="/api/auth/signin">
       <p>Don't have an account yet? <a href="/signup">Sign up</a></p>
   </AuthForm>
 </Home>

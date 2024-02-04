@@ -9,7 +9,12 @@ import solid from "@astrojs/solid-js";
 // https://astro.build/config
 export default defineConfig({
   site: 'https://example.com',
-  integrations: [solid(), mdx(), sitemap(), icon(), ],
+  integrations: [
+    solid(), 
+    mdx(), 
+    sitemap(), 
+    icon(), 
+  ],
   output: "server",
   adapter: cloudflare({
     mode: "advanced", // directory | advanced
