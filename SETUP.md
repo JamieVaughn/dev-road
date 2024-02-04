@@ -8,6 +8,15 @@ pnpm
 pnpm dev
 ```
 
+## Development Stack
+
+- Astro for pages & routing
+- Solid JS for interactive client-side components
+- Supabase for data persistence & user authentication
+- Cloudflare for hosting
+
+[SUID Component library](https://suid.io/components/select)
+
 ## 🚧 Project Structure
 
 Inside this project, you'll see the following folders and files:
@@ -29,7 +38,7 @@ Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page
 
 There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/articles/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
 
 Any static assets, like images, can be placed in the `public/` directory.
 
