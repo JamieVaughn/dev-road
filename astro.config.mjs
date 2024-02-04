@@ -12,6 +12,7 @@ export default defineConfig({
   integrations: [solid(), mdx(), sitemap(), icon(), ],
   output: "server",
   adapter: cloudflare({
-    mode: "directory"
+    mode: "advanced", // directory | advanced
+    functionPerRoute: true,
   })
 });
