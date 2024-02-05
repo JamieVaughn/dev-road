@@ -1,9 +1,11 @@
 ---
+import { prefetch } from 'astro:prefetch';
 interface Props {
   action: string
   title: string;
+  reset?: boolean;
 }
-const { action, title } = Astro.props;
+const { action, title, reset } = Astro.props;
 ---
 
 <article>
@@ -22,6 +24,7 @@ const { action, title } = Astro.props;
         aria-label="Email"
         autocomplete="email"
         required
+        pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
       />
       <label for="password">Password</label>
       <input
@@ -33,6 +36,7 @@ const { action, title } = Astro.props;
         autocomplete="current-password"
         required
       />
+      {reset && <a href="/reset">Reset Password</a>}
       <button type="submit" class="contrast">{title}</button>
     </form>
   </div>

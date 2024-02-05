@@ -3,6 +3,7 @@ import Home from '../layouts/Home.astro';
 import AuthForm from '../components/AuthForm.astro';
 
 const { cookies } = Astro;
+const isReset = Astro.url.searchParams.get('reset')! || false;
 
 const accessToken = cookies.get("sb-access-token");
 const refreshToken = cookies.get("sb-refresh-token");
@@ -11,7 +12,9 @@ if (accessToken && refreshToken) return Astro.redirect("/my_progress");
 ---
 
 <Home>
-  <AuthForm title="Log in" action="/api/auth/signin">
-      <p>Don't have an account yet? <a href="/signup">Sign up</a></p>
+  <AuthForm title="Log in" action="/api/auth/signin" reset={true}>
+      {isReset 
+      ? <p>Your password has been reset. Please, check your email.</p>
+      : <p>Don't have an account yet? <a href="/signup">Sign up</a></p>}
   </AuthForm>
 </Home>
