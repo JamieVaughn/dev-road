@@ -1,14 +1,23 @@
 ---
 import Home from '../layouts/Home.astro'
 import { checkAuth} from '../lib/checkAuth'
+import { supabase } from '../lib/supabase';
+import MessageScript from '../components/MessageScript.astro';
 
 const { cookies, redirect } = Astro;
 
 const auth = await checkAuth({cookies, redirect})
   .then(data => data)
   .catch(err => console.log(err));
+
+const { data: profile, error } = await supabase
+  .from('profile')
+  .select("*")
+  .eq('email', auth?.user?.email)
+  .single();
 ---
 
+<MessageScript message={profile ?? error} />
 <Home>
   <div>
     <div class="center">
@@ -40,17 +49,18 @@ const auth = await checkAuth({cookies, redirect})
         <h2>Additional Info</h2>
         <p>Feel free to add your name and LinkedIn Account URL to your profile! Also tell us about some of your hobbies and interests, so class project topics can be personalized for you!</p>
       </div>
-      <form action="/">
+      <form action="/api/auth/profile" method="post">
+        <input type="hidden" id="email" name="email" value={auth?.user?.email}>
         <div class="flex">
-          <input type="text" id="firstname" placeholder="First Name">
-          <input type="text" id="lastname" placeholder="Last Name">
+          <input type="text" id="firstname" name="firstname" placeholder="First Name">
+          <input type="text" id="lastname" name="lastname" placeholder="Last Name">
         </div>
-        <input type="text" id="fcc" placeholder="Freecodecamp Profile URL">
+        <input type="text" id="fcc" name="fcc" placeholder="Freecodecamp Profile URL">
         <div class="flex">
-          <input type="text" id="linkedin" placeholder="LinkedIn Profile URL">
-          <input type="text" id="discord" placeholder="Discord Username">
+          <input type="text" id="linkedin" name="linkedin" placeholder="LinkedIn Profile URL">
+          <input type="text" id="discord" name="discord" placeholder="Discord Username">
         </div>
-          <textarea name="hobbies" id="hobbies" placeholder="Your Hobbies & Interests" cols="30" rows="6"></textarea>
+          <textarea name="hobbies" id="hobbies" name="hobbies" placeholder="Your Hobbies & Interests" cols="30" rows="6"></textarea>
         <button type="submit">Submit</button>
       </form>
     </article>

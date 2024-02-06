@@ -3,13 +3,11 @@ import HeaderLink from './HeaderLink.astro';
 import { SITE_TITLE } from '../consts';
 import ThemeIcon from './ThemeIcon.astro';
 import { Icon } from 'astro-icon/components';
+import MessageScript from './MessageScript.astro';
 
 const { auth } = Astro.props
 ---
-<script id="Header" data-message={JSON.stringify(auth, null, 2)}>
-	const message = document.querySelector('#Header').dataset.message
-	console.log('message', message)
-</script>
+<MessageScript message={auth}/>
 <header>
 	<nav>
 		<ul class="logo">
