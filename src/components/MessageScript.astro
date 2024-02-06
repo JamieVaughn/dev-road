@@ -3,6 +3,6 @@ const { message } = Astro.props
 ---
 
 <script id="Header" data-message={JSON.stringify(message, null, 2)}>
-	const message = document.querySelector('#Header').dataset.message
-	console.log('message', message)
+	const clientMsg = document.querySelector('#Header').dataset.message
+	console.log('message', clientMsg)
 </script>

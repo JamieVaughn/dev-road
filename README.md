@@ -33,3 +33,15 @@ Create an account & Login with email/password to gain access to the learning res
 # Section 2: Javascript & MVC
 
 # Section 3: React & Application Architecture
+
+# Todo
+
+- login with linkedin
+- alumni network roster
+- links to dev communities/forums/discords/slacks
+- list of project ideas & inspiration to get started (portfolio pg examples, demos, designs, final proj ideas)
+- list of learning APIs (public apis list, jsonplaceholder, docket, space api)
+- list of code sandboxes (codepen, codesandbox, babel, specific pens of mine)
+- Migrate sheets curriculum items in
+- Use timeline or progress for that? (cards appear as date approaches & each card has links to relevant slides, HW & resources)
+- kanban board with auto-populated tickets for hw/projects as dates approach

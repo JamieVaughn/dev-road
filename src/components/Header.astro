@@ -35,7 +35,7 @@ const { auth } = Astro.props
 				<Icon name="profile" size={24} />
 			</HeaderLink>
 			<li>
-				<form action="/signout" method="POST">
+				<form action="/api/auth/signout" method="post">
 					<button type="submit" class="ghost">Log out</button>
 				</form>
 			</li>
