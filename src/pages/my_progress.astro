@@ -1,7 +1,13 @@
 ---
 import AuthedHome from '../layouts/AuthedHome.astro';
+import { checkAuth} from '../lib/checkAuth'
 
-const { auth } = Astro.props;
+const { cookies, redirect } = Astro;
+
+const auth = await checkAuth({cookies, redirect})
+  .then(data => data)
+  .catch(err => console.log(err));
+
 ---
 
 <AuthedHome>

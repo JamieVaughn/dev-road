@@ -8,6 +8,8 @@ export const GET: APIRoute = async ({ request, cookies, redirect }) => {
     return new Response("Email is required", { status: 400 });
   }
   let { data, error } = await supabase.auth.resetPasswordForEmail(email)
+  if(error) return new Response(error.message, { status: 500 });
+  if(data) return new Response("Password reset email sent", { status: 200 });
   cookies.delete("sb-access-token", { path: "/" });
   cookies.delete("sb-refresh-token", { path: "/" });
   return redirect("/login?reset=true");

@@ -6,7 +6,10 @@ import { Icon } from 'astro-icon/components';
 
 const { auth } = Astro.props
 ---
-
+<script id="Header" data-message={JSON.stringify(auth, null, 2)}>
+	const message = document.querySelector('#Header').dataset.message
+	console.log('message', message)
+</script>
 <header>
 	<nav>
 		<ul class="logo">
@@ -25,16 +28,18 @@ const { auth } = Astro.props
 				<HeaderLink href="/calendar">Calendar</HeaderLink>
 				<HeaderLink href="/slides">Slides</HeaderLink>
 				<HeaderLink href="/quiz">Quiz</HeaderLink>
-				<HeaderLink href="/my_progress">My Progress</HeaderLink>
+				<HeaderLink href="/my_progress">Progress</HeaderLink>
 			)}
 		</ul>
-		<ul>
+		<ul class="auth-controls">
 			{auth?.user?.email ? (
 			<HeaderLink href="/profile">
-				<Icon name="profile" size={24} /> {auth?.user?.email.split('@')[0]}
+				<Icon name="profile" size={24} />
 			</HeaderLink>
 			<li>
-				<form action="/signout" method="POST"><button type="submit" class="ghost" >Log out</button></form>
+				<form action="/signout" method="POST">
+					<button type="submit" class="ghost">Log out</button>
+				</form>
 			</li>
 			) : (
 			<li>
@@ -50,6 +55,7 @@ const { auth } = Astro.props
 		</ul>
 	</nav>
 </header>
+
 <style>
 	header {
 		position: sticky;
@@ -113,5 +119,16 @@ const { auth } = Astro.props
 	}
 	a[role=button] {
 		height: 52px;
+	}
+	.auth-controls {
+		display: flex;
+	  gap: 8px;
+	}
+	.auth-controls a, .auth-controls button {
+		white-space: nowrap;
+		margin: 0 4px;
+	}
+	.auth-controls form {
+		margin: 0;
 	}
 </style>
