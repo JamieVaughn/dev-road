@@ -1,5 +1,5 @@
 ---
-import AuthedHome from '../layouts/AuthedHome.astro';
+import Home from '../layouts/Home.astro';
 import { checkAuth} from '../lib/checkAuth'
 
 const { cookies, redirect } = Astro;
@@ -10,10 +10,9 @@ const auth = await checkAuth({cookies, redirect})
 
 ---
 
-<AuthedHome>
+<Home>
   <main>
     <h1>My Progress</h1>
-    <h2>Welcome {auth?.user?.email}</h2>
-    <pre>{auth}</pre>
+    <h2>Welcome {auth?.user?.email.split('@')[0]}</h2>
   </main>
-</AuthedHome>
+</Home>

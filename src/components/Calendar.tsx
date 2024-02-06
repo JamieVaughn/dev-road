@@ -99,9 +99,9 @@ export function Calendar () {
           {selectedDate().format("MMMM YYYY")}
         </h1>
         <section class="month-header-buttons">
-          <button class="contrast" onClick={() => panMonth("subtract")}> ← </button>
+          <button onClick={() => panMonth("subtract")}> ← </button>
           <button class="ghost" onClick={() => panMonth()}>Today</button>
-          <button class="contrast" onClick={() => panMonth("add")}> → </button>
+          <button onClick={() => panMonth("add")}> → </button>
         </section>
       </header>
 
@@ -202,7 +202,7 @@ export function Calendar () {
   
   .calendar-day-not-current {
     background-color: var(--grey-1);
-    color: var(--grey-300);
+    color: var(--grey-3);
   }
   
   .calendar-day-today {

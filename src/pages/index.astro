@@ -81,7 +81,7 @@ import { Icon } from 'astro-icon/components';
 		if(css.contains('slide-right')) css.add('slide-in-right')
 		if(css.contains('slide-left')) css.add('slide-in-left')
   })
-}, {threshold: 1})
+}, {threshold: 0.9})
 
 Array.from(document.getElementsByClassName("slide-right"))
 	.concat(Array.from(document.getElementsByClassName("slide-left")))

@@ -1,10 +1,10 @@
 ---
-import AuthedHome from '../layouts/AuthedHome.astro';
+import Home from '../layouts/Home.astro';
 import { Calendar as SolidCalendar } from '../components/Calendar';
 
 ---
 
-<AuthedHome>
+<Home>
   <SolidCalendar client:only/>
   <article aria-busy="true" class="large" style="height: 742px"></article>
-</AuthedHome>
+</Home>

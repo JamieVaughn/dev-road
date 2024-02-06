@@ -3,6 +3,13 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { checkAuth} from '../lib/checkAuth'
+
+const { cookies, redirect } = Astro;
+
+const auth = await checkAuth({cookies, redirect})
+  .then(data => data)
+  .catch(err => console.log(err));
 ---
 
 <!doctype html>
@@ -11,7 +18,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
-		<Header title={SITE_TITLE} auth={null}/>
+		<Header title={SITE_TITLE} auth={auth ?? false}/>
 		<main>
 			<slot />
 		</main>
