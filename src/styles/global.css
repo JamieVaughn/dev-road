@@ -85,6 +85,10 @@ a.slim, button.slim {
 	max-height: 2rem;
 	padding: 1px 4px;
 }
+a.medium, button.medium {
+	max-height: 2rem;
+	padding: 6px 8px;
+}
 a.pill, button.pill {
 	border-radius: 10em;
 }

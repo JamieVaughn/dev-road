@@ -20,10 +20,12 @@ const { data: profile, error } = await supabase
 <MessageScript message={profile ?? error} />
 <Home>
   <div>
-    <div class="center">
+    <hgroup class="center">
       <h1>My Profile</h1>
-      <a href="/api/auth/signout" role="button" class="ghost slim">Not You? Click here</a>
-    </div>
+      <form action="/api/auth/signout" method="get">
+        <button type="submit" class="ghost medium not-you">Not You? Click here</button>
+      </form>
+    </hgroup>
     <article>
       <div style="flex: 0 2 40vw; text-align: center;">
         <img
@@ -52,15 +54,15 @@ const { data: profile, error } = await supabase
       <form action="/api/auth/profile" method="post">
         <input type="hidden" id="email" name="email" value={auth?.user?.email}>
         <div class="flex">
-          <input type="text" id="firstname" name="firstname" placeholder="First Name" value={profile.first_name}>
-          <input type="text" id="lastname" name="lastname" placeholder="Last Name" value={profile.last_name}>
+          <input type="text" id="firstname" name="firstname" placeholder="First Name" value={profile?.first_name}>
+          <input type="text" id="lastname" name="lastname" placeholder="Last Name" value={profile?.last_name}>
         </div>
-        <input type="text" id="fcc" name="fcc" placeholder="Freecodecamp Profile URL" value={profile.fcc_id}>
+        <input type="text" id="fcc" name="fcc" placeholder="Freecodecamp Profile URL" value={profile?.fcc_id}>
         <div class="flex">
-          <input type="text" id="linkedin" name="linkedin" placeholder="LinkedIn Profile URL" value={profile.linkedin_id}>
-          <input type="text" id="discord" name="discord" placeholder="Discord Username" value={profile.discord_id}>
+          <input type="text" id="linkedin" name="linkedin" placeholder="LinkedIn Profile URL" value={profile?.linkedin_id}>
+          <input type="text" id="discord" name="discord" placeholder="Discord Username" value={profile?.discord_id}>
         </div>
-          <textarea name="hobbies" id="hobbies" name="hobbies" placeholder="Your Hobbies & Interests" cols="30" rows="6" value={profile.hobbies}></textarea>
+          <textarea name="hobbies" id="hobbies" name="hobbies" placeholder="Your Hobbies & Interests" cols="30" rows="6" value={profile?.hobbies}></textarea>
         <button type="submit">Submit</button>
       </form>
     </article>
@@ -71,6 +73,10 @@ const { data: profile, error } = await supabase
 </Home>
 
 <style>
+  .not-you {
+    max-width: 200px;
+    margin-inline: auto;
+  }
   .email-info {
     display: flex; 
     gap: 0.5em; 

@@ -81,14 +81,11 @@ import { Icon } from 'astro-icon/components';
 		if(css.contains('slide-right')) css.add('slide-in-right')
 		if(css.contains('slide-left')) css.add('slide-in-left')
   })
-}, {threshold: 0.9})
+}, {threshold: 0.8})
 
 Array.from(document.getElementsByClassName("slide-right"))
 	.concat(Array.from(document.getElementsByClassName("slide-left")))
-	.forEach(el => {
-		console.log(el)
-		observer.observe(el)
-	})
+	.forEach(el => observer.observe(el))
 </script>
 
 <style>
