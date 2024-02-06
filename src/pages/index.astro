@@ -21,8 +21,8 @@ import { Icon } from 'astro-icon/components';
 		</section>
 		
 		<section>
-			<img src="https://skillicons.dev/icons?i=html,css,javascript,react&perline=2&theme=light" alt="Web Technologies">
-			<div class="center">
+			<img class="slide-left" src="https://skillicons.dev/icons?i=html,css,javascript,react&perline=2&theme=light" alt="Web Technologies">
+			<div class="center slide-right">
 				<h2>Learn HTML, CSS, Javascript & React</h2>
 				<p>
 					Prepare yourself for one of the fastest growing industries out there! You'll be equipped with all the tools and best practices you'll need to succeed.
@@ -31,7 +31,7 @@ import { Icon } from 'astro-icon/components';
 		</section>
 
 		<section>
-			<div>
+			<div class="slide-left">
 				<h2>Become a UI Developer</h2>
 				<p>With HTML and CSS you will be able to create beautiful web interfaces that every company needs for their online presence.</p>
 				<section>
@@ -47,31 +47,49 @@ import { Icon } from 'astro-icon/components';
 					</div>
 				</section>
 			</div>
-			<Icon name="graphs" class="bg" />
+			<Icon name="graphs" class="bg slide-right mt-1" />
 		</section>
 
 		<section>
-			<Icon name="product_launch" />
-			<div>
+			<Icon class="slide-left" name="product_launch" />
+			<div class="slide-right">
 				<h2>Accelerate your career with Javascript</h2>
 				<p>These days the web serves up to us far more than simple static web pages. With Javascript, you'll understand how to make sophisticated, interactive web application software.</p>
 			</div>
 		</section>
 		
 		<section>
-			<div>
+			<div class="slide-left">
 				<h2>Learn Application Architecture with React</h2>
 				<p>As these web applications scale up in size, the best developers know that code organization and architecture is crucial. With frameworks like React.js, developer teams can break up their application into small components to easily manage complexity. You'll learn the industry best practices that guide writing and organizing components using React.</p>
 			</div>
-			<Icon name="developer" class="bg" />
+			<Icon name="developer" class="bg slide-right" />
 		</section>
 		
 		<section class="center vertical">
-			<a href="/signup" role="button">Sign Up</a>
-			<a href="/courses" role="button" class="ghost">See More Courses</a>
+			<a href="/signup" role="button" class="slide-left">Sign Up</a>
+			<a href="/courses" role="button" class="ghost slide-right">See More Courses</a>
 		</section>
 		
 </Home>
+
+<script>
+	const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+		if(!entry.isIntersecting) return
+    const css = entry.target.classList
+		if(css.contains('slide-right')) css.add('slide-in-right')
+		if(css.contains('slide-left')) css.add('slide-in-left')
+  })
+}, {threshold: 1})
+
+Array.from(document.getElementsByClassName("slide-right"))
+	.concat(Array.from(document.getElementsByClassName("slide-left")))
+	.forEach(el => {
+		console.log(el)
+		observer.observe(el)
+	})
+</script>
 
 <style>
 	h1 {
@@ -116,5 +134,8 @@ import { Icon } from 'astro-icon/components';
 	}
 	.vertical {
 		flex-direction: column;
+	}
+	.mt-1 {
+		margin-top: 1.5em;
 	}
 </style>

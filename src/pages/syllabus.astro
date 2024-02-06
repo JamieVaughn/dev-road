@@ -17,7 +17,7 @@ import { SyllabusTable } from '../components/SyllabusTable.tsx';
 					<div class="notes">
 						<Icon name="notes" />
 						<h3>Time:</h3>
-						<p>Mondays, Wednesdays & Thursdays, <br/> 6:00pm - 9:00pm</p>
+						<p>Mondays, Wednesdays & Thursdays, <br/> 6:30pm - 9:30pm</p>
 					</div>
 					<div class="notes">
 						<Icon name="notes" />
@@ -44,7 +44,12 @@ import { SyllabusTable } from '../components/SyllabusTable.tsx';
     </section>
 
     <div style="margin-top: 8em;">
-      <h2>Course Syllabus</h2>
+      <hgroup>
+        <h2>Course Syllabus</h2>
+        <a href="https://campusce.monroecc.edu/monroecc/course/course.aspx?C=848">
+          <Icon name="external_link" size={32}/>
+        </a>
+      </hgroup>
       <SyllabusTable client:only="solid-js" />
       <article aria-busy="true" style="height: 722px"></article>
     </div>
@@ -119,5 +124,10 @@ import { SyllabusTable } from '../components/SyllabusTable.tsx';
     margin: 0 auto;
     width: fit-content;
     margin-top: 8em;
+  }
+  hgroup {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
   }
 </style>
