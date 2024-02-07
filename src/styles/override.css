@@ -1,71 +1,71 @@
 @layer pico, override;
 
 @layer override {
-:root {
-  --orange: #ff825c;
-  --tan: #feba91;
-  --navy: #2e186a;
-	--dark: rgb(10, 31, 68);
-	--extra-dark: rgb(0, 16, 48);
-  --violet: #5d21d1;
-	--grey-1: #e4e9f0;
-  --grey-2: #cfd7e3;
-  --grey-3: #b5c0cd;
-  --grey-4: #90a0ad;
-  --grey-5: #60739f;
-  --grey-6: #3e4e63;
-	--grey-8: rgba(2, 7, 62, 0.8);
-	--accent: #2337ff;
-	--accent-dark: #000d8a;
-	--accent-light: 35, 55, 255, 0.1;
-	--black: 15, 18, 25;
-	--gray: 96, 115, 159;
-	--gray-dark: 34, 41, 57;
-	--gray-gradient: rgba(var(--gray-light), 50%), #fff;
-	--box-shadow: 0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),
-		0 16px 32px rgba(var(--gray), 33%);
-  /* Non color vars */
-  --grid-gap: 1px;
-  --day-label-size: 20px;
-  --first-day: 3  /* value is which day of the week the first day falls on */
-}
+  :root {
+    --orange: #ff825c;
+    --tan: #feba91;
+    --navy: #2e186a;
+    --dark: rgb(10, 31, 68);
+    --extra-dark: rgb(0, 16, 48);
+    --violet: #5d21d1;
+    --gray-1: #e4e9f0;
+    --gray-2: #cfd7e3;
+    --gray-3: #b5c0cd;
+    --gray-4: #90a0ad;
+    --gray-5: #60739f;
+    --gray-6: #3e4e63;
+    --gray-8: rgba(2, 7, 62, 0.8);
+    --accent: #2337ff;
+    --accent-dark: #000d8a;
+    --accent-light: 35, 55, 255, 0.1;
+    --black: 15, 18, 25;
+    --gray: 96, 115, 159;
+    --gray-dark: 34, 41, 57;
+    --gray-gradient: rgba(var(--gray-light), 50%), #fff;
+    --box-shadow: 0 2px 6px rgba(var(--gray), 25%),
+      0 8px 24px rgba(var(--gray), 33%), 0 16px 32px rgba(var(--gray), 33%);
+    /* Non color vars */
+    --grid-gap: 1px;
+    --day-label-size: 20px;
+    --first-day: 3; /* value is which day of the week the first day falls on */
+  }
 
-/* Deep-orange Light scheme (Default) */
-/* Can be forced with data-theme="light" */
-[data-theme="light"],
-:root:not([data-theme="dark"]) {
-  --primary: #f4511e;
-  --primary-hover: #e64a19;
-  --primary-focus: rgba(244, 81, 30, 0.125);
-  --primary-inverse: #FFF;
-}
+  /* Deep-orange Light scheme (Default) */
+  /* Can be forced with data-theme="light" */
+  [data-theme="light"],
+  :root:not([data-theme="dark"]) {
+    --primary: #f4511e;
+    --primary-hover: #e64a19;
+    --primary-focus: rgba(244, 81, 30, 0.125);
+    --primary-inverse: #fff;
+  }
 
-/* Deep-orange Dark scheme (Auto) */
-/* Automatically enabled if user has Dark mode enabled */
-@media only screen and (prefers-color-scheme: dark) {
-  :root:not([data-theme]) {
+  /* Deep-orange Dark scheme (Auto) */
+  /* Automatically enabled if user has Dark mode enabled */
+  @media only screen and (prefers-color-scheme: dark) {
+    :root:not([data-theme]) {
+      --primary: #f4511e;
+      --primary-hover: #ff5722;
+      --primary-focus: rgba(244, 81, 30, 0.25);
+      --primary-inverse: #fff;
+    }
+  }
+
+  /* Deep-orange Dark scheme (Forced) */
+  /* Enabled if forced with data-theme="dark" */
+  [data-theme="dark"] {
     --primary: #f4511e;
     --primary-hover: #ff5722;
     --primary-focus: rgba(244, 81, 30, 0.25);
-    --primary-inverse: #FFF;
+    --primary-inverse: #fff;
+    --background-color: var(--extra-dark);
   }
-}
 
-/* Deep-orange Dark scheme (Forced) */
-/* Enabled if forced with data-theme="dark" */
-[data-theme="dark"] {
-  --primary: #f4511e;
-  --primary-hover: #ff5722;
-  --primary-focus: rgba(244, 81, 30, 0.25);
-  --primary-inverse: #FFF;
-  --background-color: var(--extra-dark);
-}
-
-/* Deep-orange (Common styles) */
-:root {
-  --form-element-active-border-color: var(--primary);
-  --form-element-focus-color: var(--primary-focus);
-  --switch-color: var(--primary-inverse);
-  --switch-checked-background-color: var(--primary);
-}
+  /* Deep-orange (Common styles) */
+  :root {
+    --form-element-active-border-color: var(--primary);
+    --form-element-focus-color: var(--primary-focus);
+    --switch-color: var(--primary-inverse);
+    --switch-checked-background-color: var(--primary);
+  }
 }

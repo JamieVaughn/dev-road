@@ -79,12 +79,12 @@ const INITIAL_DAYS = createDaysArray(NOW);
 // Add click to open event page for the date.
 // designs for that page could be: https://codepen.io/davidkpiano/pen/xwyVXO or https://codepen.io/peanav/pen/ulkof
 
-export function Calendar () {
+export function Calendar() {
   const [days, setDays] = createSignal(INITIAL_DAYS);
   const [selectedDate, setSelectedDate] = createSignal(NOW);
 
-  const panMonth = (op?: 'add' | 'subtract') => {
-    if (op) return setSelectedDate((state) => dayjs(state)[op](1, "month") );
+  const panMonth = (op?: "add" | "subtract") => {
+    if (op) return setSelectedDate((state) => dayjs(state)[op](1, "month"));
     return setSelectedDate(NOW);
   };
 
@@ -100,7 +100,9 @@ export function Calendar () {
         </h1>
         <section class="month-header-buttons">
           <button onClick={() => panMonth("subtract")}> ← </button>
-          <button class="ghost" onClick={() => panMonth()}>Today</button>
+          <button class="ghost" onClick={() => panMonth()}>
+            Today
+          </button>
           <button onClick={() => panMonth("add")}> → </button>
         </section>
       </header>
@@ -131,8 +133,8 @@ export function Calendar () {
   
   .month {
     position: relative;
-    background-color: var(--grey-2);
-    border: solid 1px var(--grey-2);
+    background-color: var(--gray-2);
+    border: solid 1px var(--gray-2);
     margin: 2rem auto 5rem;
     max-width: 1200px;
   }
@@ -156,7 +158,7 @@ export function Calendar () {
   }
   
   .day-of-week {
-    color: var(--grey-8);
+    color: var(--gray-8);
     font-size: 18px;
     background-color: #fff;
     padding-bottom: 5px;
@@ -178,7 +180,7 @@ export function Calendar () {
     position: relative;
     grid-column-gap: var(--grid-gap);
     grid-row-gap: var(--grid-gap);
-    border-top: solid 1px var(--grey-2);
+    border-top: solid 1px var(--gray-2);
   }
   
   .calendar-day {
@@ -186,7 +188,7 @@ export function Calendar () {
     min-height: 100px;
     font-size: 16px;
     background-color: #fff;
-    color: var(--grey-8);
+    color: var(--gray-8);
     padding: 5px;
   }
   
@@ -201,8 +203,8 @@ export function Calendar () {
   }
   
   .calendar-day-not-current {
-    background-color: var(--grey-1);
-    color: var(--grey-3);
+    background-color: var(--gray-1);
+    color: var(--gray-3);
   }
   
   .calendar-day-today {
@@ -213,7 +215,7 @@ export function Calendar () {
   .calendar-day-today > time {
     color: #fff;
     border-radius: 9999px;
-    background-color: var(--grey-8);
+    background-color: var(--gray-8);
     padding: 1em;
   }`}
       </style>

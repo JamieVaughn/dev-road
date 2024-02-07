@@ -19,6 +19,7 @@ const auth = await checkAuth({cookies, redirect})
 	</head>
 	<body>
 		<Header title={SITE_TITLE} auth={auth ?? false}/>
+		<slot name="banner"/>
 		<main>
 			<slot />
 		</main>
