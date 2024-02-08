@@ -10,26 +10,19 @@ export const POST: APIRoute = async ({ request, redirect }) => {
   const linkedin_id = formData.get("linkedin")?.toString();
   const discord_id = formData.get("discord")?.toString();
   const hobbies = formData.get("hobbies")?.toString();
-  
-  const filteredObj = Object.entries({ first_name, last_name, fcc_id, linkedin_id, discord_id, hobbies}).filter(([_, v]) => v?.valueOf && v.trim().length > 0);
-  
-  console.log(filteredObj, email)
 
   if (!email) {
     return new Response("User email not found", { status: 400 });
   }
 
+  const filteredObj = Object.entries({ first_name, last_name, fcc_id, linkedin_id, discord_id, hobbies}).filter(([_, v]) => v?.valueOf && v.trim().length > 0);
 
   // update
-  const { data, error } = await supabase
+  const { error } = await supabase
   .from('profile')
   .upsert(Object.fromEntries(filteredObj))
   .eq('email', email)
   .select()
-
-  if(data) {
-    return new Response(JSON.stringify(data, null, 2), { status: 200 });
-  }
 
   if (error) {
     return new Response(error.message, { status: 500 });

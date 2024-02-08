@@ -76,6 +76,11 @@ a[disabled], button[disabled] {
 	pointer-events: all !important;
 	cursor: not-allowed !important;
 }
+button, [role=button] {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 a.ghost, button.ghost {
 	color: var(--primary);
 	background-color: transparent;
