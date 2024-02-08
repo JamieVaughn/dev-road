@@ -18,9 +18,9 @@ const auth = await checkAuth({cookies, redirect})
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
-		<Header title={SITE_TITLE} auth={auth ?? false}/>
+		<Header title={SITE_TITLE} auth={auth ?? false} transition:persist/>
 		<slot name="banner"/>
-		<main>
+		<main transition:animate="slide" >
 			<slot />
 		</main>
 		<Footer />
