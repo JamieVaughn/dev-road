@@ -16,8 +16,12 @@ export default defineConfig({
     icon(), 
   ],
   output: "server",
+  vite: {
+    build: {
+      minify: false, // false for debugging with wrangler
+    },
+  },
   adapter: cloudflare({
     mode: "advanced", // directory | advanced
-    functionPerRoute: true,
   })
 });

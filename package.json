@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro check && astro build",
-    "preview": "astro preview",
+    "serve": "astro preview",
+    "preview": "wrangler pages dev ./dist",
     "astro": "astro"
   },
   "dependencies": {
@@ -23,5 +24,8 @@
     "dayjs": "^1.11.10",
     "solid-js": "^1.8.12",
     "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "wrangler": "^3.28.0"
   }
 }

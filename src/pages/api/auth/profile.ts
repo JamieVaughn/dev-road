@@ -20,7 +20,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
   // update
   const { error } = await supabase
   .from('profile')
-  .upsert(Object.fromEntries(filteredObj))
+  .update(Object.fromEntries(filteredObj))
   .eq('email', email)
   .select()
 

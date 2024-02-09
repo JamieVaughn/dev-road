@@ -11,17 +11,17 @@ const auth = await checkAuth({ cookies, redirect })
   .catch((err) => console.log(err));
 
 const email = auth.user.email
-const _user_id = auth.user.user_id
+const user_id = auth.user.user_id
 const user = email.split('@')[0]
 
 const { data: profile, error } = await supabase
   .from("profile")
-  .select("*")
+  .select()
   .eq("email", email)
-  .single();
+  .single()
 ---
 
-<MessageScript message={{email, profile, error}} />
+<MessageScript message={{email, user_id, profile, error}} />
 <Home>
   <div>
     <hgroup class="center">
@@ -82,6 +82,7 @@ const { data: profile, error } = await supabase
           id="email"
           name="email"
           value={email}
+          required
         />
         <div class="flex">
           <input
@@ -128,20 +129,19 @@ const { data: profile, error } = await supabase
           name="hobbies"
           placeholder="Your Hobbies & Interests"
           cols="30"
-          rows="6"
-          value={profile?.hobbies}></textarea>
-        <button type="submit">Submit</button>
+          rows="6">
+            {profile?.hobbies ?? ''}
+          </textarea>
+        <button type="submit" disabled={!email}>{email ? "Submit" : "We could not authenticate you"}</button>
       </form>
     </article>
-    <article>
-      <iframe
-        src="https://discord.com/widget?id=831668785274421300&theme=dark"
-        width="100%"
-        height="500"
-        allowtransparency="true"
-        sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
-      ></iframe>
-    </article>
+    {profile?.discord_id && <article>
+      <iframe src={`https://discord.com/widget?id=831668785274421300&theme=dark&username=${profile?.discord_id}`}
+      width="100%" 
+      height="500" 
+      allowtransparency="true"
+      sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts" />
+    </article>}
   </div>
 </Home>
 
@@ -188,5 +188,17 @@ const { data: profile, error } = await supabase
   }
   article.start > form {
     flex-grow: 1;
+  }
+  article.start > form input::placeholder {
+    color: var(--tan);
+  }
+  @media (max-width: 800px) {
+    article.start {
+      flex-direction: column;
+      text-align: left;
+    }
+    article.start > form {
+      margin: 0 auto;
+    }
   }
 </style>
