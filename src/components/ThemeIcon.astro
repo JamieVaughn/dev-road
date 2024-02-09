@@ -44,4 +44,8 @@
     docEl.dataset.theme = NextThemeState[docEl.dataset.theme];
     localStorage.setItem("theme", docEl.dataset.theme);
   }
+
+	document.addEventListener("astro:after-swap", () => {
+    document.documentElement.dataset.theme = localStorage?.getItem('theme') ?? window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  })
 </script>

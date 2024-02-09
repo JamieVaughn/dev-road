@@ -75,17 +75,24 @@ import Home from '../layouts/Home.astro';
 </Home>
 
 <style>
+  html[data-theme="dark"] header :is(h5, strong, a, svg) {
+    color: var(--gray-8) !important;
+    margin: 0;
+    margin-bottom: 1em;
+  }
   header {
     display: flex;
     justify-content: space-around;
-    align-items: center;
-    /* background-color: var(--tan); */
-    background: linear-gradient(to top, white, var(--tan));
+    align-items: baseline;
+    background: linear-gradient(to top, transparent, var(--tan));
     padding-block: 1em;
     position: sticky;
     top: 70px;
   }
   header > * {
     margin: 0;
+  }
+  header a {
+    text-decoration: underline;
   }
 </style>
