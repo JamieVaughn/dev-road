@@ -6,22 +6,29 @@ const today = new Date();
 
 <footer>
   <section>
+    <div class="wrapper">
+      <ul style="padding: 0;">
+        <h6 style="white-space: nowrap;">Getting Started</h6>
+        <li><a href="/about">About</a></li>
+        <li><a href="/faq">FAQ</a></li>
+      </ul>
+      <SocialLinks vertical withLabels />
+    </div>
     <ul>
-      <h6>Getting Started</h6>
-      <li><a href="/faq">FAQ</a></li>
-      <li><a href="https://code.visualstudio.com/">VS Code</a></li>
-      <li><a href="https://vscode.dev">VSCode.dev</a></li>
+      <h6>Essential Tools</h6>
+      <li><a href="https://code.visualstudio.com/">VS Code (recommended)</a></li>
+      <li><a href="https://vscode.dev">VSCode.dev (alternative)</a></li>
       <li><a href="https://git-scm.com/">Git SCM</a></li>
       <li><a href="https://nodejs.org/">Node.js</a></li>
+      <li><a href="/extensions">VS Code Extensions</a></li>
     </ul>
-    <SocialLinks vertical withLabels />
     <ul class="resources">
       <h6>Resources</h6>
       <li><a href="/newsletter">Get the Newsletter</a></li>
       <li><a href="/career">Career Center</a></li>
       <li><a href="/courses">More Courses</a></li>
+      <li><a href="/search_tips">Search Tips</a></li>
       <li><a href="/articles">Articles</a></li>
-      <li><a href="/about">About</a></li>
     </ul>
   </section>
   <hr id="footer-divider" />
@@ -40,16 +47,27 @@ const today = new Date();
   section {
     display: flex;
     justify-content: start;
-    gap: 10%;
+    gap: 1em;
     color: black !important;
     margin: 0;
     padding: 0 3em;
+  }
+  .wrapper {
+    padding: 0.5em 1em;
+    display: flex;
+    gap: 1em;
+    border: 1px solid silver;
+    border-radius: 8px;
+    height: fit-content;
   }
   .resources {
     margin-left: auto;
   }
   section h6 {
     margin-bottom: 0.5em;
+  }
+  section > ul {
+    margin-top: 0.5em;
   }
   section ul {
     text-align: left;
@@ -82,7 +100,7 @@ const today = new Date();
       transparent
     );
   }
-  footer div {
+  footer > div {
     display: flex;
     align-items: center;
     justify-content: space-between;

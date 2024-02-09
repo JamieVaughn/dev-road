@@ -1,0 +1,63 @@
+---
+import Home from '../layouts/Home.astro';
+---
+
+<Home>
+  <h2 class="center">Google Search Tips</h2>
+  <ol>
+    <li>“what is javascript" - exact match</li>
+    <li>html AND css - search results must contain both</li>
+    <li>(javascript OR python) free course - search results contain either</li>
+    <li>javascript -css </li>
+  </ol>
+  <table>
+    <thead>
+      <tr>
+        <td>SEARCH QUERY</td>
+        <td>SEARCH RESULTS</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>"what is javascript"</td>
+        <td>exact match</td>
+      </tr>
+      <tr>
+        <td>html AND css</td>
+        <td>Contains both</td>
+      </tr>
+      <tr>
+        <td>(javascript OR python) free course</td>
+        <td>Contains either</td>
+      </tr>
+      <tr>
+        <td>Javascript -css</td>
+        <td>Excludes “css”</td>
+      </tr>
+      <tr>
+        <td>"how to start * in 6 months"</td>
+        <td>Wildcard is replaced by any word</td>
+      </tr>
+      <tr>
+        <td>site:freecodecamp.org</td>
+        <td>Constrains to site</td>
+      </tr>
+      <tr>
+        <td>filetype:pdf learn css</td>
+        <td>Constrains to file type</td>
+      </tr>
+      <tr>
+        <td>ecmascript 2016..2018</td>
+        <td>Range of numbers</td>
+      </tr>
+      <tr>
+        <td>javascript before:2020</td>
+        <td>Before a certain date</td>
+      </tr>
+      <tr>
+        <td>javascript after:2020</td>
+        <td>After a certain date</td>
+      </tr>
+    </tbody>
+  </table>
+</Home>
