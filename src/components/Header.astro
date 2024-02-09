@@ -64,6 +64,10 @@ const { auth } = Astro.props
 		z-index: 99;
 		background-color: var(--background-color);
 	}
+	html[data-theme=dark] header {
+    box-shadow: 0 -2px 8px rgba(255, 255, 255, 0.15);
+  }
+
 	h2 {
 		margin: 0;
 		font-size: 1em;
