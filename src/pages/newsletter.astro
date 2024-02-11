@@ -3,17 +3,20 @@ import Home from '../layouts/Home.astro'
 ---
 
 <Home>
-  <h1>Would you like to receive the monthly Newsletter?</h1>
+  <h1 class="center">Would you like to receive the monthly Newsletter?</h1>
+  <br/>
   <p>It contains tips and articles about web development, javascript techniques and career advice.</p>
   <p>In other words all the supplemental web dev content you need as you embark on your programming career!</p>
   <p>It even includes an educational challenge and a small, but fully featured web app idea in each issue to inspire you to continue building your skills!</p>
-  <h2 class="center">Coming soon...</h2>
-  <div style="pointer-events: none; filter: blur(3px)">
-    <form name="api/auth/newsletter" method="post">
-      <h3>Subscribe to the Newsletter:</h3>
-      <label for="email">Email</label>
-      <input type="email" name="email" id="email" />
-      <button type="submit">Subscribe</button>
-    </form>
-  </div>
+  <article>
+    <h2 class="center">Coming soon...</h2>
+    <div style="pointer-events: none; filter: blur(3px)">
+      <form name="api/auth/newsletter" method="post">
+        <h3>Subscribe to the Newsletter:</h3>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </article>
 </Home>

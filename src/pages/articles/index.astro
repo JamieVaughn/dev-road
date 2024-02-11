@@ -42,6 +42,7 @@ const posts = (await getCollection('articles')).sort(
 			}
 			ul li:first-child img {
 				width: 100%;
+				max-height: 500px;
 			}
 			ul li:first-child .title {
 				font-size: 2.369rem;
@@ -49,6 +50,11 @@ const posts = (await getCollection('articles')).sort(
 			ul li img {
 				margin-bottom: 0.5rem;
 				border-radius: 12px;
+				object-fit: cover;
+				object-position: 100% 25%;
+			}
+			ul li:not(:first-child) img {
+				max-height: 165px;
 			}
 			ul li a {
 				display: block;

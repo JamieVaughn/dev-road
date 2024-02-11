@@ -4,12 +4,7 @@ import Home from '../layouts/Home.astro';
 
 <Home>
   <h2 class="center">Google Search Tips</h2>
-  <ol>
-    <li>“what is javascript" - exact match</li>
-    <li>html AND css - search results must contain both</li>
-    <li>(javascript OR python) free course - search results contain either</li>
-    <li>javascript -css </li>
-  </ol>
+  <article>
   <table>
     <thead>
       <tr>
@@ -20,19 +15,19 @@ import Home from '../layouts/Home.astro';
     <tbody>
       <tr>
         <td>"what is javascript"</td>
-        <td>exact match</td>
+        <td>Result is an exact match</td>
       </tr>
       <tr>
         <td>html AND css</td>
-        <td>Contains both</td>
+        <td>Result will contains both terms</td>
       </tr>
       <tr>
         <td>(javascript OR python) free course</td>
-        <td>Contains either</td>
+        <td>Results will contain either term in parenthesis</td>
       </tr>
       <tr>
         <td>Javascript -css</td>
-        <td>Excludes “css”</td>
+        <td>Excludes “css” from results</td>
       </tr>
       <tr>
         <td>"how to start * in 6 months"</td>
@@ -40,24 +35,25 @@ import Home from '../layouts/Home.astro';
       </tr>
       <tr>
         <td>site:freecodecamp.org</td>
-        <td>Constrains to site</td>
+        <td>Constrains results to given site</td>
       </tr>
       <tr>
         <td>filetype:pdf learn css</td>
-        <td>Constrains to file type</td>
+        <td>Constrains results to given file type</td>
       </tr>
       <tr>
         <td>ecmascript 2016..2018</td>
-        <td>Range of numbers</td>
+        <td>Results include all between the range of numbers</td>
       </tr>
       <tr>
         <td>javascript before:2020</td>
-        <td>Before a certain date</td>
+        <td>Results from before a certain date</td>
       </tr>
       <tr>
         <td>javascript after:2020</td>
-        <td>After a certain date</td>
+        <td>Results from after a certain date</td>
       </tr>
     </tbody>
   </table>
+</article>
 </Home>
