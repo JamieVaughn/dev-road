@@ -1,14 +1,9 @@
 ---
-import Layout from '../layouts/BlogPost.astro';
+import Home from '../layouts/Home.astro';
 ---
 
-<Layout
-	title="Courses"
-	description="Lorem ipsum dolor sit amet"
-	pubDate={new Date(Date.now())}
-	heroImage="/blog-placeholder-about.jpg"
->
-	<p>Courses</p>
+<Home>
+	<h1 class="center">Courses</h1>
 	<ul>
 		<li>Job Search & Career Prep Seminar</li>
 		<li>Build a blog app with Astro</li>
@@ -25,4 +20,4 @@ import Layout from '../layouts/BlogPost.astro';
 		<li>Web Workers</li>
 		<li>Internet of Things with Node.js</li>
 	</ul>
-</Layout>
+</Home>
