@@ -36,7 +36,8 @@ Create an account & Login with email/password to gain access to the learning res
 
 # Todo
 
-- login with linkedin
+- login with linkedin & github options (and save the identities)
+- make it a PWA
 - alumni network roster
 - links to dev communities/forums/discords/slacks
 - list of project ideas & inspiration to get started (portfolio pg examples, demos, designs, final proj ideas)
