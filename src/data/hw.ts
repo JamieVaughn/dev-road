@@ -1,4 +1,4 @@
-const hw_1 = [
+export const hw_1 = [
   null,
   'Basic HTML & HTML5',
   'Applied Accessibility',
@@ -17,7 +17,7 @@ const hw_1 = [
   null,	null,	null,	null,	null,
 ]
 
-const hw_2 = [
+export const hw_2 = [
   'Basic Javascript (1-36) thru "word blanks"',
   null,
   'Basic Javascript (37-81) thru "Counting Cards"',
@@ -37,7 +37,7 @@ const hw_2 = [
   null,	null,	null,	null,
 ]
 
-const hw_3 = [
+export const hw_3 = [
   'Bootstrap',
   null,
   null,

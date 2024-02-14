@@ -15,8 +15,6 @@ pnpm dev
 - Supabase for data persistence & user authentication
 - Cloudflare for hosting
 
-[SUID Component library](https://suid.io/components/select)
-
 ## 🚧 Project Structure
 
 Inside this project, you'll see the following folders and files:

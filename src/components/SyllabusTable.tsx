@@ -57,9 +57,8 @@ export function SyllabusTable () {
           <th scope="col" style="min-width: 400px"><span style="margin-top: 16px">Topic</span></th>
           <th scope="col" style="min-width: 400px"><span style="margin-top: 16px">Project</span></th>
           <th  style="display: flex; justify-content: center; align-items: center; gap: 1em; width: 350px;">
-            <span style="margin-top: 16px">Level</span>
+            <span>Level</span>
             <SelectMenu level={level} setLevel={setLevel} />
-            {/* <button style="width: max-content;" class="ghost slim" onclick={handleClick}>filter level: {(level() + 1)%3 || 3}</button> */}
           </th>
           <th><span style="margin-top: 16px">Hours</span></th>
         </tr>

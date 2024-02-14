@@ -1,6 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import SocialLinks from "./SocialLinks.astro";
+import HorizontalLine from "./HorizontalLine.astro";
 const today = new Date();
 ---
 
@@ -31,7 +32,7 @@ const today = new Date();
       <li><a href="/articles">Articles</a></li>
     </ul>
   </section>
-  <hr id="footer-divider" />
+  <HorizontalLine />
   <div>
     <a href="https://github.com/JamieVaughn" target="_blank">
       <svg class="github-logo" viewBox="0 0 16 16" aria-hidden="true" width="32" height="32">
@@ -93,12 +94,6 @@ const today = new Date();
   }
   html[data-theme="light"] section ul a {
     color: var(--gray-5);
-  }
-  footer hr#footer-divider {
-    margin: 2em 0;
-    height: 1px;
-    border: 0;
-    background: linear-gradient(90deg, transparent, var(--gray-6), transparent);
   }
   footer > div {
     display: grid;

@@ -1,18 +1,85 @@
 ---
-import Home from '../layouts/Home.astro';
-import { checkAuth} from '../lib/checkAuth'
+import Home from "../layouts/Home.astro";
+import { checkAuth } from "../lib/checkAuth";
+import { hw_1, hw_2, hw_3 } from "../data/hw";
+import { projects_1, projects_2, projects_3 } from "../data/projects";
+import HorizontalLine from "../components/HorizontalLine.astro";
+import { ContributionChart } from "../components/ContributionChart";
 
 const { cookies, redirect } = Astro;
 
-const auth = await checkAuth({cookies, redirect})
-  .then(data => data)
-  .catch(err => console.log(err));
-
+const auth = await checkAuth({ cookies, redirect })
+  .then((data) => data)
+  .catch((err) => console.log(err));
 ---
 
 <Home>
   <main>
-    <h1>My Progress</h1>
-    <h2>Welcome {auth?.user?.email.split('@')[0]}</h2>
+    <hgroup class="center">
+      <h1>My Progress</h1>
+      <strong>Welcome {auth?.user?.email.split("@")[0]}</strong>
+      <ContributionChart />
+    </hgroup>
+    <HorizontalLine />
+    <h3 class="center">Homework</h3>
+    <div class="container">
+      <article>
+        <h6>Section 1: HTML & CSS</h6>
+        <ol>
+          {hw_1.filter(Boolean).map((hw) => <li>{hw}</li>)}
+        </ol>
+      </article>
+      <article>
+        <h6>Section 2: Javascript</h6>
+        <ol>
+          {hw_2.filter(Boolean).map((hw) => <li>{hw}</li>)}
+        </ol>
+      </article>
+      <article>
+        <h6>Section 3: React</h6>
+        <ol>
+          {hw_3.filter(Boolean).map((hw) => <li>{hw}</li>)}
+        </ol>
+      </article>
+    </div>
+    <HorizontalLine />
+    <h3 class="center">Projects</h3>
+    <div class="container">
+      <article>
+        <h6>Section 1: HTML & CSS</h6>
+        <ol>
+          {projects_1.filter(Boolean).map((project) => <li>{project}</li>)}
+        </ol>
+      </article>
+      <article>
+        <h6>Section 2: Javascript</h6>
+        <ol>
+          {projects_2.filter(Boolean).map((project) => <li>{project}</li>)}
+        </ol>
+      </article>
+      <article>
+        <h6>Section 3: React</h6>
+        <ol>
+          {projects_3.filter(Boolean).map((project) => <li>{project}</li>)}
+        </ol>
+      </article>
+    </div>
   </main>
 </Home>
+
+<style>
+  ol li::marker {
+    color: var(--h6-color);
+    font-weight: 300;
+  }
+  ol li {
+    font-weight: bold;
+    text-transform: capitalize;
+  }
+  .container {
+    display: flex;
+    gap: 2em;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+</style>

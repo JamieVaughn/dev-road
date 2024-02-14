@@ -1,6 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
 import Home from '../layouts/Home.astro';
+import { quizzes_1, quizzes_2, quizzes_3 } from '../data/quizzes';
 ---
 
 <Home>
@@ -20,56 +21,25 @@ import Home from '../layouts/Home.astro';
     <article>
       <h6>Section 1: HTML & CSS</h6>
       <ol>
-        <li>HTML</li>
-        <li>Semantic HTML</li>
-        <li>HTML Forms</li>
-        <li>CSS Basics</li>
-        <li>CSS</li>
-        <li>Flexbox Basics</li>
-        <li>Flexbox</li>
-        <li>Grid Basics</li>
-        <li>Grid</li>
-        <li>Advanced Grid</li>
-        <li>Terminal Basics</li>
-        <li>Markdown</li>
-        <li>Images</li>
-        <li>SVG</li>
+        {quizzes_1.filter(Boolean).map(quiz => (
+          <li>{quiz}</li>
+        ))}
       </ol>
     </article>
     <article>
       <h6>Section 2: Javascript</h6>
       <ol>
-        <li>Primitives, Variables, Operators</li>
-        <li>Functions</li>
-        <li>Arrays</li>
-        <li>Conditionals & Loops</li>
-        <li>The DOM</li>
-        <li>Objects</li>
-        <li>ES6 & Beyond</li>
-        <li>Modules, Closures & Classes</li>
-        <li>Regex</li>
-        <li>Promises</li>
-        <li>The Event Loop</li>
-        <li>Design Patterns</li>
-        <li>Fetch (GET)</li>
-        <li>Fetch (POST)</li>
-        <li>MVC</li>
+        {quizzes_2.filter(Boolean).map(quiz => (
+          <li>{quiz}</li>
+        ))}
       </ol>
     </article>
     <article>
       <h6>Section 3: React</h6>
       <ol>
-        <li>Terminal & NPM</li>
-        <li>JSX</li>
-        <li>Node & Build tools</li>
-        <li>React Concepts</li>
-        <li>Hooks & useState</li>
-        <li>React Mental Model</li>
-        <li>useEffect</li>
-        <li>useRef</li>
-        <li>Advanced Hooks</li>
-        <li>React Router</li>
-        <li>Redux</li>
+        {quizzes_3.filter(Boolean).map(quiz => (
+          <li>{quiz}</li>
+        ))}
       </ol>
     </article>
   </div>
@@ -106,6 +76,7 @@ import Home from '../layouts/Home.astro';
   }
   ol li {
     font-weight: bold;
+    text-transform: capitalize;
   }
   .container {
     display: flex;

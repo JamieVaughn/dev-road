@@ -50,7 +50,7 @@ import { SyllabusTable } from '../components/SyllabusTable.tsx';
           <Icon name="external_link" size={32}/>
         </a>
       </hgroup>
-      <SyllabusTable client:only="solid-js" />
+      <SyllabusTable client:idle />
       <article aria-busy="true" style="height: 722px"></article>
     </div>
   </main>
