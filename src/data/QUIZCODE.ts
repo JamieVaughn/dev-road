@@ -1,0 +1,1 @@
+export const QUIZCODE = 'wfg3rww2'

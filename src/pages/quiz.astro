@@ -2,14 +2,15 @@
 import { Icon } from 'astro-icon/components';
 import Home from '../layouts/Home.astro';
 import { quizzes_1, quizzes_2, quizzes_3 } from '../data/quizzes';
+import { QUIZCODE } from '../data/QUIZCODE';
 ---
 
 <Home>
   <header class="banner" slot="banner">
     <Icon name="external_link" />
-    <h5>Today's Quiz Code: </h5>
-    <strong>(No quiz today)</strong>
-    <a href="https://www.classtime.com/en">direct classtime.com link</a>
+    <h5>Today's Quiz Code: {QUIZCODE}</h5>
+    <strong>{QUIZCODE ? '' : '(No quiz today)'}</strong>
+    <a href={`https://www.classtime.com/code/${QUIZCODE}`}>direct classtime.com link</a>
     <Icon name="checked_circle" />
   </header>
   <main>

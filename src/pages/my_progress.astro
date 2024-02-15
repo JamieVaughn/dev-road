@@ -18,8 +18,10 @@ const auth = await checkAuth({ cookies, redirect })
     <hgroup class="center">
       <h1>My Progress</h1>
       <strong>Welcome {auth?.user?.email.split("@")[0]}</strong>
-      <ContributionChart client:idle />
     </hgroup>
+    <HorizontalLine />
+    <h6 class="center">Attendance Record</h6>
+    <ContributionChart client:idle />
     <HorizontalLine />
     <h3 class="center">Homework</h3>
     <div class="container">

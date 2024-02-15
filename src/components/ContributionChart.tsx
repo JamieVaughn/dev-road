@@ -1,4 +1,4 @@
-import { For, createEffect, createSignal } from "solid-js";
+import { For } from "solid-js";
 import dayjs from "dayjs";
 import dayOfYear from "dayjs/plugin/dayOfYear";
 import isoWeeksInYear from "dayjs/plugin/isoWeeksInYear";
@@ -6,84 +6,99 @@ import isLeapYear from "dayjs/plugin/isLeapYear";
 import isoWeek from "dayjs/plugin/isoWeek";
 
 dayjs.extend(dayOfYear);
-dayjs.extend(isoWeeksInYear)
-dayjs.extend(isoWeek)
-dayjs.extend(isLeapYear)
-const starts: any = {}
-Array.from({length: 12}).map((_, i) => {
-  const twoDigit = String(i).length === 1 ? `0${i+1}` : i+1
-  starts[i+1] = dayjs(`${new Date().getFullYear()}-${twoDigit}-01`)
-})
-const twelve = Array.from({length: 12}).map((_, i) => i + 1)
+dayjs.extend(isoWeeksInYear);
+dayjs.extend(isoWeek);
+dayjs.extend(isLeapYear);
+const starts: any = {};
+Array.from({ length: 12 }).map((_, i) => {
+  const twoDigit = String(i).length === 1 ? `0${i + 1}` : i + 1;
+  starts[i + 1] = dayjs(`${new Date().getFullYear()}-${twoDigit}-01`);
+});
+const twelveMonths = Array.from({ length: 12 }).map((_, i) => i + 1);
 
-export function ContributionChart (props: {startDate?: string}) { 
-  const [count, setCount] = createSignal(0) 
+export function ContributionChart(props: { startDate?: string }) {
   // const totalWeeks = starts[1].isoWeeksInYear()
   // const end = starts[1].endOf('month')
-  const start =  dayjs(`${new Date().getFullYear()}-01-01`)
-  const startWeekDay = start.isoWeekday()
-  createEffect(() => {
-    count()
-    console.log(twelve, startWeekDay, starts[1].format('MMM'), starts[1].daysInMonth())
-  })
+  const start = dayjs(`${new Date().getFullYear()}-01-01`);
+  const startWeekDay = start.isoWeekday();
+
   return (
-    <div class="activity-chart" onClick={() => setCount(p => p+1)}>
+    <div class="activity-chart">
+      <time class="weekday placeholder" />
       <For each={[null, "M", null, "W", null, "F", null]}>
-        {(day, i) => <time style={`grid-row-start: ${i()+2}`} class="weekday">{day ?? ''}</time>}
-      </For>
-      <For each={twelve}>
-        {month => (
-          <time class="month"
-           style={`grid-column: ${(month) * 4 - 2} / span ${month%2 ? 5 : 4};`}>
-            {starts[month]?.format('MMM')}
+        {(day, i) => (
+          <time style={`grid-row-start: ${i() + 2}`} class="weekday">
+            {day ?? ""}
           </time>
         )}
       </For>
-      <For each={Array.from({length: startWeekDay})}>
-      {(day) => <time class="day placeholder" />}
-      </For>
-      <For each={twelve}>
-        {(m) => <For each={Array.from({length: starts[m]?.daysInMonth()}).map((_, i) => i)}>
-          {(day) => {
-            const factor = Math.min(255, m**2) - (Math.abs(255/m**2))
-            return (
-            <time class={`day ${starts[m].format('MMM')}`}
-            style={`background-color: rgb(${factor}, ${m%2?factor:100}, ${factor});`}>
-              <span class="tooltip">{starts[m].add(day, 'day').format('YY-MM-DD')}</span>
-            </time>
-          )}}
-        </For>}
-      </For>
-      {/* <For each={Array.from({length: (totalWeeks-5)*7}).map((_, i) => i)}>
-        {(day) => {
-          return (
-          <time class="day">
-            <span class="tooltip">{end.format('YY-MM-DD')}</span>
+      <For each={twelveMonths}>
+        {(month) => (
+          <time
+            class="month"
+            style={`grid-column-end: span ${starts[month].daysInMonth() === 31 ? '4' : '5'};`}>
+            {starts[month]?.format("MMM")}
           </time>
-        )}}
-      </For> */}
-    <style>{css}</style>
+        )}
+      </For>
+      <For each={Array.from({ length: startWeekDay })}>
+        {(day) => <time class="day placeholder" />}
+      </For>
+      <For each={twelveMonths}>
+        {(m) => (
+          <For
+            each={Array.from({ length: starts[m].daysInMonth() }).map(
+              (_, i) => i
+            )}
+          >
+            {(day) => {
+              return (
+                <time
+                  class={`day`}
+                  style={`background-color: ${m % 2 ? "#eee" : "#ddd"};`}
+                >
+                  <span class="tooltip">
+                    {starts[m].add(day, "day").format("YY-MM-DD")}
+                  </span>
+                </time>
+              );
+            }}
+          </For>
+        )}
+      </For>
+      <style>{css}</style>
     </div>
   );
 }
 
-const css =`
+const css = `
 .activity-chart {
+  --grid-cell: 12px;
   user-select: none;
   display: grid;
   gap: 1px;
-  grid-template-rows: repeat(8, 16px);
-  grid-template-columns: repeat(48, 16px);
-  grid-auto-flow: column;
+  grid-template-rows: repeat(8, var(--grid-cell));
+  grid-template-columns: repeat(52, var(--grid-cell));
+  grid-auto-flow: column dense; 
+  max-width: fit-content;
+  margin: 0 auto;
 }
 
 /*** month headings ** */
+.month:first-of-type {
+  grid-column: 3 / span 4;
+}
 .month {
-  grid-row: 1 / 1;
   font-size: 0.7em;
+  justify-self: center;
+  align-self: center;
+  grid-row: 1 / 1;
+  grid-column-start: auto;
 }
 .weekday {
   font-size: 0.7em;
+  justify-self: center;
+  align-self: center;
 }
 
 .activity-chart .offset {
@@ -98,8 +113,8 @@ time.day:first-of-type {
   grid-row-start: 2;
 }
 time.day {
-  width: 16px;
-  height: 16px;
+  width: var(--grid-cell);
+  height: var(--grid-cell);
 }
 time.day.placeholder {
   background: white;
@@ -134,10 +149,10 @@ time.day:hover .tooltip {
   display: block;
   position: absolute;
   /* top & left are reversed because the calendar is rotated 90 deg */
-  top: -64px;
-  left: -36px;
+  top: -46px;
+  left: -38px;
   width: 100px;
-  padding: 10px 5px;
+  padding: 0 5px;
   text-align: center;
   background-color: #333;
   color: #f1f1f1;
@@ -154,7 +169,7 @@ time.day:hover .tooltip {
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
   border-top: 11px solid #333;
-}`
+}`;
 
 /*
   
