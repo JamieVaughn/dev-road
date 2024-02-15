@@ -1,1 +1,1 @@
-export const QUIZCODE = 'wfg3rww2'
+export const QUIZCODE = ''
