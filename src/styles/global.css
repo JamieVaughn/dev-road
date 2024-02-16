@@ -50,19 +50,25 @@ h6 {
 	line-height: 1.2;
 }
 h1 {
-	font-size: 3.052em;
+	font-size: calc(1.25em + 2vw);
 }
 h2 {
-	font-size: 2.441em;
+	font-size: calc(1.125em + 1.75vw);
+
 }
 h3 {
-	font-size: 1.953em;
+	font-size: calc(1em + 1.5vw);
+
 }
 h4 {
-	font-size: 1.563em;
+	font-size: calc(0.9em + 1.25vw);
+
 }
 h5 {
-	font-size: 1.25em;
+	font-size: calc(0.75em + 1vw);
+}
+h6 {
+	font-size: calc(0.6em + 0.6vw);
 }
 .center {
 	text-align: center;

@@ -54,9 +54,9 @@ export function SyllabusTable () {
     <table role="grid">
       <thead>
         <tr>
-          <th scope="col" style="min-width: 400px"><span style="margin-top: 16px">Topic</span></th>
-          <th scope="col" style="min-width: 400px"><span style="margin-top: 16px">Project</span></th>
-          <th  style="display: flex; justify-content: center; align-items: center; gap: 1em; width: 350px;">
+          <th scope="col" style="min-width: fit-content"><span style="margin-top: 16px">Topic</span></th>
+          <th scope="col" style="min-width: fit-content"><span style="margin-top: 16px">Project</span></th>
+          <th  style="display: flex; justify-content: center; align-items: center; gap: 1em; width: 225px;">
             <span>Level</span>
             <SelectMenu level={level} setLevel={setLevel} />
           </th>

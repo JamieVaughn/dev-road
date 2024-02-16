@@ -5,15 +5,13 @@ import { SyllabusTable } from '../components/SyllabusTable.tsx';
 ---
 
 <Home>
-  <main>
     <h1>MCC Front End Professional Certification</h1>
     <p>Equip yourself with the modern skills and tools necessary to work as a professional Front End Developer or even launch your own online business venture! Certificates are awarded to students based on attendance and completion of homework & projects.</p>
 
     <section class="justified-center">
-			<div>
-				<h2>Class Details</h2>
+				<h2 class="center">Class Details</h2>
 				<p>Classes are held via Online Video Conferencing in our Discord Server</p>
-				<section>
+				<div class="flex">
 					<div class="notes">
 						<Icon name="notes" />
 						<h3>Time:</h3>
@@ -24,13 +22,12 @@ import { SyllabusTable } from '../components/SyllabusTable.tsx';
 						<h3>Instructor:</h3>
 						<p>W. Jamie Vaughn <br /> jamie.vaughn4@gmail.com</p>
 					</div>
-				</section>
-			</div>
+				</div>
 		</section>
 
     <section class="justified-center check-list">
       <div>
-        <h2>Classroom Segments</h2>
+        <h2 class="center">Classroom Segments</h2>
         <ul>
           <li><strong><Icon name="checked_circle" />Tool Tips!</strong><p>Overview of the most useful web development tools for every developer</p></li>
           <li><strong><Icon name="checked_circle" />Survey of Computer Science</strong><p>Practical computer science topics and concepts</p></li>
@@ -50,10 +47,11 @@ import { SyllabusTable } from '../components/SyllabusTable.tsx';
           <Icon name="external_link" size={32}/>
         </a>
       </hgroup>
-      <SyllabusTable client:idle />
-      <article aria-busy="true" style="height: 722px"></article>
+      <div style="overflow-x: auto">
+        <SyllabusTable client:idle />
+        <article aria-busy="true" style="height: 722px"></article>
+      </div>
     </div>
-  </main>
 </Home>
 
 
@@ -65,17 +63,13 @@ import { SyllabusTable } from '../components/SyllabusTable.tsx';
     margin: 0 auto;
 		margin-bottom: 1em;
 	}
-	section {
-		display: flex;
-		gap: 4em;
-	}
-	section > * {
-		flex: 1 1 50%;
-	}
 	section > svg {
 		height: 100%;
 		width: 100%;
 	}
+  section > p {
+    text-align: center;
+  }
 	section > svg.bg {
 		background: white; 
 		padding: 1em; 
@@ -93,16 +87,11 @@ import { SyllabusTable } from '../components/SyllabusTable.tsx';
 		font-size: .8em;
 	}
   section ul {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    max-height: 500px;
-    max-width: 400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    max-width: 850px;
     gap: 1em;
-  }
-  section.check-list {
-    width: 50vw;
-    max-width: 700px;
   }
   section ul li {
     list-style: none;
@@ -115,19 +104,19 @@ import { SyllabusTable } from '../components/SyllabusTable.tsx';
   section ul li p {
     font-size: .8em;
   }
-	.center {
-		text-align: center;
-		max-width: 50%;
-		margin: 0 auto;
-	}
+  .flex {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+  }
   .justified-center {
     margin: 0 auto;
-    width: fit-content;
     margin-top: 8em;
   }
   hgroup {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5em;
   }
 </style>

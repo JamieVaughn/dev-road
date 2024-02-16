@@ -21,6 +21,7 @@ import Home from '../layouts/Home.astro';
         />
         <button type="submit" class="contrast">Submit</button>
       </form>
+      <a href="/login">Back to login</a>
     </div>
   </article>
 </Home>
@@ -30,5 +31,10 @@ import Home from '../layouts/Home.astro';
     margin: 0 auto;
     min-width: 600px;
     width: 50vw;
+  }
+  a[href="/login"] {
+    margin-top: 1em;
+    text-align: center;
+    display: block;
   }
 </style>
