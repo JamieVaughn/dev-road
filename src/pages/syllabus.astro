@@ -1,91 +1,127 @@
 ---
-import Home from '../layouts/Home.astro';
-import { Icon } from 'astro-icon/components';
-import { SyllabusTable } from '../components/SyllabusTable.tsx';
+import Home from "../layouts/Home.astro";
+import { Icon } from "astro-icon/components";
+import { SyllabusTable } from "../components/SyllabusTable.tsx";
 ---
 
 <Home>
-    <h1>MCC Front End Professional Certification</h1>
-    <p>Equip yourself with the modern skills and tools necessary to work as a professional Front End Developer or even launch your own online business venture! Certificates are awarded to students based on attendance and completion of homework & projects.</p>
+  <h1>MCC Front End Professional Certification</h1>
+  <p>
+    Equip yourself with the modern skills and tools necessary to work as a
+    professional Front End Developer or even launch your own online business
+    venture! Certificates are awarded to students based on attendance and
+    completion of homework & projects.
+  </p>
 
-    <section class="justified-center">
-				<h2 class="center">Class Details</h2>
-				<p>Classes are held via Online Video Conferencing in our Discord Server</p>
-				<div class="flex">
-					<div class="notes">
-						<Icon name="notes" />
-						<h3>Time:</h3>
-						<p>Mondays, Wednesdays & Thursdays, <br/> 6:30pm - 9:30pm</p>
-					</div>
-					<div class="notes">
-						<Icon name="notes" />
-						<h3>Instructor:</h3>
-						<p>W. Jamie Vaughn <br /> jamie.vaughn4@gmail.com</p>
-					</div>
-				</div>
-		</section>
-
-    <section class="justified-center check-list">
-      <div>
-        <h2 class="center">Classroom Segments</h2>
-        <ul>
-          <li><strong><Icon name="checked_circle" />Tool Tips!</strong><p>Overview of the most useful web development tools for every developer</p></li>
-          <li><strong><Icon name="checked_circle" />Survey of Computer Science</strong><p>Practical computer science topics and concepts</p></li>
-          <li><strong><Icon name="checked_circle" />Assessments & Challenges</strong><p>Quizes and challenges to test comprehension</p></li>
-          <li><strong><Icon name="checked_circle" />Assigned Homework</strong><p>Homework exercises from Freecodecamp.org</p></li>
-          <li><strong><Icon name="checked_circle" />Main Lecture Topic</strong><p>Review of concepts and web standards via slides and documentation</p></li>
-          <li><strong><Icon name="checked_circle" />Code-Along</strong><p>Hands-on, guided coding exercises</p></li>
-          <li><strong><Icon name="checked_circle" />Project Workshops</strong><p>Advisory sessions for working on assigned projects</p></li>
-        </ul>
+  <section class="justified-center">
+    <h2 class="center">Class Details</h2>
+    <p>Classes are held via Online Video Conferencing in our Discord Server</p>
+    <div class="flex">
+      <div class="notes">
+        <Icon name="notes" />
+        <h3>Time:</h3>
+        <p>Mondays, Wednesdays & Thursdays, <br /> 6:30pm - 9:30pm</p>
       </div>
-    </section>
-
-    <div style="margin-top: 8em;">
-      <hgroup>
-        <h2>Course Syllabus</h2>
-        <a href="https://campusce.monroecc.edu/monroecc/course/course.aspx?C=848" target="_blank">
-          <Icon name="external_link" size={32}/>
-        </a>
-      </hgroup>
-      <div style="overflow-x: auto">
-        <SyllabusTable client:idle />
-        <article aria-busy="true" style="height: 722px"></article>
+      <div class="notes">
+        <Icon name="notes" />
+        <h3>Instructor:</h3>
+        <p>W. Jamie Vaughn <br /> jamie.vaughn4@gmail.com</p>
       </div>
     </div>
+  </section>
+
+  <section class="justified-center check-list">
+    <div>
+      <h2 class="center">Classroom Segments</h2>
+      <ul>
+        <li>
+          <strong><Icon name="checked_circle" />Tool Tips!</strong><p>
+            Overview of the most useful web development tools for every
+            developer
+          </p>
+        </li>
+        <li>
+          <strong
+            ><Icon name="checked_circle" />Survey of Computer Science</strong
+          ><p>Practical computer science topics and concepts</p>
+        </li>
+        <li>
+          <strong><Icon name="checked_circle" />Assessments & Challenges</strong
+          ><p>Quizes and challenges to test comprehension</p>
+        </li>
+        <li>
+          <strong><Icon name="checked_circle" />Assigned Homework</strong><p>
+            Homework exercises from Freecodecamp.org
+          </p>
+        </li>
+        <li>
+          <strong><Icon name="checked_circle" />Main Lecture Topic</strong><p>
+            Review of concepts and web standards via slides and documentation
+          </p>
+        </li>
+        <li>
+          <strong><Icon name="checked_circle" />Code-Along</strong><p>
+            Hands-on, guided coding exercises
+          </p>
+        </li>
+        <li>
+          <strong><Icon name="checked_circle" />Project Workshops</strong><p>
+            Advisory sessions for working on assigned projects
+          </p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <div style="margin-top: 8em;">
+    <hgroup>
+      <h2>Course Syllabus</h2>
+      <a
+        href="https://campusce.monroecc.edu/monroecc/course/course.aspx?C=848"
+        target="_blank"
+      >
+        <Icon name="external_link" size={32} />
+      </a>
+    </hgroup>
+    <div style="overflow-x: auto">
+      <SyllabusTable client:idle />
+      <article aria-busy="true" style="height: 722px"></article>
+    </div>
+  </div>
 </Home>
 
-
 <style>
-  h1, main > p {
-		text-align: center;
+  h1,
+  main > p {
+    text-align: center;
     width: 600px;
     max-width: 50vw;
     margin: 0 auto;
-		margin-bottom: 1em;
-	}
-	section > svg {
-		height: 100%;
-		width: 100%;
-	}
+    margin-bottom: 1em;
+  }
+  section > svg {
+    height: 100%;
+    width: 100%;
+  }
   section > p {
     text-align: center;
   }
-	section > svg.bg {
-		background: white; 
-		padding: 1em; 
-		border-radius: 1em;
-	}
-	section svg[data-icon=notes] {
-		height: 60px;
-		width: 60px;
-	}
-	section .notes h3 {
-		font-size: 1em;
-		margin-top: .5em;
-	}
-	section .notes p {
-		font-size: .8em;
-	}
+  section > svg.bg {
+    background: white;
+    padding: 1em;
+    border-radius: 1em;
+  }
+  section svg[data-icon="notes"] {
+    height: 60px;
+    width: 60px;
+  }
+  section .notes h3 {
+    font-size: 1em;
+    margin-top: 0.5em;
+  }
+  section .notes p {
+    font-size: 0.8em;
+  }
   section ul {
     margin: 0 auto;
     display: grid;
@@ -102,7 +138,7 @@ import { SyllabusTable } from '../components/SyllabusTable.tsx';
     gap: 1em;
   }
   section ul li p {
-    font-size: .8em;
+    font-size: 0.8em;
   }
   .flex {
     display: flex;

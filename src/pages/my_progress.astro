@@ -14,59 +14,57 @@ const auth = await checkAuth({ cookies, redirect })
 ---
 
 <Home>
-  <main>
-    <hgroup class="center">
-      <h1>My Progress</h1>
-      <strong>Welcome {auth?.user?.email.split("@")[0]}</strong>
-    </hgroup>
-    <HorizontalLine />
-    <h6 class="center">Attendance Record</h6>
-    <ContributionChart client:idle />
-    <HorizontalLine />
-    <h3 class="center">Homework</h3>
-    <div class="container">
-      <article>
-        <h6>Section 1: HTML & CSS</h6>
-        <ol>
-          {hw_1.filter(Boolean).map((hw) => <li>{hw}</li>)}
-        </ol>
-      </article>
-      <article>
-        <h6>Section 2: Javascript</h6>
-        <ol>
-          {hw_2.filter(Boolean).map((hw) => <li>{hw}</li>)}
-        </ol>
-      </article>
-      <article>
-        <h6>Section 3: React</h6>
-        <ol>
-          {hw_3.filter(Boolean).map((hw) => <li>{hw}</li>)}
-        </ol>
-      </article>
-    </div>
-    <HorizontalLine />
-    <h3 class="center">Projects</h3>
-    <div class="container">
-      <article>
-        <h6>Section 1: HTML & CSS</h6>
-        <ol>
-          {projects_1.filter(Boolean).map((project) => <li>{project}</li>)}
-        </ol>
-      </article>
-      <article>
-        <h6>Section 2: Javascript</h6>
-        <ol>
-          {projects_2.filter(Boolean).map((project) => <li>{project}</li>)}
-        </ol>
-      </article>
-      <article>
-        <h6>Section 3: React</h6>
-        <ol>
-          {projects_3.filter(Boolean).map((project) => <li>{project}</li>)}
-        </ol>
-      </article>
-    </div>
-  </main>
+  <hgroup class="center">
+    <h1>My Progress</h1>
+    <strong>Welcome {auth?.user?.email.split("@")[0]}</strong>
+  </hgroup>
+  <HorizontalLine />
+  <h6 class="center">Attendance Record</h6>
+  <ContributionChart client:idle />
+  <HorizontalLine />
+  <h3 class="center">Homework</h3>
+  <div class="container">
+    <article>
+      <h6>Section 1: HTML & CSS</h6>
+      <ol>
+        {hw_1.filter(Boolean).map((hw) => <li>{hw}</li>)}
+      </ol>
+    </article>
+    <article>
+      <h6>Section 2: Javascript</h6>
+      <ol>
+        {hw_2.filter(Boolean).map((hw) => <li>{hw}</li>)}
+      </ol>
+    </article>
+    <article>
+      <h6>Section 3: React</h6>
+      <ol>
+        {hw_3.filter(Boolean).map((hw) => <li>{hw}</li>)}
+      </ol>
+    </article>
+  </div>
+  <HorizontalLine />
+  <h3 class="center">Projects</h3>
+  <div class="container">
+    <article>
+      <h6>Section 1: HTML & CSS</h6>
+      <ol>
+        {projects_1.filter(Boolean).map((project) => <li>{project}</li>)}
+      </ol>
+    </article>
+    <article>
+      <h6>Section 2: Javascript</h6>
+      <ol>
+        {projects_2.filter(Boolean).map((project) => <li>{project}</li>)}
+      </ol>
+    </article>
+    <article>
+      <h6>Section 3: React</h6>
+      <ol>
+        {projects_3.filter(Boolean).map((project) => <li>{project}</li>)}
+      </ol>
+    </article>
+  </div>
 </Home>
 
 <style>

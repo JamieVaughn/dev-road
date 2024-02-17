@@ -49,8 +49,12 @@ const { action, title, reset } = Astro.props;
   }
   article {
     margin: 0 auto;
-    min-width: 600px;
-    width: 50vw;
+  }
+  @media (min-width: 800px) {
+    article {
+      min-width: 600px;
+      width: 50vw;
+    }
   }
   a[href="/reset"] {
     margin-top: 1em;

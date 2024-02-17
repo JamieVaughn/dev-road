@@ -1,136 +1,161 @@
 ---
-import HeaderLink from './HeaderLink.astro';
-import { SITE_TITLE } from '../consts';
-import ThemeIcon from './ThemeIcon.astro';
-import { Icon } from 'astro-icon/components';
-import MessageScript from './MessageScript.astro';
+import HeaderLink from "./HeaderLink.astro";
+import { SITE_TITLE } from "../consts";
+import ThemeIcon from "./ThemeIcon.astro";
+import { Icon } from "astro-icon/components";
+import MessageScript from "./MessageScript.astro";
 
-const { auth } = Astro.props
+const { auth } = Astro.props;
 ---
-<MessageScript message={auth}/>
+
+<MessageScript message={auth} />
 <header>
-	<nav>
-		<ul class="logo">
-			<li>
-				<h2>
-					<a href="/">
-						<Icon name="mountain_road" size={45} />
-						{SITE_TITLE.split(' ').map(word => <span class="logo-text">{word}</span>)}
-					</a>
-				</h2>
-			</li>
-		</ul>
-		<ul class="feature-links">
-			<HeaderLink href="/syllabus">Syllabus</HeaderLink>
-			{auth?.user?.email && (
-				<HeaderLink href="/calendar">Calendar</HeaderLink>
-				<HeaderLink href="/slides">Slides</HeaderLink>
-				<HeaderLink href="/quiz">Quiz</HeaderLink>
-				<HeaderLink href="/my_progress">Progress</HeaderLink>
-			)}
-		</ul>
-		<ul class="auth-controls">
-			{auth?.user?.email ? (
-			<HeaderLink href="/profile">
-				<Icon name="profile" size={24} />
-			</HeaderLink>
-			<li>
-				<form action="/api/auth/signout" method="get">
-					<button type="submit" class="ghost medium">Log out</button>
-				</form>
-			</li>
-			) : (
-			<li>
-				<a href="/signup" role="button">Sign Up</a>
-			</li>
-			<li>
-				<a href="/login" role="button" class="ghost">Log In</a>
-			</li>
-		)}
-			<li>
-				<ThemeIcon />
-			</li>
-		</ul>
-	</nav>
+  <nav>
+    <ul class="logo">
+      <li>
+        <h2>
+          <a href="/">
+            <Icon name="mountain_road" size={45} />
+            {
+              SITE_TITLE.split(" ").map((word) => (
+                <span class="logo-text">{word}</span>
+              ))
+            }
+          </a>
+        </h2>
+      </li>
+    </ul>
+    <ul class="feature-links">
+      <HeaderLink href="/syllabus">Syllabus</HeaderLink>
+      {
+        auth?.user?.email && (
+          <>
+            <HeaderLink href="/calendar">Calendar</HeaderLink>
+            <HeaderLink href="/slides">Slides</HeaderLink>
+            <HeaderLink href="/quiz">Quiz</HeaderLink>
+            <HeaderLink href="/my_progress">Progress</HeaderLink>
+          </>
+        )
+      }
+    </ul>
+    <ul class="auth-controls">
+      {
+        auth?.user?.email ? (
+          <>
+            <HeaderLink href="/profile">
+              <Icon name="profile" size={24} />
+            </HeaderLink>
+            <li>
+              <form action="/api/auth/signout" method="get">
+                <button type="submit" class="ghost medium">
+                  Log out
+                </button>
+              </form>
+            </li>
+          </>
+        ) : (
+          <>
+            <li>
+              <a href="/signup" role="button">
+                Sign Up
+              </a>
+            </li>
+            <li>
+              <a href="/login" role="button" class="ghost">
+                Log In
+              </a>
+            </li>
+          </>
+        )
+      }
+      <li>
+        <ThemeIcon />
+      </li>
+    </ul>
+  </nav>
 </header>
 
 <style>
-	header {
-		position: sticky;
-		top: 0;
-		margin: 0;
-		padding: 0.5em 1em 0;
-		box-shadow: 0 2px 8px rgba(var(--black), 5%);
-		z-index: 99;
-		background-color: var(--background-color);
-	}
-	html[data-theme=dark] header {
+  header {
+    position: sticky;
+    top: 0;
+    margin: 0;
+    padding: 0.5em 1em 0;
+    box-shadow: 0 2px 8px rgba(var(--black), 5%);
+    z-index: 99;
+    background-color: var(--background-color);
+  }
+  html[data-theme="dark"] header {
     box-shadow: 0 -2px 8px rgba(255, 255, 255, 0.15);
   }
 
-	h2 {
-		margin: 0;
-		font-size: 1em;
-	}
+  h2 {
+    margin: 0;
+    font-size: 1em;
+  }
 
-	h2 a,
-	h2 a.active {
-		display: grid;
-		grid-template-columns: auto 1fr;
-		align-items: center;
-		align-content: center;
-		justify-content: center;
-		gap: 4px;
-		text-decoration: none;
-	}
+  h2 a,
+  h2 a.active {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    gap: 4px;
+    text-decoration: none;
+  }
 
-	.logo svg {
-		grid-row: 1 / span 2;
-	}
-	nav {
-		justify-content: end;
-		gap: 3em;
-		height: 60px;
-	}
-	nav a:not(a[role=button]) {
-		border-bottom: 5px solid transparent;
-		text-decoration: none;
-	}
-	nav a.active:not(a[role=button]) {
-		text-decoration: none;
-		border-bottom-color: var(--primary);
-	}
-	nav li {
-		padding: 0.25em;
-	}
-	.logo {
-		margin-right: auto;
-	}
-	html[data-theme=light] .logo-text {
-		color: var(--dark);
-	}
-	html[data-theme=dark] .feature-links a {
-		color: white;
-	}
-	html[data-theme=light] .feature-links a {
-		color: var(--extra-dark);
-	}
-	.feature-links {
-		display: flex;
-		gap: 4px;
-	}
-	a[role=button] {
-		height: 52px;
-	}
-	.auth-controls {
-		display: flex;
-	  gap: 8px;
-	}
-	.auth-controls a, .auth-controls button {
-		white-space: nowrap;
-		margin: 0 4px;
-	}
-	.auth-controls form {
-		margin: 0;
-	}
+  .logo svg {
+    grid-row: 1 / span 2;
+  }
+  nav {
+    justify-content: end;
+    gap: 3em;
+    height: 60px;
+  }
+  nav a:not(a[role="button"]) {
+    border-bottom: 5px solid transparent;
+    text-decoration: none;
+  }
+  nav a.active:not(a[role="button"]) {
+    text-decoration: none;
+    border-bottom-color: var(--primary);
+  }
+  nav li {
+    padding: 0.25em;
+  }
+  .logo {
+    margin-right: auto;
+  }
+  html[data-theme="light"] .logo-text {
+    color: var(--dark);
+  }
+  html[data-theme="dark"] .feature-links a {
+    color: white;
+  }
+  html[data-theme="light"] .feature-links a {
+    color: var(--extra-dark);
+  }
+  .feature-links {
+    display: flex;
+    gap: 4px;
+  }
+  .feature-links details {
+    display: contents;
+  }
+  a[role="button"] {
+    height: 52px;
+  }
+  .auth-controls {
+    display: flex;
+    gap: 8px;
+  }
+  .auth-controls a,
+  .auth-controls button {
+    white-space: nowrap;
+    margin: 0 4px;
+  }
+  .auth-controls form {
+    margin: 0;
+  }
 </style>

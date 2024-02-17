@@ -10,139 +10,143 @@ const auth = await checkAuth({ cookies, redirect })
   .then((data) => data)
   .catch((err) => console.log(err));
 
-const email = auth.user.email
-const user_id = auth.user.user_id
-const user = email.split('@')[0]
+const email = auth.user.email;
+const user_id = auth.user.user_id;
+const user = email.split("@")[0];
 
 const { data: profile, error } = await supabase
   .from("profile")
   .select()
   .eq("email", email)
-  .single()
+  .single();
 ---
 
-<MessageScript message={{email, user_id, profile, error}} />
+<MessageScript message={{ email, user_id, profile, error }} />
 <Home>
-  <div>
-    <hgroup class="center">
-      <h1>My Profile</h1>
-      <form action="/api/auth/signout" method="get">
-        <button type="submit" class="ghost medium not-you"
-          >Not You? Click here</button
+  <hgroup class="center">
+    <h1>My Profile</h1>
+    <form action="/api/auth/signout" method="get">
+      <button type="submit" class="ghost medium not-you"
+        >Not You? Click here</button
+      >
+    </form>
+  </hgroup>
+  <article>
+    <div style="flex: 0 2 40vw; text-align: center;">
+      <img
+        src=`https://api.dicebear.com/7.x/thumbs/svg?seed=${user}`
+        alt="avatar"
+        style="max-height: 300px;"
+      />
+    </div>
+    <div>
+      <h2>{user}</h2>
+      <div class="email-info">
+        <h6>Email:</h6>
+        <p class="muted">{email}</p>
+        <p class="badge">
+          {
+            auth?.user?.identities[0].identity_data.email_verified
+              ? "verified"
+              : "unverified"
+          }
+        </p>
+      </div>
+      <p>
+        Confirmed at: <span class="muted"
+          >{new Date(auth?.user?.email_confirmed_at).toLocaleString()}</span
         >
-      </form>
-    </hgroup>
-    <article>
-      <div style="flex: 0 2 40vw; text-align: center;">
-        <img
-          src=`https://api.dicebear.com/7.x/thumbs/svg?seed=${user}`
-          alt="avatar"
-          style="max-height: 300px;"
-        />
-      </div>
-      <div>
-        <h2>{user}</h2>
-        <div class="email-info">
-          <h6>Email:</h6>
-          <p class="muted">{email}</p>
-          <p class="badge">
-            {
-              auth?.user?.identities[0].identity_data.email_verified
-                ? "verified"
-                : "unverified"
-            }
-          </p>
-        </div>
-        <p>
-          Confirmed at: <span class="muted"
-            >{new Date(auth?.user?.email_confirmed_at).toLocaleString()}</span>
-        </p>
-        <p>
-          Joined: <span class="muted"
-            >{new Date(auth?.user?.created_at).toLocaleString()}</span>
-        </p>
-        <p>
-          Last log in: <span class="muted"
-            >{new Date(auth?.user?.last_sign_in_at).toLocaleString()}</span>
-        </p>
-      </div>
-    </article>
-    <article class="start">
-      <div>
-        <h2>Additional Info</h2>
-        <p>
-          Feel free to add your name and LinkedIn Account URL to your profile!
-          Also tell us about some of your hobbies and interests, so class
-          project topics can be personalized for you!
-        </p>
-      </div>
-      <form action="/api/auth/profile" method="post">
-        <input
-          type="hidden"
-          id="email"
-          name="email"
-          value={email}
-          required
-        />
-        <div class="flex">
-          <input
-            type="text"
-            id="firstname"
-            name="firstname"
-            placeholder="First Name"
-            value={profile?.first_name}
-          />
-          <input
-            type="text"
-            id="lastname"
-            name="lastname"
-            placeholder="Last Name"
-            value={profile?.last_name}
-          />
-        </div>
+      </p>
+      <p>
+        Joined: <span class="muted"
+          >{new Date(auth?.user?.created_at).toLocaleString()}</span
+        >
+      </p>
+      <p>
+        Last log in: <span class="muted"
+          >{new Date(auth?.user?.last_sign_in_at).toLocaleString()}</span
+        >
+      </p>
+    </div>
+  </article>
+  <article class="start">
+    <div>
+      <h2>Additional Info</h2>
+      <p>
+        Feel free to add your name and LinkedIn Account URL to your profile!
+        Also tell us about some of your hobbies and interests, so class project
+        topics can be personalized for you!
+      </p>
+    </div>
+    <form action="/api/auth/profile" method="post">
+      <input type="hidden" id="email" name="email" value={email} required />
+      <div class="flex">
         <input
           type="text"
-          id="fcc"
-          name="fcc"
-          placeholder="Freecodecamp Profile URL"
-          value={profile?.fcc_id}
+          id="firstname"
+          name="firstname"
+          placeholder="First Name"
+          value={profile?.first_name}
         />
-        <div class="flex">
-          <input
-            type="text"
-            id="linkedin"
-            name="linkedin"
-            placeholder="LinkedIn Profile URL"
-            value={profile?.linkedin_id}
-          />
-          <input
-            type="text"
-            id="discord"
-            name="discord"
-            placeholder="Discord Username"
-            value={profile?.discord_id}
-          />
-        </div>
-        <textarea
-          name="hobbies"
-          id="hobbies"
-          name="hobbies"
-          placeholder="Your Hobbies & Interests"
-          cols="30"
-          rows="6">
-            {profile?.hobbies ?? ''}
-          </textarea>
-        <button type="submit" disabled={!email}>{email ? "Submit" : "We could not authenticate you"}</button>
-      </form>
-    </article>
-    {profile?.discord_id && <article>
-      <iframe src={`https://discord.com/widget?id=831668785274421300&theme=dark&username=${profile?.discord_id}`}
-      width="100%" 
-      height="500" 
-      allowtransparency="true"
-      sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts" />
-    </article>}
-  </div>
+        <input
+          type="text"
+          id="lastname"
+          name="lastname"
+          placeholder="Last Name"
+          value={profile?.last_name}
+        />
+      </div>
+      <input
+        type="text"
+        id="fcc"
+        name="fcc"
+        placeholder="Freecodecamp Profile URL"
+        value={profile?.fcc_id}
+      />
+      <div class="flex">
+        <input
+          type="text"
+          id="linkedin"
+          name="linkedin"
+          placeholder="LinkedIn Profile URL"
+          value={profile?.linkedin_id}
+        />
+        <input
+          type="text"
+          id="discord"
+          name="discord"
+          placeholder="Discord Username"
+          value={profile?.discord_id}
+        />
+      </div>
+      <textarea
+        name="hobbies"
+        id="hobbies"
+        name="hobbies"
+        placeholder="Your Hobbies & Interests"
+        cols="30"
+        rows="6"
+      >
+        {profile?.hobbies ?? ""}
+      </textarea>
+      <button type="submit" disabled={!email}
+        >{email ? "Submit" : "We could not authenticate you"}</button
+      >
+    </form>
+  </article>
+  {
+    profile?.discord_id && (
+      <article>
+        <iframe
+          src={`https://discord.com/widget?id=831668785274421300&theme=dark&username=${profile?.discord_id}`}
+          width="100%"
+          height="500"
+          allowtransparency="true"
+          sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
+        />
+      </article>
+    )
+  }
 </Home>
 
 <style>

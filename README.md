@@ -2,11 +2,11 @@
 
 A Learning Management System for MCC Frontend Developer Professional Certification.
 
-[Dev Road home page](https://dev-road.pages.dev/)
+[Dev Road home page](https://monroecc.dev/)
 
-View the [course syllabus](https://dev-road.pages.dev/syllabus)
+View the [course syllabus](https://monroecc.dev/syllabus)
 
-Submit a request at [Apply page](https://dev-road.pages.dev/apply) to register with the instructor-led course through Monroe Community College.
+Submit a request at [Apply page](https://monroecc.dev/apply) to register with the instructor-led course through Monroe Community College.
 
 ## 📚 LMS Content 
 

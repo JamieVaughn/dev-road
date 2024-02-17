@@ -1,145 +1,202 @@
 ---
-import Home from '../layouts/Home.astro';
-import { Icon } from 'astro-icon/components';
+import Home from "../layouts/Home.astro";
+import { Icon } from "astro-icon/components";
 ---
 
 <Home>
-		<h1>MCC Web Developer Course Portal</h1>
+  <h1>MCC Web Developer Course Portal</h1>
 
-		<section>
-			<div>
-				<h2>Learn Modern Front End Development</h2>
-				<p>
-					This is a professional certification program offered through Monroe Community College. Its mission is to prepare you for being hired as a front end web developer, where you will create the next generation of web interfaces.
-				</p>
-				<section>
-					<a href="/syllabus" role="button" class="ghost">See Syllabus</a>
-					<a href="/signup" role="button">Sign Up</a>
-				</section>
-			</div>
-			<Icon name="waving" />
-		</section>
-		
-		<section class="slide-in">
-			<img class="slide-in-left" src="https://skillicons.dev/icons?i=html,css,javascript,react&perline=2&theme=light" alt="Web Technologies">
-			<div class="center slide-in-right">
-				<h2>Learn HTML, CSS, Javascript & React</h2>
-				<p>
-					Prepare yourself for one of the fastest growing industries out there! You'll be equipped with all the tools and best practices you'll need to succeed.
-				</p>
-			</div>
-		</section>
+  <section>
+    <div>
+      <h2>Learn Modern Front End Development</h2>
+      <p>
+        This is a professional certification program offered through Monroe
+        Community College. Its mission is to prepare you for being hired as a
+        front end web developer, where you will create the next generation of
+        web interfaces.
+      </p>
+      <section>
+        <a href="/syllabus" role="button" class="ghost">See Syllabus</a>
+        <a href="/signup" role="button">Sign Up</a>
+      </section>
+    </div>
+    <Icon name="waving" />
+  </section>
 
-		<section class="slide-in">
-			<div class="slide-in-left">
-				<h2>Become a UI Developer</h2>
-				<p>With HTML and CSS you will be able to create beautiful web interfaces that every company needs for their online presence.</p>
-				<section>
-					<div class="notes">
-						<Icon name="notes" />
-						<h3>HTML</h3>
-						<p>HTML is the structure & content within every web page!</p>
-					</div>
-					<div class="notes">
-						<Icon name="notes" />
-						<h3>CSS</h3>
-						<p>Learn how to make those web pages look amazing with CSS!</p>
-					</div>
-				</section>
-			</div>
-			<Icon name="graphs" class="bg mt-1 slide-in-right" />
-		</section>
+  <section class="slide-in">
+    <img
+      class="slide-in-left"
+      src="https://skillicons.dev/icons?i=html,css,javascript,react&perline=2&theme=light"
+      alt="Web Technologies"
+    />
+    <div class="slide-in-right">
+      <h2>Learn HTML, CSS, Javascript & React</h2>
+      <p>
+        Prepare yourself for one of the fastest growing industries out there!
+        You'll be equipped with all the tools and best practices you'll need to
+        succeed.
+      </p>
+    </div>
+  </section>
 
-		<section class="slide-in">
-			<Icon name="product_launch" class="slide-in-left" />
-			<div class="slide-in-right">
-				<h2>Accelerate your career with Javascript</h2>
-				<p>These days the web serves up to us far more than simple static web pages. With Javascript, you'll understand how to make sophisticated, interactive web application software.</p>
-			</div>
-		</section>
-		
-		<section class="slide-in">
-			<div class="slide-in-left">
-				<h2>Learn Application Architecture with React</h2>
-				<p>As these web applications scale up in size, the best developers know that code organization and architecture is crucial. With frameworks like React.js, developer teams can break up their application into small components to easily manage complexity. You'll learn the industry best practices that guide writing and organizing components using React.</p>
-			</div>
-			<Icon name="developer" class="bg slide-in-right" />
-		</section>
-		
-		<section class="center vertical slide-in">
-			<a href="/signup" role="button" class="slide-in-left">Sign Up</a>
-			<a href="/courses" role="button" class="ghost slide-in-right">See More Courses</a>
-		</section>
-		
+  <section class="slide-in">
+    <div class="slide-in-left">
+      <h2>Become a UI Developer</h2>
+      <p>
+        With HTML and CSS you will be able to create beautiful web interfaces
+        that every company needs for their online presence.
+      </p>
+      <section>
+        <div class="notes">
+          <Icon name="notes" />
+          <h3>HTML</h3>
+          <p>HTML is the structure & content within every web page!</p>
+        </div>
+        <div class="notes">
+          <Icon name="notes" />
+          <h3>CSS</h3>
+          <p>Learn how to make those web pages look amazing with CSS!</p>
+        </div>
+      </section>
+    </div>
+    <Icon name="graphs" class="bg mt-1 slide-in-right" />
+  </section>
+
+  <section class="slide-in">
+    <Icon name="product_launch" class="slide-in-left" />
+    <div class="slide-in-right">
+      <h2>Accelerate your career with Javascript</h2>
+      <p>
+        These days the web serves up to us far more than simple static web
+        pages. With Javascript, you'll understand how to make sophisticated,
+        interactive web application software.
+      </p>
+    </div>
+  </section>
+
+  <section class="slide-in">
+    <div class="slide-in-left">
+      <h2>Learn Application Architecture with React</h2>
+      <p>
+        As these web applications scale up in size, the best developers know
+        that code organization and architecture is crucial. With frameworks like
+        React.js, developer teams can break up their application into small
+        components to easily manage complexity. You'll learn the industry best
+        practices that guide writing and organizing components using React.
+      </p>
+    </div>
+    <Icon name="developer" class="bg slide-in-right" />
+  </section>
+
+  <section class="vertical slide-in">
+    <a href="/signup" role="button" class="slide-in-left">Sign Up</a>
+    <a href="/courses" role="button" class="ghost slide-in-right"
+      >See More Courses</a
+    >
+  </section>
 </Home>
 
 <script>
-	const observer = new IntersectionObserver(entries => {
-		entries.forEach(entry => {
-			if(!entry.isIntersecting) return
-			entry.target.children[0].classList.add('slide-in-left')
-			entry.target.children[1].classList.add('slide-in-right')
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.children[0].classList.add("slide-in-left");
+        entry.target.children[1].classList.add("slide-in-right");
+      });
+    },
+    { threshold: 0.6 }
+  );
 
-		})
-	}, {threshold: 0.6})
+  const sliders = Array.from(document.getElementsByClassName("slide-in"));
 
-	const sliders = Array.from(document.getElementsByClassName("slide-in"))
+  sliders.forEach((el) => observer.observe(el));
 
-	sliders.forEach(el => observer.observe(el))
-
-	document.addEventListener('DOMContentLoaded', () => {
-		sliders.forEach(el => {
-				el.children[0].classList.remove('slide-in-left')
-				el.children[1].classList.remove('slide-in-right')
-			})
-	})
+  document.addEventListener("DOMContentLoaded", () => {
+    sliders.forEach((el) => {
+      el.children[0].classList.remove("slide-in-left");
+      el.children[1].classList.remove("slide-in-right");
+    });
+  });
 </script>
 
 <style>
-	h1 {
-		text-align: center;
-		margin-bottom: 3em;
-	}
-	section {
-		display: flex;
-		gap: 4em;
-	}
-	section > * {
-		flex: 1 1 50%;
-	}
-	section > img {
-		height: 250px;
-		width: auto;
-	}
-	section > svg {
-		height: 100%;
-		width: 100%;
-	}
-	section > svg.bg {
-		background: white; 
-		padding: 1em; 
-		border-radius: 1em;
-	}
-	section svg[data-icon=notes] {
-		height: 60px;
-		width: 60px;
-	}
-	section .notes h3 {
-		font-size: 1em;
-		margin-top: .5em;
-	}
-	section .notes p {
-		font-size: .8em;
-	}
-	.center {
-		text-align: center;
-		max-width: 50%;
-		margin: 0 auto;
-	}
-	.vertical {
-		flex-direction: column;
-	}
-	.mt-1 {
-		margin-top: 1.5em;
-	}
+  h1 {
+    text-align: center;
+    margin-bottom: 3em;
+  }
+  section {
+    display: flex;
+    gap: 4em;
+  }
+  @media (max-width: 800px) {
+    h1 {
+      margin-bottom: 0.5em;
+    }
+    section {
+      flex-direction: column;
+      gap: 2em;
+    }
+    section.slide-in:nth-of-type(2n),
+    section:first-of-type {
+      flex-direction: column-reverse;
+    }
+    section p {
+      line-height: 1.5em;
+      font-size: 0.8em;
+    }
+    section section {
+      gap: 1em;
+    }
+    .notes {
+      display: flex;
+      gap: 0.75em;
+      align-items: center;
+    }
+  }
+  section > * {
+    flex: 1 1 50%;
+  }
+  section > img {
+    height: 250px;
+    width: auto;
+  }
+  section > svg {
+    height: 100%;
+    width: 100%;
+  }
+  section > svg.bg {
+    background: white;
+    padding: 1em;
+    border-radius: 1em;
+  }
+  section svg[data-icon="notes"] {
+    height: 60px;
+    width: 60px;
+  }
+  section .notes h3 {
+    font-size: 1em;
+    margin-top: 0.5em;
+  }
+  section .notes p {
+    font-size: 0.8em;
+  }
+  .center {
+    text-align: center;
+    max-width: 50%;
+    margin: 0 auto;
+  }
+  .vertical {
+    flex-direction: column;
+  }
+  @media (min-width: 800px) {
+    .vertical {
+      text-align: center;
+      max-width: 50%;
+      margin: 0 auto;
+    }
+  }
+  .mt-1 {
+    margin-top: 1.5em;
+  }
 </style>
