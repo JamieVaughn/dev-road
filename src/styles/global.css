@@ -203,3 +203,18 @@ main > article {
 		width: 50vw;
 	}
 }
+
+span.mobile-only {
+	display: inline;
+}
+span.desktop-only {
+	display: none;
+}
+@media (min-width: 800px) {
+	span.mobile-only {
+		display: none;
+	}
+	span.desktop-only {
+		display: inline;
+	}
+}

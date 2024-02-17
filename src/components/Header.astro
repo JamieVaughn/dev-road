@@ -25,7 +25,7 @@ const { auth } = Astro.props;
         </h2>
       </li>
     </ul>
-    <ul class="feature-links">
+    <ul class="feature-links desktop-only">
       <HeaderLink href="/syllabus">Syllabus</HeaderLink>
       {
         auth?.user?.email && (
@@ -37,6 +37,24 @@ const { auth } = Astro.props;
           </>
         )
       }
+    </ul>
+    <ul class="feature-links mobile-only">
+      <details role="list" dir="rtl">
+        <summary aria-haspopup="listbox" role="link">Menu</summary>
+        <ul role="listbox">
+          <HeaderLink href="/syllabus">Syllabus</HeaderLink>
+          {
+            auth?.user?.email && (
+              <>
+                <HeaderLink href="/calendar">Calendar</HeaderLink>
+                <HeaderLink href="/slides">Slides</HeaderLink>
+                <HeaderLink href="/quiz">Quiz</HeaderLink>
+                <HeaderLink href="/my_progress">Progress</HeaderLink>
+              </>
+            )
+          }
+        </ul>
+      </details>
     </ul>
     <ul class="auth-controls">
       {
@@ -136,12 +154,21 @@ const { auth } = Astro.props;
   html[data-theme="light"] .feature-links a {
     color: var(--extra-dark);
   }
-  .feature-links {
+  .feature-links.desktop-only {
     display: flex;
     gap: 4px;
   }
-  .feature-links details {
-    display: contents;
+  .feature-links.mobile-only {
+    display: none;
+  }
+  @media (max-width: 800px) {
+    .feature-links.mobile-only {
+      display: block;
+      align-self: center;
+    }
+    .feature-links.desktop-only {
+      display: none;
+    }
   }
   a[role="button"] {
     height: 52px;

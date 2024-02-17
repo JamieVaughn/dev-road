@@ -141,7 +141,8 @@ export function Calendar() {
   
   .month-header {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
     background-color: #fff;
     padding: 10px;
   }

@@ -73,9 +73,12 @@ const { data: profile, error } = await supabase
     <div>
       <h2>Additional Info</h2>
       <p>
-        Feel free to add your name and LinkedIn Account URL to your profile!
-        Also tell us about some of your hobbies and interests, so class project
-        topics can be personalized for you!
+        Feel free to add your name, 
+        <span class="mobile-only">account URLs and hobbies</span>
+        <span class="desktop-only">LinkedIn Account URL, Freecodecamp URL & Discord ID </span> 
+        to your profile! 
+        <span class="desktop-only">Also tell us about some of your hobbies and interests,
+        so class project topics can be personalized for you!</span>
       </p>
     </div>
     <form action="/api/auth/profile" method="post">
@@ -125,7 +128,7 @@ const { data: profile, error } = await supabase
         name="hobbies"
         placeholder="Your Hobbies & Interests"
         cols="30"
-        rows="6"
+        rows="4"
       >
         {profile?.hobbies ?? ""}
       </textarea>
@@ -173,22 +176,16 @@ const { data: profile, error } = await supabase
   .muted {
     color: var(--gray-4);
   }
-  .flex {
-    display: flex;
-    gap: 1em;
-  }
-  article {
-    display: flex;
-    gap: 3em;
-    align-items: center;
-    justify-content: center;
-  }
   article.start {
+    display: flex;
     text-align: right;
     align-items: start;
   }
   article.start > div:first-of-type {
-    flex: 0 2 30%;
+    flex: 0 2 36%;
+  }
+  article.start h2 {
+    white-space: nowrap;
   }
   article.start > form {
     flex-grow: 1;
@@ -196,13 +193,29 @@ const { data: profile, error } = await supabase
   article.start > form input::placeholder {
     color: var(--tan);
   }
+  .flex {
+    display: flex;
+    gap: 1em;
+  }
   @media (max-width: 800px) {
+    .flex {
+      display: contents;
+    }
     article.start {
       flex-direction: column;
       text-align: left;
     }
     article.start > form {
       margin: 0 auto;
+    }
+  }
+  @media (min-width: 800px) {
+    article {
+      display: flex;
+      gap: 3em;
+      align-items: center;
+      justify-content: center;
+      margin: 2em auto;
     }
   }
 </style>
