@@ -10,7 +10,8 @@ const { action, title, reset } = Astro.props;
 <article>
   <div>
     <hgroup>
-      <h1>{title}</h1><span>to access to the course content.</span>
+      <h1>{title}</h1>
+      <span>to access to the course content.</span>
     </hgroup>
     <slot />
     <form action={action} method="post">
@@ -46,6 +47,9 @@ const { action, title, reset } = Astro.props;
     display: flex;
     align-items: baseline;
     gap: 1em;
+  }
+  hgroup h1 {
+    white-space: nowrap;
   }
   article {
     margin: 0 auto;

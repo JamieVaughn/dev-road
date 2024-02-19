@@ -37,7 +37,9 @@ const { data: profile, error } = await supabase
         src=`https://api.dicebear.com/7.x/thumbs/svg?seed=${user}`
         alt="avatar"
         style="max-height: 300px;"
+        onload="(e => e.target.dataset.loaded=true)(event)"
       />
+      <article aria-busy="true" style="height: 300px" />
     </div>
     <div>
       <h2>{user}</h2>

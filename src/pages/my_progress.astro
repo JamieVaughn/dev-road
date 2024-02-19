@@ -1,12 +1,12 @@
 ---
 import Home from "../layouts/Home.astro";
 import { checkAuth } from "../lib/checkAuth";
-import { hw_1, hw_2, hw_3 } from "../data/hw";
+import { hw_1, hw_2} from "../data/hw";
+import { hw_3 } from "../data/hw_old";
 import { projects_1, projects_2, projects_3 } from "../data/projects";
 import HorizontalLine from "../components/HorizontalLine.astro";
 import { ContributionChart } from "../components/ContributionChart";
 import { supabase } from "../lib/supabase";
-import MessageScript from "../components/MessageScript.astro";
 
 const { cookies, redirect } = Astro;
 
@@ -60,32 +60,46 @@ const username = /*(profile?.first_name + profile?.last_name) ??*/ auth?.user?.e
     <article>
       <h6 class="center">Section 1: HTML & CSS</h6>
       <ol>
-        <li><a href="">Resume</a></li>
+        <li>Resume <em>(Class Proj)</em></li>
         {projects_1.filter(Boolean).map((project) => <li><a href={`https://www.freecodecamp.org/learn/2022/responsive-web-design/#build-a-${project?.split(' ').join('-')}-project`}>{project}</a></li>)}
+        <li>CSS Pattern Library <em>(Class Proj)</em></li>
       </ol>
     </article>
     <article>
       <h6 class="center">Section 2: Javascript</h6>
       <ol>
         {projects_2.filter(Boolean).map((project) => <li><a href={`https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures-v8/#build-a-${project?.split(' ').join('-')}-project`}>{project}</a></li>)}
+        <li>MVC Dragon Clicker <em>(Class Proj)</em></li>
       </ol>
     </article>
     <article>
       <h6 class="center">Section 3: React</h6>
       <p class="center"><a href="https://www.freecodecamp.org/learn/front-end-development-libraries/#front-end-development-libraries-projects">React Projects <br />@ freecodecamp</a></p>
-      <ol>
-        {projects_3.filter(Boolean).map((project) => <li>{project}</li>)}
-      </ol>
+      <div style="display: flex; gap: 1em;">
+        <ol>
+          <em>All of the FCC.org projects:</em>
+          {projects_3.filter(Boolean).map((project) => <li>{project}</li>)}
+        </ol>
+        <ul>
+          <em>One of the class projects:</em>
+          <li>react dice roller</li>
+          <li>react dragon clicker</li>
+          <li>react todos</li>
+          <li>react news</li>
+          <li>redux editor</li>
+          <li>supabase bookmarks</li>
+        </ul>
+      </div>
     </article>
   </div>
 </Home>
 
 <style>
-  ol li::marker {
+  ol li::marker, ul li::marker {
     color: var(--h6-color);
     font-weight: 300;
   }
-  ol li {
+  ol li, ul li {
     font-weight: bold;
     text-transform: capitalize;
   }

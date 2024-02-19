@@ -95,12 +95,12 @@ export function Calendar() {
   return (
     <div class="month">
       <header class="month-header">
-        <h1 class="calendar_month_header_selected_month">
+        <h1 class="calendar_month_header_selected_month" style="color: var(--gray-8);">
           {selectedDate().format("MMMM YYYY")}
         </h1>
         <section class="month-header-buttons">
           <button onClick={() => panMonth("subtract")}> ← </button>
-          <button class="ghost" onClick={() => panMonth()}>
+          <button class="ghost" onClick={() => panMonth()} style="color: var(--gray-8);">
             Today
           </button>
           <button onClick={() => panMonth("add")}> → </button>

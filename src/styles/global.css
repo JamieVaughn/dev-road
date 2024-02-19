@@ -177,7 +177,7 @@ hr {
 	white-space: nowrap;
 }
 
-astro-island:has(*) + [aria-busy=true] {
+astro-island:has(*) + [aria-busy=true], [data-loaded=true] + [aria-busy=true] {
 	display: none;
 }
 [aria-busy=true].large:before {
