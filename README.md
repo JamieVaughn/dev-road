@@ -30,19 +30,52 @@ Create an account & Login with email/password to gain access to the learning res
 
 # Section 1: HTML & CSS
 
+- Html, Accessibility, Forms
+- Modern CSS
+- Mobile Responsiveness
+- Flexbox & Grid Layouts
+- Github & Terminal basics
+- Markdown
+- Image Optimization
+- SVG
+
 # Section 2: Javascript & MVC
+
+- vars, primitives, operators
+- Functions, Arrays, Objects
+- Control flow & loops
+- The DOM
+- ES6 & Beyond
+- Modules, closures & classes
+- Regex
+- Promises & The event loop
+- Design patterns & MVC
+- HTTP Fetch (GET & POST)
 
 # Section 3: React & Application Architecture
 
+- Terminal, git & npm
+- JSX
+- Node & Build Tools
+- React Concepts
+- Hooks & useState
+- Thinking in React
+- useEffect
+- useRef
+- Advanced Hooks
+- React router
+- Redux
+
 # Todo
 
-- login with linkedin & github options (and save the identities)
-- make it a PWA
-- alumni network roster
-- links to dev communities/forums/discords/slacks
-- list of project ideas & inspiration to get started (portfolio pg examples, demos, designs, final proj ideas)
-- list of learning APIs (public apis list, jsonplaceholder, docket, space api)
-- list of code sandboxes (codepen, codesandbox, babel, specific pens of mine)
 - Migrate sheets curriculum items in
 - Use timeline or progress for that? (cards appear as date approaches & each card has links to relevant slides, HW & resources)
 - kanban board with auto-populated tickets for hw/projects as dates approach
+- links to dev communities/forums/discords/slacks
+- ebook for MVP-FE
+- list of learning APIs (public apis list, jsonplaceholder, docket, space api)
+- list of code sandboxes (codepen, codesandbox, babel, specific pens of mine)
+- list of project ideas & inspiration to get started (portfolio pg examples, demos, designs, final proj ideas)
+- make it a PWA
+- alumni network roster
+- login with linkedin & github options (and save the identities)

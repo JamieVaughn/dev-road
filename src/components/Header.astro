@@ -39,24 +39,33 @@ const { auth } = Astro.props;
       }
     </ul>
     <ul class="feature-links mobile-only">
-      <details role="list" dir="rtl">
+      <details role="list" dir="rtl" style="text-align: center;">
         <summary aria-haspopup="listbox" role="link">Menu</summary>
         <ul role="listbox">
           <HeaderLink href="/syllabus">Syllabus</HeaderLink>
           {
-            auth?.user?.email && (
+            auth?.user?.email ? (
               <>
                 <HeaderLink href="/calendar">Calendar</HeaderLink>
                 <HeaderLink href="/slides">Slides</HeaderLink>
                 <HeaderLink href="/quiz">Quiz</HeaderLink>
                 <HeaderLink href="/my_progress">Progress</HeaderLink>
+                <HeaderLink href="/profile">
+                  <Icon name="profile" size={24} /> Profile
+                </HeaderLink>
+                <HeaderLink href="/api/auth/signout">Log out</HeaderLink>
+              </>
+            ) : (
+              <>
+                <HeaderLink href="/signup">Sign Up</HeaderLink>
+                <HeaderLink href="/login">Log In</HeaderLink>
               </>
             )
           }
         </ul>
       </details>
     </ul>
-    <ul class="auth-controls">
+    <ul class="auth-controls desktop-only">
       {
         auth?.user?.email ? (
           <>
@@ -86,6 +95,8 @@ const { auth } = Astro.props;
           </>
         )
       }
+    </ul>
+    <ul>
       <li>
         <ThemeIcon />
       </li>
@@ -128,7 +139,7 @@ const { auth } = Astro.props;
   }
   nav {
     justify-content: end;
-    gap: 3em;
+    gap: 2em;
     height: 60px;
   }
   nav a:not(a[role="button"]) {
@@ -168,6 +179,12 @@ const { auth } = Astro.props;
     }
     .feature-links.desktop-only {
       display: none;
+    }
+    .auth-controls {
+      display: none !important;
+    }
+    nav {
+      gap: 2em;
     }
   }
   a[role="button"] {

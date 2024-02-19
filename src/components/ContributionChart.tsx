@@ -17,14 +17,13 @@ Array.from({ length: 12 }).map((_, i) => {
 const twelveMonths = Array.from({ length: 12 }).map((_, i) => i + 1);
 
 export function ContributionChart(props: { startDate?: string }) {
-  // const totalWeeks = starts[1].isoWeeksInYear()
-  // const end = starts[1].endOf('month')
-  const start = dayjs(`${new Date().getFullYear()}-01-01`);
+  const year = new Date().getFullYear()
+  const start = dayjs(`${year}-01-01`);
   const startWeekDay = start.isoWeekday();
 
   return (
     <div class="activity-chart">
-      <time class="weekday placeholder" />
+      <time class="year">{year}</time>
       <For each={[null, "M", null, "W", null, "F", null]}>
         {(day, i) => (
           <time style={`grid-row-start: ${i() + 2}`} class="weekday">
@@ -33,16 +32,18 @@ export function ContributionChart(props: { startDate?: string }) {
         )}
       </For>
       <For each={twelveMonths}>
-        {(month) => (
+        {(month) => {
+          const offset = month === 7 ? 3 : 5 - (31 - starts[month].daysInMonth())
+          return (
           <time
             class="month"
-            style={`grid-column-end: span ${starts[month].daysInMonth() === 31 ? '4' : '5'};`}>
+            style={`grid-column-end: span ${offset};`}>
             {starts[month]?.format("MMM")}
           </time>
-        )}
+        )}}
       </For>
       <For each={Array.from({ length: startWeekDay })}>
-        {(day) => <time class="day placeholder" />}
+        {_ => <time class="day placeholder" />}
       </For>
       <For each={twelveMonths}>
         {(m) => (
@@ -83,11 +84,12 @@ const css = `
   max-width: fit-content;
   margin: 0 auto;
 }
-
-/*** month headings ** */
-.month:first-of-type {
-  grid-column: 3 / span 4;
+.year {
+  font-size: 0.5em;
+  grid-column: 1 / span 2;
 }
+/*** month headings ** */
+
 .month {
   font-size: 0.7em;
   justify-self: center;
@@ -170,44 +172,3 @@ time.day:hover .tooltip {
   border-right: 5px solid transparent;
   border-top: 11px solid #333;
 }`;
-
-/*
-  
-  // draw months 
-  
-  var month = moment();
-  var outputMonth = "<ol class = 'month'>";
-  for (i = 0; i <= 12; i++) {
-    var durationMonth = moment.duration({'months' : 1});
-    outputMonth += "<li>";
-    outputMonth += moment(month).format("MMM");
-    outputMonth += "</li>";
-    month = moment(month).subtract(durationMonth);
-  }
-  outputMonth += "</ol>";
-  
-  var output = "<ol><div class = 'week'>";
-  var day = moment();
-  
-  // Calculate the offset for days of the week to line up correctly
-  var dayOfWeekOffset = 6 - (parseInt(moment().format("d"),10));
-  for (i = 0; i < (dayOfWeekOffset); i++) { output += "<li class = 'offset'></li>"; }
-  
-  // draw calendar 
-  
-  for (i = 365; i >= 0; i--) {
-    output += "<li>";
-    output += '<span class = "tooltip">' + moment(day).format("MM-DD-YY")  +  '</span>';
-    output += "</li>";
-    
-    var duration = moment.duration({'days' : 1});
-    day = moment(day).subtract(duration);
-  }
-  
-  output += "</div></ol>";
-  document.getElementById("month").innerHTML = outputMonth;
-  document.getElementById("days").innerHTML = output;
-  
-});
-
-*/

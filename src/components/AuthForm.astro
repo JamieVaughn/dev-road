@@ -61,4 +61,22 @@ const { action, title, reset } = Astro.props;
     text-align: center;
     display: block;
   }
+  #email:user-valid, #password:user-valid {
+    outline: 3px solid rgb(119, 218, 161, 0.5);
+  }
+  #email:user-invalid, #password:user-invalid {
+    outline: 3px solid crimson;
+  }
+  label:has(+ input:user-valid):after {
+    display: inline-block;
+    padding-left: 0.5em;
+    content: '✓';
+    color: rgb(119, 218, 161);
+  }
+  label:has(+ input:user-invalid):after {
+    display: inline-block;
+    padding-left: 0.5em;
+    content: '⨯';
+    color: crimson;
+  }
 </style>

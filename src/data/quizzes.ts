@@ -1,10 +1,9 @@
 export const quizzes_1 = [
-  null,	
+  null,
   'html',	
   'semantic html',	
   'html forms',	
   'css basics',	
-  null,
   'css',
   null,
   'flexbox basics',
@@ -23,7 +22,7 @@ export const quizzes_1 = [
 ]
 
 export const quizzes_2 = [
-  null,	
+  null,
   'vars, primitives, operators',	
   'functions', 
   'arrays',	
@@ -31,9 +30,7 @@ export const quizzes_2 = [
   'the DOM', 
   null,	
   'Objects', 
-  null,
   'ES6 & Beyond',
-  null,
   null,
   'modules, closures & classes',
   null,
@@ -61,13 +58,11 @@ export const quizzes_3 = [
   'useEffect',	
   'useRef',	
   null,
-  null,
   'Advanced Hooks',
   null,
   'React router',
   null,
   'Redux',
-  null,
   null,
   null,
 ]
