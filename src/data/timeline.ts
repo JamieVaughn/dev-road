@@ -8,7 +8,7 @@ type Data = {
   buttonText?: 'Homework'
 }
 
-const data: Data[] = [
+export const data: Data[] = [
     {
       id: 1,
       title: "HTML",

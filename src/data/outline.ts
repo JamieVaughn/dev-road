@@ -2,151 +2,609 @@ import { hw_1, hw_2, hw_3 } from "./hw"
 import { quizzes_1, quizzes_2, quizzes_3 } from "./quizzes"
 import { projects_1, projects_2, projects_3 } from "./projects"
 
-let topics = 'HTML	HTML	HTML	CSS	CSS	CSS	Render Pipeline	Media Queries	Flexbox Basics	Adv Flexbox	Grid basics	Grid Utils	Grid Template	VSCode	Github	Github Pages	Images Slides	HustBee Codealong	SVG	Career notes'.split('\t')
-let outlines1 = 'initial survey, tools, accts, review initial email msg, bookmark tools	attributes intro & Student look-up format (have list of ~12 attrs)	validation	selectors	more rules	design system	the layout algorithm	Continue stacking context, document flow	basic flexbox: display, direction, justify, align, wrap	flex navbar	grid-column	functions	grid template areas	VSCode	Github	Github Pages	responsive img	code a full website	viewbox	linkedin'.split('\t')
-let outlines2 = 'introductions: myself, age, prior career, learning path, job. TA: learning path. Students: background, goals, hobbies/interests	global attrs: id, class, data-* (i.e. data-var) var name that you choose	boilerplate	css diner	cascade	pattern lib starter (design system proj)	stacking context	If time start flexbox	flexbox card	and side nav bar (app shell)	grid-row	fluid units	alignment	Extensions	source control	make pages portfolio	picture	from scratch	shapes	resume tips'.split('\t')
-let outlines3 = 'html tags	Forms	Head element	basic rules	variables & scoping them to classes	pattern lib example	composite layers	Add media Queries to positioned media object to change from horiz -> vert	alignment	both w/ @media	make grid card	autofill & autofit	layout variants overview	emmet code along	make profile Readme	Settings menus	source		attributes	personal projects'.split('\t')
-let outlines4 = 'mdn docs	Accessibility w/ forms	Browser compat		functions	and codealong to start it	media objects	Basic @media: width, height, hover, orientation	axes & direction	flex games	implicit tracks	grid-auto-flow/*: dense	grid holy grail codealong	intellisense	make a Repo		srcset & sizes		SMIL animation	job searching'.split('\t')
-let outlines5 = 'intro to glitch? (maybe playcode.io)	make a contact form	caniuse			CSS Architecture: BEM, SMACSS	make position card	Other @media: aspect-ratio, pointer, prefers-color-scheme, prefers-reduced-motion, resolution, scripting, color-gamut	wrap	vertical flex card (price options)	Grid vs Flex	grid inspector tools	grid games	Menus & goto defn	commits		Multi image size code along for responsiveness		animate font	confs'.split('\t')
-let outlines6 ='Article code along	(mailthis.to)	 								grid + flex	flex vs grid image galleries	Full bleed image with cs grid	Excalidraw?	Markdown		lighthouse audit tool ( 3 site comparison)		make icons	'.split('\t')
-let outlines7 = 'resume proj, semantic tags, accessibility, landmarks, Accessibility, ARIA roles	introduce fcc & fcc hw, do first couple problems as a demo				keyframes animations, css sprites, backgroung-image					make calculator	overlap grid items	complex form with css grid	mock up a design in Excalidraw?	writing good readmes		throttling connection		make filters, make spinners, make graph	'.split('\t')
-// let outlines8 = ''.split('\t')
+const outline_section_1 = [
+  {
+    topic: 'HTML',
+    key: `initial survey, tools, accts, review initial email msg, bookmark tools
+    introductions: myself, age, prior career, learning path, job. TA: learning path. Students: background, goals, hobbies/interests
+    html tags
+    mdn docs
+    intro to stackblitz
+    Article code along
+    resume proj, semantic tags, accessibility, landmarks, Accessibility, ARIA roles`
+  },
+  {
+    topic: 'HTML',
+    key: `attributes intro & Student look-up format (have list of ~12 attrs)
+  global attrs: id, class, data-* (i.e. data-var) var name that you choose
+  Forms
+  Accessibility w/ forms
+  make a contact form
+  (mailthis.to)
+  introduce fcc & fcc hw, do first couple problems as a demo`
+  },
+  {
+    topic: 'HTML',
+    key: `validation
+boilerplate
+Head element
+Browser compat
+caniuse
+ `},
+  {
+    topic: 'CSS',
+    key: `selectors
+ css diner
+ basic rules`},
+  {
+    topic: 'CSS',
+    key: `more rules
+ cascade
+ variables & scoping them to classes
+ functions`},
+  {
+    topic: 'CSS',
+    key: `design system
+  pattern lib starter (design system proj)
+  pattern lib example
+  and codealong to start it
+  CSS Architecture: BEM, SMACSS
+  keyframes animations, css sprites, backgroung-image`},
+  {
+    topic: 'Render Pipeline',
+    key: `the layout algorithm
+  stacking context
+  composite layers
+  media objects
+  make position card`},
+  {
+    topic: 'Media Queries',
+    key: `Continue stacking context, document flow
+  If time start flexbox
+  Add media Queries to positioned media object to change from horiz -> vert
+  Basic @media: width, height, hover, orientation
+  Other @media: aspect-ratio, pointer, prefers-color-scheme, prefers-reduced-motion, resolution, scripting, color-gamut`
+  },
+  {
+    topic: 'Flexbox Basics',
+    key: `basic flexbox: display, direction, justify, align, wrap
+flexbox card
+alignment
+axes & direction
+wrap`},
+  {
+    topic: 'Adv Flexbox',
+    key: `flex navbar
+and side nav bar (app shell) & grid & contact form
+both w/ @media
+flex games
+vertical flex card (price options)`},
+  {
+    topic: 'Grid basics',
+    key: `grid-column
+grid-row
+make grid card
+implicit tracks
+Grid vs Flex
+grid + flex
+make calculator`},
+  {
+    topic: 'Grid Utils',
+    key: `functions
+fluid units
+autofill & autofit
+grid-auto-flow/*: dense
+grid inspector tools
+flex vs grid image galleries
+overlap grid items`},
+  {
+    topic: 'Grid Template',
+    key: `grid template areas
+alignment
+layout variants overview
+grid holy grail codealong
+grid games
+Full bleed image with cs grid
+complex form with css grid`},
+  {
+    topic: 'VSCode',
+    key: `VSCode
+Extensions
+emmet code along
+intellisense
+Menus & goto defn`},
+  {
+    topic: 'Github & Github Pages',
+    key: `Github
+source control
+make profile Readme & markdown
+make a Repo
+Github Pages
+make pages portfolio
+Settings menus`},
+  {
+    topic: 'Code Portfolio Page',
+    key: `Excalidraw?
+mock up a design in Excalidraw? Wireframing
+make grid version of calculator`},
+  {
+    topic: 'Images Slides',
+    key: `responsive img
+picture
+source
+srcset & sizes
+Multi image size code along for responsiveness
+lighthouse audit tool ( 3 site comparison)
+throttling connection`},
+  {
+    topic: 'SVG',
+    key: `viewbox
+shapes
+attributes
+SMIL animation`},
+  {
+    topic: 'HustBee Codealong',
+    key: `code a full website
+from scratch
+animate font
+make icons
+make filters, make spinners, make graph`},
+  {
+    topic: 'Career notes',
+    key: `linkedin
+resume tips
+personal projects
+job searching
+portfolio workshopping`},
+  {
+    topic: 'Extras',
+    key: `New tab proj
+Interview prep
+UI/UX principles, affordances, https://en.wikipedia.org/wiki/Desire_path, smokealarm_showercap.jpeg
+student portfolio/proj presentations`},
+  {
+    topic: 'Bonus',
+    key: `Design: less artistic design (but there's some), more layout design, architectural/heirarchical design, data structure design
+What can you do with Web dev: employment, biz, saas, freelance, fun, art, data, games
+What you need: curiosity, persistence (errors), urge to get help when stuck for too long
+Quiz: embedded app on monroecc.dev and include emoji rating question at the end to ask if they feel confident. Also time how long they take to gauge confidence on a per question basis.`}
+]
 
+const outline_section_2 = [
+  {topic: 'Variables, Primitives & Operators', key: `Show where we are on Roadmap.sh, History of Javascript & staying up to date with ES2021+
+  Writing JS in the console
+  declaration, initilalization, assignment
+  Hoisting, Scope, Coercion 
+  comments, Numbers, Strings, template Literals, Booleans
+  Basic Operators
+  =, - ,*, /, %, **, ++, --, +=, -=, 
+  escape with \, concatenation, .length, String bracket notation
+  var vs let/const`},
+  {topic: 'Arrays & Functions', key: `Array Method Student look up format
+  functions
+  Math API
+  referential transparency
+  Simple Function Challenges: Write first demo fn & explain the why of naming, param/return choice etc.
+  Make a simple todo list interface in a script tag that renders to console (spilled)`},
+  {topic: 'Control Flow', key: `logical operators, comparators & comparison chart
+  loose vs strict comparators
+  if/else
+  multiple returns
+  Switch Statements
+  Throw, try/catch
+  ternary operator
+  Viz tools: order of execution, execution context (spilled)`},
+  {topic: 'Loops & Array Methods & Object minimal basics', key: `Loops
+  for, for in, for of
+  while, do while
+  Recursion, tail call
+  Object literals, Object property access, Adding/changing obj values
+  Object.hasOwnProperty(),  delete reserved word
+  syntax, access, properties, methods
+  "Array Methods: map, filter, reduce 
+  https://david-peter.de/cube-composer/"
+  Array Methods Challenge (spilled)`},
+  {topic: 'The DOM API', key: `querySelectors, NodeList vs HTML Collections
+  createElement() & other methods
+  Dom API spec
+  Events
+  EventListeners
+  Conway game of life codealong (spilled)`},
+  {topic: 'Calculator App & debugging', key: `Conways continued with many button listeners
+  The Console & its methods
+  Understanding the console & dev tools are just javascript
+  Debugging using the Sources Panel & Breakpoints`},
+  {topic: 'Deep Objects', key: `Review dom api quiz & Conway game of life code along
+  Prototypes
+  this keyword & arrow functions, lexical scope
+  cloning/merging Objects
+  protecting objects
+  pass by Reference vs values
+  looping Objects, converting to/from arrays
+  create DOM form procedurally code along?`},
+  {topic: 'ES6+', key: `calculator code along w/ math.js ( refactored using new Function)
+  default params
+  Map, WeakMap, Sets, 
+  rest/spread
+  destructuring
+  template tag functions
+  Object property shorthand: props/fns
+  Computed properties
+  Obj looping challenge
+  https://codepen.io/MCCFrontendAcademy/pen/GRgqYJX?editors=0011`},
+  {topic: 'ES Modules', key: `Modules code organization and closures
+  import export / import *
+  export default function
+  exporting/importing functions, variables, objects
+  Old way of doing "modules". The module pattern function
+  Modules code along`},
+  {topic: 'Classes', key: `Class Syntax
+  getters/setters
+  Class Code along
+  Show closures, modules & class clickers side by side
+  obj stamping challenge (must do this as precursor to dragon clicker factory functions)`},
+  {topic: 'Regex', key: `Regex Intro, up to regex/string methods
+  regex online tools
+  First Dragon Clicker Prompt
+  Together with students Create Dragon Clicker Repo and pull it 
+  Pattern regex Form`},
+  {topic: 'MVC pattern', key: `MVC slides, Design Patterns, Gang of four
+  head first design patterns book
+  Dragon Duo Prompt
+  Reveiw git and PR's
+  Git Reflections, forks, PRs & opening PRs
+  contributions to a repo / forking
+  Blog post PR in /reflections repo
+  add a blog post project! to practice git, open a PR in my blog repo with a new .md file
+  Working in a Team, git & teams, Why Frameworks?`},
+  {topic: 'Promises', key: `Revisited Promises 1st concepts
+  Blocking, Promise lifecycle
+  Promise spinner code along
+  Basic Promises w/ setTimeouts
+  Promise with long running loop (use console.time to time it) (spilled)
+  implement a promise object (AJ slides)
+  https://beyondcodebootcamp.github.io/presos/js-promises/#/23
+  https://danlevy.net/visualizing-promises/
+  https://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html`},
+  {topic: 'Event Loop & Threads', key: `Dragon Arena MVC Reqs
+  event loop & event loop video (https://w2g.tv/)
+  main thread, compositing thread, web workers
+  tasks, microtasks, & where do promises fall?
+  custom events
+  Git with VSCode
+  shorter event loop video: https://vimeo.com/96425312
+  Event loop followup vid: https://www.youtube.com/watch?v=u1kqx6AenYw
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop
+  https://blog.bitsrc.io/why-is-the-eventloop-for-browsers-and-node-js-designed-this-way-f7f794696c`},
+  {topic: 'HTTP & Fetch', key: `HTTP APIs, CORS, reject(' received 404')
+  Get, fetching cross domain or self domain
+  URLSearchParams
+  JSON.parse /stringify
+  Flame graphs, performance tab
+  make a hacker news clone?`},
+  {topic: 'POST & Fetch', key: `Post fetch slides
+  basic User mgr code-along
+  Add POST to user-mgr app
+  Dragon Arena prompt
+  Design Patterns slides`},
+  {topic: 'Note Taker Code Along', key: `Notetaker App
+  Extending note-taker app for leaders
+  organizing code in App
+  Go over new FormData in user-mgr app`},
+  {topic: 'Dragon MVC Code Along', key: `Code walk through Dragon Arena
+  extending dragon dojo with your own features
+  Show dragon Dojo app, (not the code)`},
+  {topic: 'Dragon Dojo', key: `Code the todo mvc from the quiz
+  MVC Reflections
+  Code-along Modal`},
+  {topic: 'careers', key: `Career docs for section 2
+  Interpreting a Job description
+  show off Dragon Dropper
+  add hp and health bar to dragons
+  GO over Dragon Dojo`},
+  {topic: 'Extras', key: `big o notation
+  cyclomatic complexity
+  bug O notation`},
+  
+]
+const outline_section_3 = [
+  {topic: 'Knockout Dragon clicker', key: `survey & show where we are on Roadmap.sh
+  Translatable framework skills
+  CDNs (knockout cdn)
+  Knockout.js - simple clicker, then Basic Dragon Clicker
+  https://codepen.io/heliocrat/pen/GRmzzKo
+  mtg framework repo`},
+  {topic: 'JSX Templating & Babel', key: `Templating languages & jsx spec
+  writing jsx
+  transpiling jsx with babel, Babel Transforms
+  Different from innnerHTML & perf considerations
+  
+  .gitignore
+  git in the terminal
+  terminal navigating
+  Creating new repo locally & Opening branches
+  https://learngitbranching.js.org/
+  https://dangitgit.com/en
+  command line & bash
+  Advanced Git & Github & Bash`},
+  {topic: 'Builds & Node.js', key: `Vite & Node & npm
+  VS Code Code Snippet: for react component boilerplate
+  "https://beta.reactjs.org/
+  Intro slides"
+  build command in Vite & inspect output, Try using a Vite template
+  JSX, props, syntehtic events`},
+  {topic: 'React & Components', key: `separation of concerns: components
+  Presentational components, "dumb components", pure functions
+  ui fn (state) => view, fn (props) => <view/>
+  functional, presentational components, Component Trees
+  nesting Components simple fn component app code-along
+  Props
+  https://www.componentdriven.org/
+  Dragon Card Component`},
+  {topic: 'State', key: `Rules of Hooks
+  stateful components (& that there are other hooks)
+  useState  (vs Props)
+  https://codepen.io/heliocrat/pen/WNONWOE
+  React Dice Machine & react clicker
+  Make React Dragon Clicker to compare`},
+  {topic: 'Thinking in React', key: `App shells Model & Layout Component Code along
+  global css, css modules, (styled-components?)
+  First React App (holy grail layout), loading React via CDN
+  Prop drilling
+  Thinking in React code along
+   https://github.com/JamieVaughn/react-markdown/tree/master/src/components`},
+  {topic: 'Forms & useRef', key: `useRef
+  Controlled Forms vs. uncontrolled forms
+  https://codesandbox.io/s/react-controlled-form-vs-uncontrolled-form-0n4en
+  Tweet component
+  Prop Types
+  https://livebook.manning.com/book/react-hooks-in-action/chapter-6/v-3/1
+  react-hook-form`},
+  {topic: 'useEffect', key: `the async hook: Fetching data in React
+  Render Conditionally: Error, loading, success
+  useEffect as a change event listener (blog post)
+  Side effects
+  React Is Not Reactive (Swyx talk)
+  https://www.youtube.com/watch?v=nyFHR0dDZo0
+  Misc APIS: Profiler, React Dev tools, props.children`},
+  {topic: 'Class Components', key: `Life-cycle Methods
+  https://codesandbox.io/s/lifecycle-methods-xiq8y
+  http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
+  comparing useEffect to life cycle methods
+  https://codesandbox.io/s/upbeat-wind-p9o6l`},
+  {topic: 'React Quote Machine', key: `FCC HW help
+  Go through FCC user stories of quote machine
+  Swyx "React from Scratch" video (w2g.tv)`},
+  {topic: 'React Todo App', key: `start simple React todo
+  Finish React-todo app with only useState()
+  https://github.com/JamieVaughn/react-todo
+  Intro to custom hooks with useLocalStorage()`},
+  {topic: 'Advanced Hooks & Custom Hooks', key: `Add useLocalStorage() to React todo
+  Final 5 hooks slides
+  Code useInterval()
+  add todo deadlines & countdown timer (as depleting loading bar?)
+  Swyx hooks vid
+  Advanced Hooks slides (context/reducer)
+  useCallback, useMemo, useLayoutEffect`},
+  {topic: 'React Query', key: `fetching Data with React
+  Code-Along: Hacker news clone in react (or user manager)
+  Suspense
+  suspense and data fetching`},
+  {topic: 'React router', key: `https://codesandbox.io/s/react-router-challenge-yvkl7
+  https://codesandbox.io/s/react-router-challenge-qzgt3
+  https://developer.mozilla.org/en-US/docs/Web/API/History_API
+  https://joakim.beng.se/blog/posts/a-javascript-router-in-20-lines.html
+  https://reactrouter.com/web/guides/quick-start
+  https://www.tabnine.com/code/javascript/functions/react-router/useRouteMatch
+  https://css-tricks.com/the-hooks-of-react-router/
+  https://blog.logrocket.com/using-hooks-with-react-router/`},
+  {topic: 'Intro to Redux', key: `Redux slides & flux pattern & sync vs async thunk
+  Simple Counter with Redux
+  zustand?`},
+  {topic: 'Redux Toolkit', key: `Finish redux counter app.
+  Redux Dev Tools
+  Add Redux Toolkit to Todo app. https://codesandbox.io/s/redux-toolkit-count-jqulk?file=/src/features/counter/counterSlice.js
+  Preview CRUD Project: https://rf-bookmarks.web.app/signin`},
+  {topic: 'Code CRUD App Foundation', key: `note on Jamstack: SPA's vs. SSR
+  jamstack vid. 5:49 - ~32min. https://www.infoq.com/presentations/jamstack-enterprise/
+  https://github.com/JamieVaughn/react-crud
+  Fetching posts
+  code CRUD App React components
+  Add redux toolkit to Posts app`},
+  {topic: 'Async Redux/Thunks', key: `Serverless/Jamstack/Firebase
+  Firebase setup
+  Populating database, user testing, unit testing
+  Redux Thunk slides`},
+  {topic: 'Hosting, Deploying, Cloud Functions', key: `CI/CD deployment pipelines
+  versioning
+  analytics, cookies
+  ICANN, TLDS, CName records, buying domain names
+  JWT & Authentication
+  Security Basics`},
+  {topic: 'Career', key: `Interview techniques
+  Mock interviews w/ coderpad
+  Feedback survey & join email list/platform website
+  Send my email to friends if you want to recommend this class to others
+  https://blog.pragmaticengineer.com/advice-for-junior-software-engineers/
+  https://letterstoanewdeveloper.com/2022/09/19/ways-to-stand-out/`},
+]
+												 			
+const outlines = [...outline_section_1, ...outline_section_2, ...outline_section_3]
 
-let section_one = [ 
-    { data: 'April 19 2021',
+let section_one = [
+  {
+    data: 'April 19 2021',
     hours: 3,
     hw: '',
     project: '',
     quiz: '',
-    outline: [] },
-  { data: 'April 21 2021',
+    outline: []
+  },
+  {
+    data: 'April 21 2021',
     hours: 3,
     hw: '',
     project: '',
     quiz: '',
-    outline: [] },
-  { data: 'April 22 2021',
+    outline: []
+  },
+  {
+    data: 'April 22 2021',
     hours: 3,
     hw: '',
     project: '',
     quiz: '',
-    outline: [] },
-  { data: 'April 26 2021',
+    outline: []
+  },
+  {
+    data: 'April 26 2021',
     hours: 3,
     hw: '',
     project: '',
     quiz: '',
-    outline: [] },
-  { data: 'April 28 2021',
+    outline: []
+  },
+  {
+    data: 'April 28 2021',
     hours: 3,
     hw: '',
     project: '',
     quiz: '',
-    outline: [] },
-  { data: 'April 29 2021',
+    outline: []
+  },
+  {
+    data: 'April 29 2021',
     hours: 3,
     hw: '',
     project: '',
     quiz: '',
-    outline: [] },
-  { data: 'May 3 2021',
+    outline: []
+  },
+  {
+    data: 'May 3 2021',
     hours: 3,
     hw: '',
     project: '',
     quiz: '',
-    outline: [] },
-  { data: 'May 5 2021',
+    outline: []
+  },
+  {
+    data: 'May 5 2021',
     hours: 3,
     hw: '',
     project: '',
     quiz: '',
-    outline: [] },
-  { data: 'May 6 2021',
+    outline: []
+  },
+  {
+    data: 'May 6 2021',
     hours: 3,
     hw: '',
     project: '',
     quiz: '',
-    outline: [] },
-  { data: 'May 10 2021',
+    outline: []
+  },
+  {
+    data: 'May 10 2021',
     hours: 3,
     hw: '',
     project: '',
     quiz: '',
-    outline: [] },
-  { data: 'May 12 2021',
+    outline: []
+  },
+  {
+    data: 'May 12 2021',
     hours: 3,
     hw: '',
     project: '',
     quiz: '',
-    outline: [] },
-  { data: 'May 13 2021',
+    outline: []
+  },
+  {
+    data: 'May 13 2021',
     hours: 3,
     hw: '',
     project: '',
     quiz: '',
-    outline: [] },
-  { data: 'May 17 2021',
+    outline: []
+  },
+  {
+    data: 'May 17 2021',
     hours: 3,
     hw: '',
     project: '',
     quiz: '',
-    outline: [] },
-  { data: 'May 19 2021',
+    outline: []
+  },
+  {
+    data: 'May 19 2021',
     hours: 3,
     hw: '',
     project: '',
     quiz: '',
-    outline: [] },
-  { data: 'May 20 2021',
+    outline: []
+  },
+  {
+    data: 'May 20 2021',
     hours: 3,
     hw: '',
     project: '',
     quiz: '',
-    outline: [] },
-  { data: 'May 24 2021',
+    outline: []
+  },
+  {
+    data: 'May 24 2021',
     hours: 3,
     hw: '',
     project: '',
     quiz: '',
-    outline: [] },
-  { data: 'May 26 2021',
+    outline: []
+  },
+  {
+    data: 'May 26 2021',
     hours: 3,
     hw: '',
     project: '',
     quiz: '',
-    outline: [] },
-  { data: 'June 27 2021',
+    outline: []
+  },
+  {
+    data: 'June 27 2021',
     hours: 3,
     hw: '',
     project: '',
     quiz: '',
-    outline: [] },
-  { data: 'June 2 2021',
+    outline: []
+  },
+  {
+    data: 'June 2 2021',
     hours: 3,
     hw: '',
     project: '',
     quiz: '',
-    outline: [] },
-  { data: 'June 3 2021',
+    outline: []
+  },
+  {
+    data: 'June 3 2021',
     hours: 3,
     hw: '',
     project: '',
     quiz: '',
-    outline: [] }
-  ]
+    outline: []
+  }
+]
 let sect = section_one.map((i, idx) => ({
-  ...i, 
-  hw: hw_1[idx] ?? '', 
-  outline: [...i.outline, outlines1[idx], outlines2[idx], outlines3[idx], outlines4[idx], outlines5[idx], outlines6[idx], outlines7[idx]],
-  project: projects_1[idx] ?? '', 
-  quiz: quizzes_1[idx-1] ?? '',
-  topic: topics[idx] ?? '', 
+  ...i,
+  hw: hw_1[idx] ?? '',
+  outline: outlines[idx] ?? '',
+  project: projects_1[idx] ?? '',
+  quiz: quizzes_1[idx - 1] ?? '',
+  topic: outline_section_1?.topic[idx] ?? '',
 }))
 sect
 
-let extras = ['New Tab project', 'Interview Prep', 'Portfolio Workshop', 'Wireframing', 'UI/UX Principles', 'Student portfolio/project presentations']
-let bonus = `
+let extras_1 = ['New Tab project', 'Interview Prep', 'Portfolio Workshop', 'Wireframing', 'UI/UX Principles', 'Student portfolio/project presentations']
+let bonus_1 = `
 Design: less artistic design (but there's some), more layout design, architectural/heirarchical design, data structure design
 What can you do with Web dev: employment, biz, saas, freelance, fun, art, data, games
 What you need: curiosity, persistence (errors), urge to get help when stuck for too long

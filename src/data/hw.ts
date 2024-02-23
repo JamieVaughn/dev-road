@@ -35,4 +35,4 @@ export const hw_2 = [
   'Learn Asynchronous Programming by Building an fCC Forum Leaderboard'
 ]
 
-export const hw_3 = []
+export const hw_3 = [] // waiting on FCC to update their curriculum
