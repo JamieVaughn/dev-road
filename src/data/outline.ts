@@ -599,7 +599,7 @@ let sect = section_one.map((i, idx) => ({
   outline: outlines[idx] ?? '',
   project: projects_1[idx] ?? '',
   quiz: quizzes_1[idx - 1] ?? '',
-  topic: outline_section_1?.topic[idx] ?? '',
+  topic: outlines?.[idx]?.topic ?? '',
 }))
 sect
 
