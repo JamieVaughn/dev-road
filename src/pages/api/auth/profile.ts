@@ -28,5 +28,5 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     return new Response(error.message, { status: 500 });
   }
 
-  return redirect("/profile");
+  return redirect("/class/profile");
 };

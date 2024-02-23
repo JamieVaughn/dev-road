@@ -30,5 +30,5 @@ export const POST: APIRoute = async ({ request, cookies, redirect }) => {
     path: "/",
     secure: true,
   });
-  return redirect("/my_progress");
+  return redirect("/class/progress");
 };
