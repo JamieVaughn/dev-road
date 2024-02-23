@@ -1,108 +1,128 @@
 ---
-import Home from "../layouts/Home.astro";
+import Layout from "../layouts/BlogPost.astro";
 ---
 
-<Home>
-  <article>
-    <h1 class="center">FAQ</h1>
-    <ol>
+<Layout
+  title="FAQ"
+  description="Frequently Asked Questions about the course."
+  pubDate={new Date(Date.now())}
+  heroImage="/watercolor_path_autumn.jpg"
+>
+  <ol>
+    <li>
+      <strong>How can I register & apply for financial aid?</strong>
+      <p>
+        There are no formal pre-requisites for this course, so you can simply
+        <a
+          href="https://campusce.monroecc.edu/monroecc/course/course.aspx?C=848"
+          target="_blank"
+        >
+          visit the MCC website to register.
+        </a> Previous experience in programming or creating websites
+        will be helpful, though.
+        If you are a resident of Monroe County, NY, then you may be eligible for
+        tuition assistance. You should
+        <a href="www.workforceforward.com/mpower">visit the M-Power website</a> 
+        to find out if you are eligible, learn more and apply.
+      </p>
+    </li>
+    <li>
+      <strong>What do I need to succeed in this course?</strong>
+      <p>
+        We'll be writing web software together, so you will need a computer and
+        a positive, curious educational mindset! You'll also want to setup you
+        computer by downloading & installing various software, especially the <a
+          href="https://code.visualstudio.com/">VS Code editor</a
+        >. The other setup software you can find in the website footer under
+        "Getting Started," and we'll go through the setup process together for
+        these as needed.
+      </p>
+    </li>
+    <li>
+      <strong>How do I do the homework?</strong>
+      <p>
+        Just complete the FCC exercises and submit your solutions on that site.
+        Once you make your Freecodecamp profile public, then I'll be able to see
+        your progress
+      </p>
+    </li>
+    <li>
+      <strong
+        >How do I communicate with the instructor and other students?</strong
+      >
+      <p>
+        We use an app called discord. You should have received an invite. If you
+        haven't yet, provide me with your current email and ask me to resend it.
+      </p>
+    </li>
+    <li>
+      <strong>How do I see the slides from lecture?</strong>
+      <p>
+        The slides are posted on this website under the <a href="/slides"
+          >"Slides"</a
+        > navigation link in the top bar.
+      </p>
+    </li>
+    <li>
+      <strong>How do I take the regular quizzes?</strong>
+      <p>
+        The quizzes are given through an app called <a
+          href="https://classtime.com"
+          target="_blank">Classtime</a
+        >. The quiz code and link will be posted on this website under the <a
+          href="/quiz">"Quiz"</a
+        > navigation link in the top bar.
+      </p>
+    </li>
+    <li>
+      <strong>How many quizzes are there?</strong>
+      <p>
+        The quizzes that will be given throughout the course are listed under
+        the <a href="/quiz">"Quiz"</a> navigation link. Not every class will have
+        a quiz, but most will. The quizzes will sometimes be given at the start of
+        class, sometimes in the middle and sometimes at the end of class.
+      </p>
       <li>
-        <strong>What do I need to succeed in this course?</strong>
+        <strong>How is my grade determined?</strong>
         <p>
-          We'll be writing web software together, so you will need a computer
-          and a positive, curious educational mindset! You'll also want to setup
-          you computer by downloading & installing various software, especially
-          the <a href="https://code.visualstudio.com/">VS Code editor</a>. The
-          other setup software you can find in the website footer under "Getting
-          Started," and we'll go through the setup process together for these as
-          needed.
+          This course is graded in terms of Pass/Fail. The factors that
+          contribute to a passing determination in rough order of consideration
+          are:
         </p>
-      </li>
-      <li>
-        <strong>How do I do the homework?</strong>
-        <p>
-          Just complete the FCC exercises and submit your solutions on that
-          site. Once you make your Freecodecamp profile public, then I'll be
-          able to see your progress
-        </p>
+        <ul style="margin-bottom: 1em;">
+          <li>
+            Attendance <small
+              >(more than 3 absences in a section requires makeup)</small
+            >
+          </li>
+          <li>
+            Quizzes Completed <small
+              >(every question answered, even if wrong)</small
+            >
+          </li>
+          <li>Completion of FCC homework</li>
+          <li>Completion of Projects</li>
+          <li>Quiz results <small>(considered as bonus points)</small></li>
+        </ul>
       </li>
       <li>
         <strong
-          >How do I communicate with the instructor and other students?</strong
+          >What should I do if I will have a conflict with one of our classes?</strong
         >
         <p>
-          We use an app called discord. You should have received an invite. If
-          you haven't yet, provide me with your current email and ask me to
-          resend it.
+          That's alright, conflicts happen. Please just let me know ahead of
+          time by sending me an email or messaging me in discord about which
+          class you must miss. In most cases, you will be expected to review the
+          slides/content that you missed on your own so that you can still
+          complete the associated project and/or homework.
         </p>
       </li>
-      <li>
-        <strong>How do I see the slides from lecture?</strong>
-        <p>
-          The slides are posted on this website under the <a href="/slides"
-            >"Slides"</a
-          > navigation link in the top bar.
-        </p>
-      </li>
-      <li>
-        <strong>How do I take the regular quizzes?</strong>
-        <p>
-          The quizzes are given through an app called <a
-            href="https://classtime.com"
-            target="_blank">Classtime</a
-          >. The quiz code and link will be posted on this website under the <a
-            href="/quiz">"Quiz"</a
-          > navigation link in the top bar.
-        </p>
-      </li>
-      <li>
-        <strong>How many quizzes are there?</strong>
-        <p>
-          The quizzes that will be given throughout the course are listed under
-          the <a href="/quiz">"Quiz"</a> navigation link. Not every class will have
-          a quiz, but most will. The quizzes will sometimes be given at the start
-          of class, sometimes in the middle and sometimes at the end of class.
-        </p>
-        <li>
-          <strong>How is my grade determined?</strong>
-          <p>
-            This course is graded in terms of Pass/Fail. The factors that
-            contribute to a passing determination in rough order of
-            consideration are:
-          </p>
-          <ul style="margin-bottom: 1em;">
-            <li>
-              Attendance <small
-                >(more than 3 absences in a section requires makeup)</small>
-            </li>
-            <li>
-              Quizzes Completed <small
-                >(every question answered, even if wrong)</small>
-            </li>
-            <li>Completion of FCC homework</li>
-            <li>Completion of Projects</li>
-            <li>Quiz results <small>(considered as bonus points)</small></li>
-          </ul>
-        </li>
-        <li>
-          <strong
-            >What should I do if I will have a conflict with one of our classes?</strong
-          >
-          <p>
-            That's alright, conflicts happen. Please just let me know ahead of
-            time by sending me an email or messaging me in discord about which
-            class you must miss. In most cases, you will be expected to review
-            the slides/content that you missed on your own so that you can still
-            complete the associated project and/or homework.
-          </p>
-        </li>
-      </li>
-    </ol>
-  </article>
+    </li>
+  </ol>
+</Layout>
 
-  <style>
-    small {
-      color: var(--gray-4);
-    }
-  </style>
-</Home>
+<style>
+  small {
+    color: var(--gray-4);
+  }
+</style>

@@ -1,14 +1,14 @@
 ---
-import Home from "../layouts/Home.astro";
-import { checkAuth } from "../lib/checkAuth";
-import { supabase } from "../lib/supabase";
-import MessageScript from "../components/MessageScript.astro";
+import Authed from "../../layouts/Authed.astro";
+import { checkAuth } from "../../lib/checkAuth";
+import { supabase } from "../../lib/supabase";
+import MessageScript from "../../components/MessageScript.astro";
 
 const { cookies, redirect } = Astro;
 
 const auth = await checkAuth({ cookies, redirect })
-  .then((data) => data)
-  .catch((err) => console.log(err));
+  .then((data) => data.user.email ? data : redirect("/login"))
+  .catch((err) => console.log(err))
 
 const email = auth.user.email;
 const user_id = auth.user.user_id;
@@ -22,7 +22,7 @@ const { data: profile, error } = await supabase
 ---
 
 <MessageScript message={{ email, user_id, profile, error }} />
-<Home>
+<Authed>
   <hgroup class="center">
     <h1>My Profile</h1>
     <form action="/api/auth/signout" method="get">
@@ -152,7 +152,7 @@ const { data: profile, error } = await supabase
       </article>
     )
   }
-</Home>
+</Authed>
 
 <style>
   .not-you {

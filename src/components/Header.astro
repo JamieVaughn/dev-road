@@ -30,10 +30,10 @@ const { auth } = Astro.props;
       {
         auth?.user?.email && (
           <>
-            <HeaderLink href="/calendar">Calendar</HeaderLink>
-            <HeaderLink href="/slides">Slides</HeaderLink>
-            <HeaderLink href="/quiz">Quiz</HeaderLink>
-            <HeaderLink href="/my_progress">Progress</HeaderLink>
+            <HeaderLink href="/class/calendar">Calendar</HeaderLink>
+            <HeaderLink href="/class/slides">Slides</HeaderLink>
+            <HeaderLink href="/class/quiz">Quiz</HeaderLink>
+            <HeaderLink href="/class/progress">Progress</HeaderLink>
           </>
         )
       }
@@ -46,11 +46,11 @@ const { auth } = Astro.props;
           {
             auth?.user?.email ? (
               <>
-                <HeaderLink href="/calendar">Calendar</HeaderLink>
-                <HeaderLink href="/slides">Slides</HeaderLink>
-                <HeaderLink href="/quiz">Quiz</HeaderLink>
-                <HeaderLink href="/my_progress">Progress</HeaderLink>
-                <HeaderLink href="/profile">
+                <HeaderLink href="/class/calendar">Calendar</HeaderLink>
+                <HeaderLink href="/class/slides">Slides</HeaderLink>
+                <HeaderLink href="/class/quiz">Quiz</HeaderLink>
+                <HeaderLink href="/class/progress">Progress</HeaderLink>
+                <HeaderLink href="/class/profile">
                   <Icon name="profile" size={24} /> Profile
                 </HeaderLink>
                 <HeaderLink href="/api/auth/signout">Log out</HeaderLink>
@@ -69,7 +69,7 @@ const { auth } = Astro.props;
       {
         auth?.user?.email ? (
           <>
-            <HeaderLink href="/profile">
+            <HeaderLink href="/class/profile">
               <Icon name="profile" size={24} />
             </HeaderLink>
             <li>

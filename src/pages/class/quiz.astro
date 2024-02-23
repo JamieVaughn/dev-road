@@ -1,11 +1,11 @@
 ---
+import Authed from "../../layouts/Authed.astro";
 import { Icon } from "astro-icon/components";
-import Home from "../layouts/Home.astro";
-import { quizzes_1, quizzes_2, quizzes_3 } from "../data/quizzes";
-import { QUIZCODE } from "../data/QUIZCODE";
+import { quizzes_1, quizzes_2, quizzes_3 } from "../../data/quizzes";
+import { QUIZCODE } from "../../data/QUIZCODE";
 ---
 
-<Home>
+<Authed>
   <header class="banner" slot="banner">
     <Icon name="checked_circle" />
     <h5>Today's Quiz Code: {QUIZCODE}</h5>
@@ -45,7 +45,7 @@ import { QUIZCODE } from "../data/QUIZCODE";
       </article>
     </div>
   </div>
-</Home>
+</Authed>
 
 <style>
   html[data-theme="dark"] header :is(h5, strong, a, svg) {

@@ -1,0 +1,9 @@
+---
+import Authed from "../../layouts/Authed.astro";
+import { Calendar as SolidCalendar } from "../../components/Calendar";
+---
+
+<Authed>
+  <SolidCalendar client:idle />
+  <article aria-busy="true" class="large" style="height: 742px"></article>
+</Authed>

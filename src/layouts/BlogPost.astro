@@ -4,12 +4,19 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
+import { checkAuth } from '../lib/checkAuth';
 
 type Props = CollectionEntry<'articles'>['data'];
 
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 const { pathname } = Astro.url;
 const isArticlePath = !!pathname.includes('/articles');
+
+const { cookies, redirect } = Astro;
+
+const auth = await checkAuth({cookies, redirect})
+  .then(data => data)
+  .catch(err => console.log(err));
 ---
 
 <html lang="en">
@@ -58,11 +65,14 @@ const isArticlePath = !!pathname.includes('/articles');
 	</head>
 
 	<body>
-		<Header auth={null}/>
+		<Header auth={auth}/>
 		<style>
 			a.position {
 				position: absolute; 
 				padding: 8px;
+			}
+			article {
+				margin-block: 1em;
 			}
 			@media (max-width: 1160px) and (min-width: 792px) {
 				a.position {
