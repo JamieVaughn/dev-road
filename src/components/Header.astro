@@ -50,8 +50,8 @@ const { auth } = Astro.props;
                 <HeaderLink href="/class/slides">Slides</HeaderLink>
                 <HeaderLink href="/class/quiz">Quiz</HeaderLink>
                 <HeaderLink href="/class/progress">Progress</HeaderLink>
-                <HeaderLink href="/class/profile">
-                  <Icon name="profile" size={24} /> Profile
+                <HeaderLink href="/class/profile" style="display: flex; flex-direction: row-reverse; gap: 0.5em;">
+                  <Icon name="profile" size={24} title="Profile"/> <span>Profile</span>
                 </HeaderLink>
                 <HeaderLink href="/api/auth/signout">Log out</HeaderLink>
               </>

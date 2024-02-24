@@ -17,7 +17,7 @@ export const checkAuth = async ({ cookies, redirect }: CheckAuthProps) => {
 
   if (error) {
     cookies.delete("sb-access-token", { path: "/"});
-    cookies.delete("sb-refresh-token", {path: "/"});
+    cookies.delete("sb-refresh-token", { path: "/"});
     return redirect("/login");
   }
 

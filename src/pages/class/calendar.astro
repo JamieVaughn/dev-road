@@ -1,6 +1,12 @@
 ---
 import Authed from "../../layouts/Authed.astro";
 import { Calendar as SolidCalendar } from "../../components/Calendar";
+import { checkAuth } from "../../lib/checkAuth";
+const { cookies, redirect } = Astro;
+
+const auth = await checkAuth({ cookies, redirect })
+  .then((data) => data)
+  .catch((err) => console.log(err));
 ---
 
 <Authed>
