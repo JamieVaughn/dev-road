@@ -7,12 +7,6 @@ import { checkAuth} from '../lib/checkAuth'
 
 const { cookies, redirect } = Astro;
 
-const accessToken = cookies.get("sb-access-token");
-const refreshToken = cookies.get("sb-refresh-token");
-if(!accessToken || !refreshToken ) {
-	redirect('/login');
-}
-
 const auth = await checkAuth({cookies, redirect})
   .then(data => data)
   .catch(err => console.log(err));

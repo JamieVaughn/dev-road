@@ -7,8 +7,8 @@ export const onRequest = defineMiddleware((context, next) => {
   const accessToken = context.cookies.get("sb-access-token")
   const refreshToken = context.cookies.get("sb-refresh-token")
 
-  if (!accessToken || !refreshToken) {
-    return Response.redirect('https://monroecc.dev/login', 302)
+  if (context.url.pathname.includes('class') && (!accessToken || !refreshToken)) {
+    return Response.redirect(`${context.url.origin}/login`, 302)
   }
   return next()
 });
