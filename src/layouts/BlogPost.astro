@@ -70,6 +70,7 @@ const auth = await checkAuth({cookies, redirect})
 			a.position {
 				position: absolute; 
 				padding: 8px;
+				line-height: 1.2em;
 			}
 			article {
 				margin-block: 1em;
@@ -82,7 +83,7 @@ const auth = await checkAuth({cookies, redirect})
 		</style>
 		<main>
 			<article>
-				{isArticlePath && <a href="/articles" class="date position">&larr; Back to articles</a>}
+				{isArticlePath && <a href="/articles" class="date position">&larr; Back to <br /><span style="margin-left: 1.25em;">articles</span></a>}
 				<div class="hero-image">
 					{heroImage && <img width={350} height={175} src={heroImage} alt="" />}
 				</div>

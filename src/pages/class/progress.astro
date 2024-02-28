@@ -1,5 +1,5 @@
 ---
-import Authed from "../../layouts/Authed.astro";
+import Home from "../../layouts/Home.astro";
 import { checkAuth } from "../../lib/checkAuth";
 import { hw_1, hw_2} from "../../data/hw";
 import { hw_3 } from "../../data/hw_old";
@@ -21,7 +21,7 @@ const { data, error } = await supabase
 const username = /*(profile?.first_name + profile?.last_name) ??*/ auth?.user?.email.split("@")[0]
 ---
 
-<Authed>
+<Home>
   <hgroup class="center">
     <h1>My Progress</h1>
     <strong>Welcome{username ? ' ' + username : ''}!</strong>
@@ -92,7 +92,7 @@ const username = /*(profile?.first_name + profile?.last_name) ??*/ auth?.user?.e
       </div>
     </article>
   </div>
-</Authed>
+</Home>
 
 <style>
   ol li::marker, ul li::marker {

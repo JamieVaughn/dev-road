@@ -12,9 +12,15 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<'articles'>;
 
 const post = Astro.props;
-const { Content } = await post.render();
+const Post = await post?.render?.();
 ---
 
 <BlogPost {...post.data}>
-	<Content />
+	{Post ? <Post.Content /> : <p class="error">Error loading post</p>}
 </BlogPost>
+
+<style>
+	.error {
+		color: silver;
+	}
+</style>

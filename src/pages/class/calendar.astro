@@ -1,15 +1,9 @@
 ---
-import Authed from "../../layouts/Authed.astro";
+import Home from "../../layouts/Home.astro";
 import { Calendar as SolidCalendar } from "../../components/Calendar";
-import { checkAuth } from "../../lib/checkAuth";
-const { cookies, redirect } = Astro;
-
-const auth = await checkAuth({ cookies, redirect })
-  .then((data) => data)
-  .catch((err) => console.log(err));
 ---
 
-<Authed>
+<Home>
   <SolidCalendar client:idle />
   <article aria-busy="true" class="large" style="height: 742px"></article>
-</Authed>
+</Home>

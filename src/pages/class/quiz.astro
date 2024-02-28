@@ -1,5 +1,5 @@
 ---
-import Authed from "../../layouts/Authed.astro";
+import Home from "../../layouts/Home.astro";
 import { Icon } from "astro-icon/components";
 import { quizzes_1, quizzes_2, quizzes_3 } from "../../data/quizzes";
 import { QUIZCODE } from "../../data/QUIZCODE";
@@ -11,7 +11,7 @@ const auth = await checkAuth({ cookies, redirect })
   .catch((err) => console.log(err));
 ---
 
-<Authed>
+<Home>
   <header class="banner" slot="banner">
     <Icon name="checked_circle" />
     <h5>Today's Quiz Code: {QUIZCODE}</h5>
@@ -51,7 +51,7 @@ const auth = await checkAuth({ cookies, redirect })
       </article>
     </div>
   </div>
-</Authed>
+</Home>
 
 <style>
   html[data-theme="dark"] header :is(h5, strong, a, svg) {

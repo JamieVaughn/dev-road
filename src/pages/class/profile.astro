@@ -1,8 +1,7 @@
 ---
-import Authed from "../../layouts/Authed.astro";
+import Home from "../../layouts/Home.astro";
 import { checkAuth } from "../../lib/checkAuth";
 import { supabase } from "../../lib/supabase";
-import MessageScript from "../../components/MessageScript.astro";
 
 const { cookies, redirect } = Astro;
 
@@ -11,7 +10,6 @@ const auth = await checkAuth({ cookies, redirect })
   .catch((err) => console.log(err))
 
 const email = auth.user.email;
-const user_id = auth.user.user_id;
 const user = email.split("@")[0];
 
 const { data: profile, error } = await supabase
@@ -21,8 +19,7 @@ const { data: profile, error } = await supabase
   .single();
 ---
 
-<MessageScript message={{ email, user_id, profile, error }} />
-<Authed>
+<Home>
   <hgroup class="center">
     <h1>My Profile</h1>
     <form action="/api/auth/signout" method="get">
@@ -30,6 +27,7 @@ const { data: profile, error } = await supabase
         >Not You? Click here</button
       >
     </form>
+    {error && <p class="error">There was an error finding your profile: {error.message}</p>}
   </hgroup>
   <article>
     <div style="flex: 0 2 40vw; text-align: center;">
@@ -152,12 +150,16 @@ const { data: profile, error } = await supabase
       </article>
     )
   }
-</Authed>
+</Home>
 
 <style>
   .not-you {
     max-width: 200px;
     margin-inline: auto;
+  }
+  .error {
+    color: crimson; 
+    font-size: 0.5em;
   }
   .email-info {
     display: flex;

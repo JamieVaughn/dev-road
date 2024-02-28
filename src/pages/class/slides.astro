@@ -1,14 +1,8 @@
 ---
-import Authed from "../../layouts/Authed.astro";
-import { checkAuth } from "../../lib/checkAuth";
-const { cookies, redirect } = Astro;
-
-const auth = await checkAuth({ cookies, redirect })
-  .then((data) => data)
-  .catch((err) => console.log(err));
+import Home from "../../layouts/Home.astro";
 ---
 
-<Authed>
+<Home>
   <h1 class="center">Course Slides</h1>
   <div class="container">
     <article>
@@ -46,7 +40,7 @@ const auth = await checkAuth({ cookies, redirect })
       </ol>
     </article>
   </div>
-</Authed>
+</Home>
 
 <style>
   article {
