@@ -14,7 +14,7 @@ export default defineConfig({
     icon(), 
     solid(), 
   ],
-  output: "server",
+  output: "hybrid",
   vite: {
     build: {
       minify: true, // false for debugging with wrangler
@@ -22,5 +22,10 @@ export default defineConfig({
   },
   adapter: cloudflare({
     mode: "advanced", // directory | advanced
-  })
+  }),
+  routes: {
+    strategy: 'include',
+    include: ['/articles/*'], // handled by custom function: functions/users/[id].js
+    exclude: [], // handled by static page: pages/users/faq.astro
+  },
 });
