@@ -43,7 +43,7 @@ export function ContributionChart(props: { startDate?: string }) {
         )}}
       </For>
       <For each={Array.from({ length: startWeekDay })}>
-        {_ => <time class="day placeholder" />}
+        {_ => <time class="day placeholder" style="background-color: transparent;" />}
       </For>
       <For each={twelveMonths}>
         {(m) => (
@@ -56,7 +56,7 @@ export function ContributionChart(props: { startDate?: string }) {
               return (
                 <time
                   class={`day`}
-                  style={`background-color: ${m % 2 ? "#eee" : "#ddd"};`}
+                  style={`background-color: ${m % 2 ? "#ddd" : "#f1f1f1"};`}
                 >
                   <span class="tooltip">
                     {starts[m].add(day, "day").format("YY-MM-DD")}

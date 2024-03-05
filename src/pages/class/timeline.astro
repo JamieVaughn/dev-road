@@ -1,7 +1,32 @@
 ---
 import Home from "../../layouts/Home.astro";
+import { timeline } from "../../data/outline";
 ---
 
 <Home>
   <p>Timeline</p>
+  <ul>
+    {timeline.map((item) => (
+      <li>
+        <pre>{JSON.stringify(item, null, 2)}</pre>
+        <p>{item.outline.topic}</p>
+      </li>
+    ))}
+  </ul>
 </Home>
+
+<style>
+
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  li {
+    border: 1px solid #000;
+    padding: 8px;
+    border-radius: 8px;
+  }
+</style>

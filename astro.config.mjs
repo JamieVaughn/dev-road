@@ -25,7 +25,7 @@ export default defineConfig({
   }),
   routes: {
     strategy: 'include',
-    include: ['/articles/*'], // handled by custom function: functions/users/[id].js
-    exclude: [], // handled by static page: pages/users/faq.astro
+    include: ['/articles/*'], // handled by custom function
+    exclude: [], // handled by static page
   },
 });

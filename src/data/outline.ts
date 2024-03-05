@@ -433,7 +433,7 @@ const outlines = [...outline_section_1, ...outline_section_2, ...outline_section
 
 let section_one = [
   {
-    data: 'April 19 2021',
+    date: 'April 19 2021',
     hours: 3,
     hw: '',
     project: '',
@@ -441,7 +441,7 @@ let section_one = [
     outline: []
   },
   {
-    data: 'April 21 2021',
+    date: 'April 21 2021',
     hours: 3,
     hw: '',
     project: '',
@@ -449,7 +449,7 @@ let section_one = [
     outline: []
   },
   {
-    data: 'April 22 2021',
+    date: 'April 22 2021',
     hours: 3,
     hw: '',
     project: '',
@@ -457,7 +457,7 @@ let section_one = [
     outline: []
   },
   {
-    data: 'April 26 2021',
+    date: 'April 26 2021',
     hours: 3,
     hw: '',
     project: '',
@@ -465,7 +465,7 @@ let section_one = [
     outline: []
   },
   {
-    data: 'April 28 2021',
+    date: 'April 28 2021',
     hours: 3,
     hw: '',
     project: '',
@@ -473,7 +473,7 @@ let section_one = [
     outline: []
   },
   {
-    data: 'April 29 2021',
+    date: 'April 29 2021',
     hours: 3,
     hw: '',
     project: '',
@@ -481,7 +481,7 @@ let section_one = [
     outline: []
   },
   {
-    data: 'May 3 2021',
+    date: 'May 3 2021',
     hours: 3,
     hw: '',
     project: '',
@@ -489,7 +489,7 @@ let section_one = [
     outline: []
   },
   {
-    data: 'May 5 2021',
+    date: 'May 5 2021',
     hours: 3,
     hw: '',
     project: '',
@@ -497,7 +497,7 @@ let section_one = [
     outline: []
   },
   {
-    data: 'May 6 2021',
+    date: 'May 6 2021',
     hours: 3,
     hw: '',
     project: '',
@@ -505,7 +505,7 @@ let section_one = [
     outline: []
   },
   {
-    data: 'May 10 2021',
+    date: 'May 10 2021',
     hours: 3,
     hw: '',
     project: '',
@@ -513,7 +513,7 @@ let section_one = [
     outline: []
   },
   {
-    data: 'May 12 2021',
+    date: 'May 12 2021',
     hours: 3,
     hw: '',
     project: '',
@@ -521,7 +521,7 @@ let section_one = [
     outline: []
   },
   {
-    data: 'May 13 2021',
+    date: 'May 13 2021',
     hours: 3,
     hw: '',
     project: '',
@@ -529,7 +529,7 @@ let section_one = [
     outline: []
   },
   {
-    data: 'May 17 2021',
+    date: 'May 17 2021',
     hours: 3,
     hw: '',
     project: '',
@@ -537,7 +537,7 @@ let section_one = [
     outline: []
   },
   {
-    data: 'May 19 2021',
+    date: 'May 19 2021',
     hours: 3,
     hw: '',
     project: '',
@@ -545,7 +545,7 @@ let section_one = [
     outline: []
   },
   {
-    data: 'May 20 2021',
+    date: 'May 20 2021',
     hours: 3,
     hw: '',
     project: '',
@@ -553,7 +553,7 @@ let section_one = [
     outline: []
   },
   {
-    data: 'May 24 2021',
+    date: 'May 24 2021',
     hours: 3,
     hw: '',
     project: '',
@@ -561,7 +561,7 @@ let section_one = [
     outline: []
   },
   {
-    data: 'May 26 2021',
+    date: 'May 26 2021',
     hours: 3,
     hw: '',
     project: '',
@@ -569,7 +569,7 @@ let section_one = [
     outline: []
   },
   {
-    data: 'June 27 2021',
+    date: 'June 27 2021',
     hours: 3,
     hw: '',
     project: '',
@@ -577,7 +577,7 @@ let section_one = [
     outline: []
   },
   {
-    data: 'June 2 2021',
+    date: 'June 2 2021',
     hours: 3,
     hw: '',
     project: '',
@@ -585,7 +585,7 @@ let section_one = [
     outline: []
   },
   {
-    data: 'June 3 2021',
+    date: 'June 3 2021',
     hours: 3,
     hw: '',
     project: '',
@@ -593,15 +593,13 @@ let section_one = [
     outline: []
   }
 ]
-let sect = section_one.map((i, idx) => ({
+export const timeline = section_one.map((i, idx) => ({
   ...i,
-  hw: hw_1[idx] ?? '',
-  outline: outlines[idx] ?? '',
-  project: projects_1[idx] ?? '',
-  quiz: quizzes_1[idx - 1] ?? '',
-  topic: outlines?.[idx]?.topic ?? '',
+  outline: outlines[idx],
+  quiz: quizzes_1[idx - 1] ?? null,
+  hw: hw_1[idx] ?? null,
+  project: projects_1[idx] ?? null,
 }))
-sect
 
 let extras_1 = ['New Tab project', 'Interview Prep', 'Portfolio Workshop', 'Wireframing', 'UI/UX Principles', 'Student portfolio/project presentations']
 let bonus_1 = `
