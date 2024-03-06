@@ -1,0 +1,25 @@
+---
+import Home from "../../../layouts/Home.astro";
+---
+
+<Home>
+  <h1 class="center">Timeline</h1>
+  <article>
+    <p><a href="/class/timeline/html-css">Section 1: HTML & CSS</a></p>
+    <p><a href="/class/timeline/javascript">Section 2: Javascript</a></p>
+    <p><a href="/class/timeline/react">Section 3: React</a></p>
+  </article>
+</Home>
+
+<style>
+  article {
+    background-color: rgb(0, 16, 48);
+    max-width: 75vw;
+  }
+  html[data-theme="light"] article {
+    background-color: white;
+  }
+  h1 {
+    margin-bottom: 1em;
+  }
+</style>

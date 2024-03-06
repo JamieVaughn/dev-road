@@ -429,9 +429,16 @@ const outline_section_3 = [
   https://letterstoanewdeveloper.com/2022/09/19/ways-to-stand-out/`},
 ]
 												 			
-const outlines = [...outline_section_1, ...outline_section_2, ...outline_section_3]
+const sectionFactory = (startDate: number) => (Array.from({ length: 20 })).map((_, idx) => ({
+  date: new Date(startDate + idx),
+  hours: 3,
+  hw: '',
+  project: '',
+  quiz: '',
+  outline: []
+}))
 
-let section_one = [
+let section_1 = [
   {
     date: 'April 19 2021',
     hours: 3,
@@ -593,12 +600,28 @@ let section_one = [
     outline: []
   }
 ]
-export const timeline = section_one.map((i, idx) => ({
+export const timeline_1 = section_1.map((i, idx) => ({
   ...i,
-  outline: outlines[idx],
+  outline: outline_section_1[idx],
   quiz: quizzes_1[idx - 1] ?? null,
   hw: hw_1[idx] ?? null,
   project: projects_1[idx] ?? null,
+}))
+
+export const timeline_2 = sectionFactory(Date.now()).map((i, idx) => ({
+  ...i,
+  outline: outline_section_2[idx],
+  quiz: quizzes_2[idx - 1] ?? null,
+  hw: hw_2[idx] ?? null,
+  project: projects_2[idx] ?? null,
+}))
+
+export const timeline_3 = sectionFactory(Date.now()).map((i, idx) => ({
+  ...i,
+  outline: outline_section_3[idx],
+  quiz: quizzes_3[idx - 1] ?? null,
+  hw: hw_3[idx] ?? null,
+  project: projects_3[idx] ?? null,
 }))
 
 let extras_1 = ['New Tab project', 'Interview Prep', 'Portfolio Workshop', 'Wireframing', 'UI/UX Principles', 'Student portfolio/project presentations']

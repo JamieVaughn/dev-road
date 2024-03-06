@@ -1,6 +1,6 @@
 ---
-import Home from "../../layouts/Home.astro";
-import { timeline } from "../../data/outline";
+import Home from "../../../layouts/Home.astro";
+import { timeline_1 } from "../../../data/outline";
 ---
 <!-- add icons to each card -->
 <!-- Wire up date to it calculates based on starting date... date key should be day offset number value (not a hardcoded date) -->
@@ -13,10 +13,11 @@ import { timeline } from "../../data/outline";
 
 <Home>
   <h1 class="center">Timeline</h1>
+  <h4 class="center">Section 1: HTML & CSS</h4>
   <article>
     <ul>
       {
-        timeline.map((item) => (
+        timeline_1.map((item) => (
           <li>
             <hgroup>
               <span>{item.outline.topic}</span>

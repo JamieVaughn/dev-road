@@ -142,12 +142,12 @@ export function Calendar() {
   .month-header {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
     background-color: #fff;
     padding: 10px;
   }
   
   .month-header-buttons {
+    margin-left: auto;
     display: flex;
     gap: 1em;
     align-items: center;

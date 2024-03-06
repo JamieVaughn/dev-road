@@ -1,0 +1,77 @@
+---
+import Home from "../../../layouts/Home.astro";
+import { timeline_3 } from "../../../data/outline";
+---
+<!-- add icons to each card -->
+<!-- Wire up date to it calculates based on starting date... date key should be day offset number value (not a hardcoded date) -->
+<!-- Add toggle to view as horizontal carousel view, with current date focused (even vertical view should auto scroll to cur date) -->
+<!-- Add kanban board for hw, projects etc. -->
+<!-- split and format content in `key`s -->
+<!-- Add this content to Calendar as well -->
+<!-- Add more thorough resource links to each card (including code sandboxes & slides, homework urls, project urls) -->
+<!-- Use good card design -->
+
+<Home>
+  <h1 class="center">Timeline</h1>
+  <h4 class="center">Section 3: React</h4>
+  <article>
+    <ul>
+      {
+        timeline_3.map((item) => (
+          <li>
+            <hgroup>
+              <span>{item.outline.topic}</span>
+              <small>{item.date}</small>
+            </hgroup>
+            <p>{item.outline.key}</p>
+            <ul class="sub-items">
+              {item.quiz && <li>Quiz: {item.quiz}</li>}
+              {item.hw && <li>Homework: {item.hw}</li>}
+              {item.project && <li>Project: {item.project}</li>}
+            </ul>
+          </li>
+        ))
+      }
+    </ul>
+  </article>
+</Home>
+
+<style>
+  article {
+    background-color: rgb(0, 16, 48);
+    max-width: 75vw;
+  }
+  html[data-theme="light"] article {
+    background-color: white;
+  }
+  h1 {
+    margin-bottom: 1em;
+  }
+  hgroup {
+    display: flex;
+    gap: 8px;
+  }
+  hgroup small {
+    margin-left: auto;
+    color: var(--secondary);
+  }
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  ul.sub-items {
+    text-transform: capitalize;
+  }
+  li {
+    list-style: none;
+    border: 1px solid #000;
+    padding: 8px;
+    border-radius: 8px;
+    background-color: var(--dark);
+  }
+  html[data-theme="light"] li {
+    border-color: #fff;
+    background-color: var(--gray-1);
+  }
+</style>
