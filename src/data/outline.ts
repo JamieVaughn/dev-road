@@ -1,8 +1,4 @@
-import { hw_1, hw_2, hw_3 } from "./hw"
-import { quizzes_1, quizzes_2, quizzes_3 } from "./quizzes"
-import { projects_1, projects_2, projects_3 } from "./projects"
-
-const outline_section_1 = [
+export const outline_section_1 = [
   {
     topic: 'HTML',
     key: `initial survey, tools, accts, review initial email msg, bookmark tools
@@ -170,7 +166,7 @@ What you need: curiosity, persistence (errors), urge to get help when stuck for 
 Quiz: embedded app on monroecc.dev and include emoji rating question at the end to ask if they feel confident. Also time how long they take to gauge confidence on a per question basis.`}
 ]
 
-const outline_section_2 = [
+export const outline_section_2 = [
   {topic: 'Variables, Primitives & Operators', key: `Show where we are on Roadmap.sh, History of Javascript & staying up to date with ES2021+
   Writing JS in the console
   declaration, initilalization, assignment
@@ -305,9 +301,9 @@ const outline_section_2 = [
   {topic: 'Extras', key: `big o notation
   cyclomatic complexity
   bug O notation`},
-  
 ]
-const outline_section_3 = [
+
+export const outline_section_3 = [
   {topic: 'Knockout Dragon clicker', key: `survey & show where we are on Roadmap.sh
   Translatable framework skills
   CDNs (knockout cdn)
@@ -428,201 +424,6 @@ const outline_section_3 = [
   https://blog.pragmaticengineer.com/advice-for-junior-software-engineers/
   https://letterstoanewdeveloper.com/2022/09/19/ways-to-stand-out/`},
 ]
-												 			
-const sectionFactory = (startDate: number) => (Array.from({ length: 20 })).map((_, idx) => ({
-  date: new Date(startDate + idx),
-  hours: 3,
-  hw: '',
-  project: '',
-  quiz: '',
-  outline: []
-}))
-
-let section_1 = [
-  {
-    date: 'April 19 2021',
-    hours: 3,
-    hw: '',
-    project: '',
-    quiz: '',
-    outline: []
-  },
-  {
-    date: 'April 21 2021',
-    hours: 3,
-    hw: '',
-    project: '',
-    quiz: '',
-    outline: []
-  },
-  {
-    date: 'April 22 2021',
-    hours: 3,
-    hw: '',
-    project: '',
-    quiz: '',
-    outline: []
-  },
-  {
-    date: 'April 26 2021',
-    hours: 3,
-    hw: '',
-    project: '',
-    quiz: '',
-    outline: []
-  },
-  {
-    date: 'April 28 2021',
-    hours: 3,
-    hw: '',
-    project: '',
-    quiz: '',
-    outline: []
-  },
-  {
-    date: 'April 29 2021',
-    hours: 3,
-    hw: '',
-    project: '',
-    quiz: '',
-    outline: []
-  },
-  {
-    date: 'May 3 2021',
-    hours: 3,
-    hw: '',
-    project: '',
-    quiz: '',
-    outline: []
-  },
-  {
-    date: 'May 5 2021',
-    hours: 3,
-    hw: '',
-    project: '',
-    quiz: '',
-    outline: []
-  },
-  {
-    date: 'May 6 2021',
-    hours: 3,
-    hw: '',
-    project: '',
-    quiz: '',
-    outline: []
-  },
-  {
-    date: 'May 10 2021',
-    hours: 3,
-    hw: '',
-    project: '',
-    quiz: '',
-    outline: []
-  },
-  {
-    date: 'May 12 2021',
-    hours: 3,
-    hw: '',
-    project: '',
-    quiz: '',
-    outline: []
-  },
-  {
-    date: 'May 13 2021',
-    hours: 3,
-    hw: '',
-    project: '',
-    quiz: '',
-    outline: []
-  },
-  {
-    date: 'May 17 2021',
-    hours: 3,
-    hw: '',
-    project: '',
-    quiz: '',
-    outline: []
-  },
-  {
-    date: 'May 19 2021',
-    hours: 3,
-    hw: '',
-    project: '',
-    quiz: '',
-    outline: []
-  },
-  {
-    date: 'May 20 2021',
-    hours: 3,
-    hw: '',
-    project: '',
-    quiz: '',
-    outline: []
-  },
-  {
-    date: 'May 24 2021',
-    hours: 3,
-    hw: '',
-    project: '',
-    quiz: '',
-    outline: []
-  },
-  {
-    date: 'May 26 2021',
-    hours: 3,
-    hw: '',
-    project: '',
-    quiz: '',
-    outline: []
-  },
-  {
-    date: 'June 27 2021',
-    hours: 3,
-    hw: '',
-    project: '',
-    quiz: '',
-    outline: []
-  },
-  {
-    date: 'June 2 2021',
-    hours: 3,
-    hw: '',
-    project: '',
-    quiz: '',
-    outline: []
-  },
-  {
-    date: 'June 3 2021',
-    hours: 3,
-    hw: '',
-    project: '',
-    quiz: '',
-    outline: []
-  }
-]
-export const timeline_1 = section_1.map((i, idx) => ({
-  ...i,
-  outline: outline_section_1[idx],
-  quiz: quizzes_1[idx - 1] ?? null,
-  hw: hw_1[idx] ?? null,
-  project: projects_1[idx] ?? null,
-}))
-
-export const timeline_2 = sectionFactory(Date.now()).map((i, idx) => ({
-  ...i,
-  outline: outline_section_2[idx],
-  quiz: quizzes_2[idx - 1] ?? null,
-  hw: hw_2[idx] ?? null,
-  project: projects_2[idx] ?? null,
-}))
-
-export const timeline_3 = sectionFactory(Date.now()).map((i, idx) => ({
-  ...i,
-  outline: outline_section_3[idx],
-  quiz: quizzes_3[idx - 1] ?? null,
-  hw: hw_3[idx] ?? null,
-  project: projects_3[idx] ?? null,
-}))
 
 let extras_1 = ['New Tab project', 'Interview Prep', 'Portfolio Workshop', 'Wireframing', 'UI/UX Principles', 'Student portfolio/project presentations']
 let bonus_1 = `

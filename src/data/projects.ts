@@ -1,16 +1,22 @@
 export const projects_1 = [
   null,
+  'Resume',
+  null,
+  null,
   'tribute page',	
   null,
+  null,
   'survey form',
-  null,
+  null,	
+  null,	
   'technical documentation page',
-  null,
+  null,	
   null,
   'product landing page',
-  null,	null,	null,	null,
+  null,	
+  null,	
   'personal portfolio webpage',
-  null,	null,	null,	null,	null,	null,
+  null,	null,	null,
 ]
 
 export const projects_2 = [

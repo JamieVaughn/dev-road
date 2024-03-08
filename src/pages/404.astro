@@ -1,17 +1,27 @@
 ---
 import Home from "../layouts/Home.astro";
+import { Icon } from "astro-icon/components";
 ---
 
 <Home>
   <article>
-      <h1>Page Not Found.</h1>
-      <p>How'd we get here?</p>
-      <p>Let's go <a href="/">home.</a></p>
+      <h1 class="center">Page Not Found.</h1>
+      <p class="center">How'd we get here? Let's go <a href="/">home.</a></p>
+      <div>
+        <Icon name="404" />
+      </div>
   </article>
 </Home>
 
 <style>
   h1 {
     margin-bottom: 0.5em;
+  }
+  div {
+    text-align: center;
+  }
+  div svg {
+    width: 100%;
+    height: 100%;
   }
 </style>

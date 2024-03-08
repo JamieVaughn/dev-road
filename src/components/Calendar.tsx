@@ -1,5 +1,6 @@
 import { For, createEffect } from "solid-js";
 import { createSignal } from "solid-js";
+import { stringDates_1, stringDates_2, stringDates_3 } from "../data/timeline";
 import dayjs, { type Dayjs } from "dayjs";
 import weekday from "dayjs/plugin/weekday";
 import weekOfYear from "dayjs/plugin/weekOfYear";
@@ -74,7 +75,7 @@ const createDaysArray = (date: Dayjs) => {
 const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const NOW = dayjs();
 const INITIAL_DAYS = createDaysArray(NOW);
-
+const scheduledDates = stringDates_1.concat(stringDates_2, stringDates_3);
 // TODO:
 // Add click to open event page for the date.
 // designs for that page could be: https://codepen.io/davidkpiano/pen/xwyVXO or https://codepen.io/peanav/pen/ulkof
@@ -117,7 +118,8 @@ export function Calendar() {
             <li
               class={`calendar-day litem ${
                 !d.isCurrentMonth && "calendar-day-not-current"
-              } ${d.date === NOW.format("YYYY-MM-DD") && "calendar-day-today"}`}
+              } ${d.date === NOW.format("YYYY-MM-DD") && "calendar-day-today"}
+              ${scheduledDates.includes(d.date) && d.isCurrentMonth && "scheduled"}`}
             >
               <time datetime={d.date}>{d.dayOfMonth}</time>
             </li>
@@ -130,7 +132,6 @@ export function Calendar() {
     margin: 0;
     list-style: none;
   }
-  
   .month {
     position: relative;
     background-color: var(--gray-2);
@@ -138,14 +139,12 @@ export function Calendar() {
     margin: 2rem auto 5rem;
     max-width: 1200px;
   }
-  
   .month-header {
     display: flex;
     flex-wrap: wrap;
     background-color: #fff;
     padding: 10px;
   }
-  
   .month-header-buttons {
     margin-left: auto;
     display: flex;
@@ -153,11 +152,9 @@ export function Calendar() {
     align-items: center;
     justify-content: space-between;
   }
-  
   .month-header-buttons > * {
     cursor: pointer;
   }
-  
   .day-of-week {
     color: var(--gray-8);
     font-size: 18px;
@@ -165,7 +162,6 @@ export function Calendar() {
     padding-bottom: 5px;
     padding-top: 10px;
   }
-  
   .day-of-week,
   .days-grid {
     display: grid;
@@ -175,7 +171,6 @@ export function Calendar() {
     text-align: right;
     padding-right: 5px;
   }
-  
   .days-grid {
     height: 100%;
     position: relative;
@@ -183,7 +178,6 @@ export function Calendar() {
     grid-row-gap: var(--grid-gap);
     border-top: solid 1px var(--gray-2);
   }
-  
   .calendar-day {
     position: relative;
     min-height: 100px;
@@ -192,7 +186,6 @@ export function Calendar() {
     color: var(--gray-8);
     padding: 5px;
   }
-  
   .calendar-day > time {
     display: flex;
     justify-content: center;
@@ -202,17 +195,18 @@ export function Calendar() {
     width: var(--day-label-size);
     height: var(--day-label-size);
   }
-  
   .calendar-day-not-current {
     background-color: var(--gray-1);
     color: var(--gray-3);
   }
-  
+  .scheduled {
+    background-color: var(--tan);
+    padding-top: 4px;
+  }
   .calendar-day-today {
     padding-top: 4px;
-    background-color: var(--tan);
+    background-color: var(--violet);
   }
-  
   .calendar-day-today > time {
     color: #fff;
     border-radius: 9999px;
