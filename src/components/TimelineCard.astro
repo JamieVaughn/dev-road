@@ -32,3 +32,28 @@ const { item } = Astro.props;
     }
   </ul>
 </li>
+
+<style>
+  hgroup {
+    display: flex;
+    gap: 8px;
+  }
+  hgroup small {
+    margin-left: auto;
+    color: var(--gray-4);
+  }
+  ul.sub-items {
+    text-transform: capitalize;
+  }
+  li {
+    list-style: none;
+    border: 1px solid #000;
+    padding: 8px;
+    border-radius: 8px;
+    background-color: var(--dark);
+  }
+  html[data-theme="light"] li {
+    border-color: #fff;
+    background-color: var(--gray-1);
+  }
+</style>
