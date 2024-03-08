@@ -1,6 +1,7 @@
 import { For, createEffect } from "solid-js";
 import { createSignal } from "solid-js";
 import { stringDates_1, stringDates_2, stringDates_3 } from "../data/timeline";
+import { timeline_1, timeline_2, timeline_3 } from "../data/timeline";
 import dayjs, { type Dayjs } from "dayjs";
 import weekday from "dayjs/plugin/weekday";
 import weekOfYear from "dayjs/plugin/weekOfYear";
@@ -76,6 +77,7 @@ const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const NOW = dayjs();
 const INITIAL_DAYS = createDaysArray(NOW);
 const scheduledDates = stringDates_1.concat(stringDates_2, stringDates_3);
+const fullTimeline = timeline_1.concat(timeline_2, timeline_3);
 // TODO:
 // Add click to open event page for the date.
 // designs for that page could be: https://codepen.io/davidkpiano/pen/xwyVXO or https://codepen.io/peanav/pen/ulkof
@@ -96,12 +98,19 @@ export function Calendar() {
   return (
     <div class="month">
       <header class="month-header">
-        <h1 class="calendar_month_header_selected_month" style="color: var(--gray-8);">
+        <h1
+          class="calendar_month_header_selected_month"
+          style="color: var(--gray-8);"
+        >
           {selectedDate().format("MMMM YYYY")}
         </h1>
         <section class="month-header-buttons">
           <button onClick={() => panMonth("subtract")}> ← </button>
-          <button class="ghost" onClick={() => panMonth()} style="color: var(--gray-8);">
+          <button
+            class="ghost"
+            onClick={() => panMonth()}
+            style="color: var(--gray-8);"
+          >
             Today
           </button>
           <button onClick={() => panMonth("add")}> → </button>
@@ -114,16 +123,52 @@ export function Calendar() {
 
       <ol class="days-grid olist">
         <For each={days()}>
-          {(d) => (
-            <li
-              class={`calendar-day litem ${
-                !d.isCurrentMonth && "calendar-day-not-current"
-              } ${d.date === NOW.format("YYYY-MM-DD") && "calendar-day-today"}
-              ${scheduledDates.includes(d.date) && d.isCurrentMonth && "scheduled"}`}
-            >
-              <time datetime={d.date}>{d.dayOfMonth}</time>
-            </li>
-          )}
+          {(d, i) => {
+            const timelineItem = fullTimeline.find(
+              (item) => item.date === d.date
+            );
+            return (
+              <li
+                class={`calendar-day litem ${
+                  !d.isCurrentMonth && "calendar-day-not-current"
+                } ${d.date === NOW.format("YYYY-MM-DD") && "calendar-day-today"}
+              ${
+                scheduledDates.includes(d.date) &&
+                d.isCurrentMonth &&
+                "scheduled"
+              }`}
+              >
+                <time datetime={d.date}>{d.dayOfMonth}</time>
+                {d.isCurrentMonth && (
+                  <div class="deliverables">
+                    <div style="direction: rtl; text-indent: 24px;">
+                      {timelineItem?.outline?.topic}
+                    </div>
+                    <ul class="sub-items">
+                      {timelineItem?.quiz && (
+                        <li>
+                          <span>Quiz:</span>
+                          <span> {timelineItem.quiz}</span>
+                        </li>
+                      )}
+                      {timelineItem?.hw && (
+                        <li>
+                          <span>Homework:</span>
+                          <span> {timelineItem.hw}</span>
+                        </li>
+                      )}
+                      {timelineItem?.project && (
+                        <li>
+                          <span>Project:</span>
+                          <span> {timelineItem.project}</span>
+                        </li>
+                      )}
+                    </ul>
+                  </div>
+                )}
+              </li>
+            );
+          }}
         </For>
       </ol>
       <style>
@@ -131,6 +176,12 @@ export function Calendar() {
     padding: 0;
     margin: 0;
     list-style: none;
+  }
+  .deliverables ul {
+    font-size: 11px;
+  }
+  .deliverables span:first-of-type {
+    text-decoration: underline;
   }
   .month {
     position: relative;
@@ -203,13 +254,22 @@ export function Calendar() {
     background-color: var(--tan);
     padding-top: 4px;
   }
+  .scheduled > time {
+    border-radius: 100px;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 0.75em;
+  }
   .calendar-day-today {
     padding-top: 4px;
     background-color: var(--violet);
   }
-  .calendar-day-today > time {
+  .calendar-day-today > time, 
+  .calendar-day-today > .deliverables,
+  .calendar-day-today > .deliverables li {
     color: #fff;
-    border-radius: 9999px;
+  }
+  .calendar-day-today > time {
+    border-radius: 100px;
     background-color: var(--gray-8);
     padding: 1em;
   }`}

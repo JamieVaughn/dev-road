@@ -1,39 +1,12 @@
 ---
-import { Icon } from 'astro-icon/components'
-import dayjs from 'dayjs'
+import { TimelineCard } from './TimelineCard'
 const { timeline } = Astro.props
 ---
 
 <ul>
   {
     timeline.map((item) => (
-      <li>
-        <hgroup>
-          <h4>{item.outline.topic}</h4>
-          <small>{dayjs(item.date).format('M/D/YYYY')}</small>
-        </hgroup>
-        <div>{item.outline.key.split('\n').map(k => <div>{k}</div>)}</div>
-        <ul class="sub-items">
-          {item.quiz && <li>
-              <Icon name="quiz"/> 
-              <span>Quiz: </span>
-              <span>{item.quiz}</span>
-            </li>
-          }
-          {item.hw && <li>
-              <Icon name="homework"/> 
-              <span>Homework: </span>
-              <span>{item.hw}</span>
-            </li>
-          }
-          {item.project && <li>
-              <Icon name="project"/> 
-              <span>Project: </span>
-              <span>{item.project}</span>
-            </li>
-          }
-        </ul>
-      </li>
+      <TimelineCard item={item} />
     ))
   }
 </ul>
