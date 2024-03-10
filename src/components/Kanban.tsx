@@ -1,9 +1,156 @@
-import { For } from "solid-js";
+import { For, createSignal } from "solid-js";
+import { hw_1, hw_2 } from "../data/hw";
+import { hw_3 } from "../data/hw_old";
+import { projects_1, projects_2, projects_3 } from "../data/projects";
+import projectIcon from '../icons/project.svg'
+import homeworkIcon from '../icons/homework.svg'
 
 type KanbanTypes = {
   hw: number[];
   projects: number[];
 };
+
+const hw1 = hw_1.filter((h): h is string => !!h)
+const hw2 = hw_2.filter((h): h is string => !!h)
+const hw3 = hw_3.filter((h): h is string => !!h)
+
+const hws: string[][] = [hw1, hw2, hw3];
+
+const proj1 = projects_1.filter((h): h is string => !!h)
+const proj2 = projects_2.filter((h): h is string => !!h)
+const proj3 = projects_3.filter((h): h is string => !!h)
+
+const projs: string[][] = [proj1, proj2, proj3];
+
+export function Kanban(props: KanbanTypes) {
+  const [section, setSection] = createSignal(1)
+  const hw_todo = hws[section() - 1];
+  const hw_doing: string[] = [];
+  const hw_review: string[] = [];
+  const hw_done: string[] = [];
+
+  const proj_todo = projs[section() - 1];
+  const proj_doing: string[] = [];
+  const proj_review: string[] = [];
+  const proj_done: string[] = [];
+
+  const lanes = [
+    { title: "Todo", hwk: hw_todo, prj: proj_todo },
+    { title: "Doing", hwk: hw_doing, prj: proj_doing },
+    { title: "In Review", hwk: hw_review, prj: proj_review },
+    { title: "Done", hwk: hw_done, prj: proj_done },
+  ];
+
+  return (
+    <div class="board">
+      <div class="lanes">
+        <For each={lanes}>
+          {({ title, hwk, prj }) => (
+            <div
+              id={`${title.toLowerCase()}-lane`}
+              class="lane"
+              onDragOver={e => laneListener(e, title)}
+              onDragLeave={laneCleanup}
+              onDragEnd={laneCleanup}
+            >
+              <h2 class="heading">{title}</h2>
+              <For each={hwk}>{tackComp('hw')}</For>
+              <For each={prj}>{tackComp('proj')}</For>
+            </div>
+          )}
+        </For>
+      </div>
+      <style>{css}</style>
+    </div>
+  );
+}
+
+const css = `
+.board * {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.board *::-webkit-scrollbar {
+  display: none;
+}
+.board {
+  margin: 0 auto;
+  padding: 16px;
+  width: fit-content;
+  border-radius: 4px;
+  background: linear-gradient(45deg, var(--violet), rebeccapurple, var(--tan));
+  max-height: 80vh;
+  overflow: hidden;
+}
+.board h2 {
+  font-weight: 700;
+  font-family: sans-serif;
+  font-size: 28px;
+  padding: 16px 16px 4px;
+  position: sticky;
+  top: 0;
+  background: white;
+  background-color: #f4f4f4;
+}
+.lanes {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  overflow: scroll;
+  height: 100%;
+}
+.lane {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+  background: #f4f4f4;
+  border-radius: 4px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+  max-width: 320px;
+  min-height: 130.5px;
+  min-width: 225px;
+  flex-shrink: 0;
+  overflow: scroll;
+  max-height: calc(80vh - 32px);
+  padding-bottom: 16px;
+}
+.task {
+  font-size: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  padding: 8px 12px;
+  margin: 0 8px;
+  border-radius: 4px;
+  text-transform: capitalize;
+  font-size: 16px;
+  transition: transform 0.5s;
+  cursor: grab;
+}
+.task.hw {
+  background-color: rgba(244, 81, 30, 0.05);
+}
+.task.proj {
+  background-color: rgb(245, 230, 255, 0.5);
+}
+.task:active {
+  cursor: grabbing;
+}
+.task:hover {
+  outline: 2px dashed indigo;
+}
+.task.dragging img {
+  filter: invert(1);
+}
+.task.dragging {
+  background-color: rgb(75, 0, 130);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  color: white;
+  transform: rotate(3deg) scale(1.1);
+}
+.dragover {
+  background-color: linen;
+  outline: 2px dotted white;
+}
+`;
 
 const allowSortDrop = true;
 
@@ -37,121 +184,13 @@ const laneListener = (e: DragEvent, title: string) => {
     ? lane?.insertBefore(draggable!, afterElement)
     : lane?.appendChild(draggable!);
 };
-const tackComp = (task: string) => (
+const tackComp = (icon: 'hw' | 'proj') => (task: string) => (
   <p
-    class="task"
+    class={`task ${icon}`}
     draggable="true"
     onDragStart={(e) => e.target.classList.add("dragging")}
     onDragEnd={(e) => e.target.classList.remove("dragging")}
   >
-    {task}
+    <img src={icon === 'hw' ? homeworkIcon.src : projectIcon.src} /> {task}
   </p>
 );
-
-export function Kanban(props: KanbanTypes) {
-  const hw_todo = ["CSS", "Javascript", "React"];
-  const hw_doing = ["HTML"];
-  const hw_review = ["Portfolio"];
-  const hw_done: string[] = [];
-
-  const lanes = [
-    { title: "Todo", tasks: hw_todo },
-    { title: "Doing", tasks: hw_doing },
-    { title: "In Review", tasks: hw_review },
-    { title: "Done", tasks: hw_done },
-  ];
-
-  return (
-    <div class="board">
-      <div class="lanes">
-        <For each={lanes}>
-          {({ title, tasks }) => (
-            <div
-              id={`${title.toLowerCase()}-lane`}
-              class="lane"
-              onDragOver={e => laneListener(e, title)}
-              onDragLeave={laneCleanup}
-              onDragEnd={laneCleanup}
-            >
-              <h2 class="heading">{title}</h2>
-              <For each={tasks}>{tackComp}</For>
-            </div>
-          )}
-        </For>
-      </div>
-      <style>{css}</style>
-    </div>
-  );
-}
-
-const css = `
-.board * {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-.board *::-webkit-scrollbar {
-  display: none;
-}
-.board {
-  margin: 0 auto;
-  width: fit-content;
-  border-radius: 4px;
-  background: linear-gradient(45deg, var(--violet), rebeccapurple, var(--tan));
-}
-.board p {
-  margin: 0;
-}
-.board h2 {
-  font-weight: 700;
-  font-family: sans-serif;
-  font-size: 28px;
-}
-.lanes {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  padding: 24px;
-  overflow: scroll;
-  height: 100%;
-}
-.lane {
-  display: flex;
-  gap: 12px;
-  flex-direction: column;
-  background: #f4f4f4;
-  padding: 12px;
-  border-radius: 4px;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
-  max-width: 33vw;
-  min-height: 130.5px;
-  min-width: 225px;
-  flex-shrink: 0;
-}
-.task {
-  background-color: white;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  padding: 12px;
-  border-radius: 4px;
-  font-size: 16px;
-  transition: transform 0.5s;
-  cursor: grab;
-}
-.task:active {
-  cursor: grabbing;
-  transform: rotate(3deg);
-}
-.task:hover {
-  background-color: rgb(75, 0, 130);
-  color: white;
-}
-.dragging {
-  background-color: rgb(75, 0, 130);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-  color: white;
-  transform: rotate(3deg) scale(1.1);
-}
-.dragover {
-  background-color: linen;
-  outline: 2px dotted white;
-}
-`;
