@@ -10,13 +10,16 @@ const auth = await checkAuth({ cookies, redirect })
   .catch((err) => console.log(err))
 
 const email = auth.user.email;
-const user = email.split("@")[0];
 
 const { data: profile, error } = await supabase
   .from("profile")
   .select()
   .eq("email", email)
   .single();
+
+const name = profile.first_name || profile.last_name ? `${profile.first_name} ${profile.last_name}` : null;
+const user = name ?? email.split("@")[0];
+
 ---
 
 <Home>

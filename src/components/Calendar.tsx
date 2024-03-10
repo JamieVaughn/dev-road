@@ -144,7 +144,7 @@ export function Calendar() {
                     <div style="direction: rtl; text-indent: 24px;">
                       {timelineItem?.outline?.topic}
                     </div>
-                    <ul class="sub-items">
+                    <ol class="sub-items">
                       {timelineItem?.quiz && (
                         <li>
                           <span>Quiz:</span>
@@ -163,7 +163,7 @@ export function Calendar() {
                           <span> {timelineItem.project}</span>
                         </li>
                       )}
-                    </ul>
+                    </ol>
                   </div>
                 )}
               </li>
@@ -177,8 +177,10 @@ export function Calendar() {
     margin: 0;
     list-style: none;
   }
-  .deliverables ul {
+  .deliverables ol {
+    text-transform: capitalize;
     font-size: 11px;
+    line-height: 1.25;
   }
   .deliverables span:first-of-type {
     text-decoration: underline;
@@ -197,7 +199,7 @@ export function Calendar() {
     padding: 10px;
   }
   .month-header-buttons {
-    margin-left: auto;
+    margin: 0 0 0 auto;
     display: flex;
     gap: 1em;
     align-items: center;

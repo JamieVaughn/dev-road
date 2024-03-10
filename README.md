@@ -79,3 +79,4 @@ Create an account & Login with email/password to gain access to the learning res
 - make it a PWA
 - alumni network roster
 - login with linkedin & github options (and save the identities)
+- Setup monitoring/logging for errors/user analytics
