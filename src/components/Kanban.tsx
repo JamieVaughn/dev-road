@@ -6,8 +6,8 @@ import projectIcon from '../icons/project.svg'
 import homeworkIcon from '../icons/homework.svg'
 
 type KanbanTypes = {
-  hw: number[];
-  projects: number[];
+  hw?: number[];
+  projects?: number[];
 };
 
 const hw1 = hw_1.filter((h): h is string => !!h)

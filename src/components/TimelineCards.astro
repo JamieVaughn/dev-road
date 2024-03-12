@@ -1,11 +1,12 @@
 ---
 import TimelineCard from './TimelineCard.astro'
+import type { TimelineItem } from '../data/timeline'
 const { timeline } = Astro.props
 ---
 
 <ul>
   {
-    timeline.map((item) => (
+    (timeline as TimelineItem[]).map((item) => (
       <TimelineCard item={item} />
     ))
   }

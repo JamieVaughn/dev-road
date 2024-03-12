@@ -9,6 +9,15 @@ export const stringDates_1 = getClassTimeline(`${year}-${month}-${day}`, ['7/29/
 export const stringDates_2 = getClassTimeline(`${2024}-${9}-${2}`, [], 2)
 export const stringDates_3 = getClassTimeline(`${2024}-${10}-${28}`, [], 3)								
 
+export type TimelineItem = {
+  date: string;
+  hours: number;
+  hw: string | null;
+  project: string | null;
+  quiz: string | null;
+  outline: string[];
+}
+
 export const timeline_1 = sectionFactory().map((i, idx) => ({
   ...i,
   date: stringDates_1[idx],

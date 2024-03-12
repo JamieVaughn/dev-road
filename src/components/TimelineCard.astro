@@ -10,7 +10,7 @@ const { item } = Astro.props;
     <h4>{item.outline.topic}</h4>
     <small>{dayjs(item.date).format('M/D/YYYY')}</small>
   </hgroup>
-  <div>{item.outline.key.split('\n').map(k => <div>{k}</div>)}</div>
+  <div>{item.outline.key.split('\n').map((k: string) => <div>{k}</div>)}</div>
   <ul class="sub-items">
     {item.quiz && <li>
         <Icon name="quiz"/> 
