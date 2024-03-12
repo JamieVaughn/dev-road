@@ -21,7 +21,8 @@ export default defineConfig({
     },
   },
   adapter: cloudflare({
-    mode: "advanced", // directory | advanced
+    mode: "directory", // directory | advanced
+    functionPerRoute: true,
   }),
   routes: {
     strategy: 'include',
