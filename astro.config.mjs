@@ -14,7 +14,7 @@ export default defineConfig({
     icon(), 
     solid(), 
   ],
-  output: "server",
+  output: "server", // "server" | "hybrid" | "static" (static is default if omitted, but fails build)
   vite: {
     build: {
       minify: true, // false for debugging with wrangler
