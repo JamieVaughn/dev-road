@@ -14,7 +14,6 @@ export default defineConfig({
     icon(), 
     solid(), 
   ],
-  output: "hybrid",
   vite: {
     build: {
       minify: true, // false for debugging with wrangler

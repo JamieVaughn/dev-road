@@ -7,7 +7,7 @@ export const onRequest = defineMiddleware((context, next) => {
   const accessToken = context.cookies.get("sb-access-token")
   const refreshToken = context.cookies.get("sb-refresh-token")
 
-  const isProtectedRoute =   context.url.pathname.includes('class') || context.url.pathname.includes('courses')
+  const isProtectedRoute = context.url.pathname.includes('class') || context.url.pathname.includes('courses')
 
   if ( isProtectedRoute && (!accessToken || !refreshToken)) {
     return Response.redirect(`${context.url.origin}/login`, 302)
