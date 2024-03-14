@@ -14,6 +14,7 @@ export default defineConfig({
     icon(), 
     solid(), 
   ],
+  output: "server",
   vite: {
     build: {
       minify: true, // false for debugging with wrangler
