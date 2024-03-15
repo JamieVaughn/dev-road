@@ -16,7 +16,7 @@ const Post = await post?.render?.();
 ---
 
 <BlogPost {...post.data}>
-	{Post ? <Post.Content /> : <p class="error">Error loading post</p>}
+	{Post ? <Post.Content /> : <p class="error">Error loading live post. Visit this article's <a href={`https://wjv.io/blog/${post.slug}/`}>alternative link.</a></p>}
 </BlogPost>
 
 <style>
