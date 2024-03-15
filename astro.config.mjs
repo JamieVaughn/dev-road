@@ -7,7 +7,7 @@ import solid from "@astrojs/solid-js";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://example.com',
+  site: 'https://monroecc.dev',
   integrations: [
     mdx(), 
     sitemap(), 
@@ -24,9 +24,9 @@ export default defineConfig({
     mode: "directory", // directory | advanced
     functionPerRoute: true,
   }),
-  routes: {
-    strategy: 'include',
-    include: ['/articles/*'], // handled by custom function
-    exclude: [], // handled by static page
-  },
+  // routes: {
+  //   strategy: 'include',
+  //   include: ['/articles/*'], // handled by custom function
+  //   exclude: [], // handled by static page
+  // },
 });

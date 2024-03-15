@@ -19,12 +19,12 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     return new Response(error.message, { status: 500 });
   }
 
-  const _profile = await supabase
-  .from('profile')
-  .insert([
-    { email },
-  ])
-  .select()
+  // const _profile = await supabase
+  // .from('profile')
+  // .insert([
+  //   { email },
+  // ])
+  // .select()
 
   return redirect("/login");
 };
