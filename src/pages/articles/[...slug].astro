@@ -1,22 +1,20 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content';
 import BlogPost from '../../layouts/BlogPost.astro';
+import { getEntry } from "astro:content";
 
-export async function getStaticPaths() {
-	const posts = await getCollection('articles');
-	return posts.map((post) => ({
-		params: { slug: post.slug },
-		props: post,
-	}));
-}
-type Props = CollectionEntry<'articles'>;
+const { slug } = Astro.params;
 
-const post = Astro.props;
-const Post = await post?.render?.();
+if (slug === undefined) throw new Error("Slug is required");
+
+const entry = await getEntry("articles", slug);
+
+if (entry === undefined) return Astro.redirect("/404");
+
+const { Content } = await entry.render();
 ---
 
-<BlogPost {...post.data}>
-	{Post ? <Post.Content /> : <p class="error">Error loading live post. Visit this article's <a href={`https://wjv.io/blog/${post.slug}/`}>alternative link.</a></p>}
+<BlogPost {...entry.data}>
+	<Content />
 </BlogPost>
 
 <style>
