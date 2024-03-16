@@ -1,157 +1,177 @@
 export const outline_section_1 = [
   {
     topic: 'HTML',
-    key: `initial survey, tools, accts, review initial email msg, bookmark tools
-    introductions: myself, age, prior career, learning path, job. TA: learning path. Students: background, goals, hobbies/interests
+    key: `initial survey, tools, accts, 
+    review initial email msg, 
+    bookmark tools
+    introductions: my prior career & background, learning path, job. 
+    TA: learning path. 
+    Students: background, goals, hobbies/interests
     html tags
     mdn docs
-    intro to stackblitz
+    intro to stackblitz/codepen
     Article code along
-    resume proj, semantic tags, accessibility, landmarks, Accessibility, ARIA roles`
+    resume proj, 
+    semantic tags, accessibility, landmarks, Accessibility, ARIA roles`
   },
   {
     topic: 'HTML',
-    key: `attributes intro & Student look-up format (have list of ~12 attrs)
-  global attrs: id, class, data-* (i.e. data-var) var name that you choose
-  Forms
-  Accessibility w/ forms
-  make a contact form
-  (mailthis.to)
-  introduce fcc & fcc hw, do first couple problems as a demo`
+    key: `attributes intro
+    Student look-up format (have list of ~12 attrs)
+    global attrs: id, class, data-* (i.e. data-<some name you choose>)
+    Forms & Accessibility w/ forms
+    make a contact form
+    introduce fcc & fcc hw, demo first few problems`
   },
   {
     topic: 'HTML',
     key: `validation
-boilerplate
-Head element
-Browser compat
-caniuse
- `},
+    boilerplate
+    Head element
+    Browser compat
+    caniuse.com`
+  },
   {
     topic: 'CSS',
     key: `selectors
- css diner
- basic rules`},
+  css diner
+  basic rules`
+  },
   {
     topic: 'CSS',
     key: `more rules
- cascade
- variables & scoping them to classes
- functions`},
+    cascade
+    variables & scoping them to classes
+    functions`
+  },
   {
     topic: 'CSS',
     key: `design system
-  pattern lib starter (design system proj)
-  pattern lib example
-  and codealong to start it
-  CSS Architecture: BEM, SMACSS
-  keyframes animations, css sprites, backgroung-image`},
+    pattern lib starter (design system proj)
+    pattern lib example
+    pattern lib codealong (starting point)
+    CSS Architecture: @layers, nesting, utility classes
+    keyframes animations, css sprites, background-image`
+  },
   {
     topic: 'Render Pipeline',
     key: `the layout algorithm
-  stacking context
-  composite layers
-  media objects
-  make position card`},
+    stacking context
+    composite layers
+    media objects
+    make position card`
+  },
   {
     topic: 'Media Queries',
-    key: `Continue stacking context, document flow
-  If time start flexbox
-  Add media Queries to positioned media object to change from horiz -> vert
-  Basic @media: width, height, hover, orientation
-  Other @media: aspect-ratio, pointer, prefers-color-scheme, prefers-reduced-motion, resolution, scripting, color-gamut`
+    key: `Continue stacking context, 
+    document flow
+    Add media Queries to positioned media object to change from horiz -> vert
+    Basic @media: width, height, hover, orientation
+    Other @media: aspect-ratio, pointer, prefers-color-scheme, prefers-reduced-motion, resolution, scripting, color-gamut
+    flexbox intro (possibly)`
   },
   {
     topic: 'Flexbox Basics',
     key: `basic flexbox: display, direction, justify, align, wrap
-flexbox card
-alignment
-axes & direction
-wrap`},
+    flexbox card
+    alignment
+    axes & direction
+    wrap`
+  },
   {
     topic: 'Adv Flexbox',
     key: `flex navbar
-and side nav bar (app shell) & grid & contact form
-both w/ @media
-flex games
-vertical flex card (price options)`},
+    flexbox side nav bar 
+    flexbox for app shell & grid & contact form
+    both w/ @media
+    flex games
+    vertical flex card (price options)`
+  },
   {
     topic: 'Grid basics',
     key: `grid-column
-grid-row
-make grid card
-implicit tracks
-Grid vs Flex
-grid + flex
-make calculator`},
+    grid-row
+    make grid card
+    implicit tracks
+    Grid vs Flex
+    grid + flex
+    make calculator`
+  },
   {
     topic: 'Grid Utils',
     key: `functions
-fluid units
-autofill & autofit
-grid-auto-flow/*: dense
-grid inspector tools
-flex vs grid image galleries
-overlap grid items`},
+    fluid units
+    autofill & autofit
+    grid-auto-flow/*: dense
+    grid inspector tools
+    flex vs grid image galleries
+    overlap grid items`
+  },
   {
     topic: 'Grid Template',
     key: `grid template areas
-alignment
-layout variants overview
-grid holy grail codealong
-grid games
-Full bleed image with cs grid
-complex form with css grid`},
+    alignment
+    layout variants overview
+    grid holy grail codealong
+    grid games
+    Full bleed image with cs grid
+    complex form with css grid`
+  },
   {
     topic: 'VSCode',
-    key: `VSCode
-Extensions
-emmet code along
-intellisense
-Menus & goto defn`},
+    key: `VSCode & Extensions
+    emmet code along
+    intellisense
+    Menus & goto defn click command`
+  },
   {
     topic: 'Github & Github Pages',
     key: `Github
-source control
-make profile Readme & markdown
-make a Repo
-Github Pages
-make pages portfolio
-Settings menus`},
+    source control
+    learn markdown
+    make profile Readme
+    make a Repo
+    Github Pages
+    make pages portfolio
+    Settings menus`
+  },
   {
     topic: 'Code Portfolio Page',
     key: `Excalidraw?
-mock up a design in Excalidraw? Wireframing
-make grid version of calculator`},
+    mock up a design in Excalidraw? Wireframing
+    make grid version of calculator`
+  },
   {
     topic: 'Images Slides',
     key: `responsive img
-picture
-source
-srcset & sizes
-Multi image size code along for responsiveness
-lighthouse audit tool ( 3 site comparison)
-throttling connection`},
+    picture
+    source
+    srcset & sizes
+    Multi image size code along for responsiveness
+    lighthouse audit tool ( 3 site comparison)
+    throttling connection`
+  },
   {
     topic: 'SVG',
     key: `viewbox
-shapes
-attributes
-SMIL animation`},
+    shapes
+    attributes
+    animate font
+    make icons, filters, spinners, graph
+    SMIL animation`
+  },
   {
-    topic: 'HustBee Codealong',
-    key: `code a full website
-from scratch
-animate font
-make icons
-make filters, make spinners, make graph`},
+    topic: 'Full Website Codealong',
+    key: `code Hustbee Mock from scratch`
+  },
   {
     topic: 'Career notes',
     key: `linkedin
-resume tips
-personal projects
-job searching
-portfolio workshopping`},
+    resume tips
+    personal projects
+    job searching
+    portfolio workshopping`
+  },
   {
     topic: 'Extras',
     key: `New tab proj

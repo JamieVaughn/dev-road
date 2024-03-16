@@ -10,7 +10,7 @@ const { item } = Astro.props;
     <h4>{item.outline.topic}</h4>
     <small>{dayjs(item.date).format('M/D/YYYY')}</small>
   </hgroup>
-  <div>{item.outline.key.split('\n').map((k: string) => <div>{k}</div>)}</div>
+  <ol class="grid">{item.outline.key.split('\n').filter(i => Boolean(i.trim())).map((k: string) => <li class="grid-li">{k}</li>)}</ol>
   <ul class="sub-items">
     {item.quiz && <li>
         <Icon name="quiz"/> 
@@ -42,10 +42,25 @@ const { item } = Astro.props;
     margin-left: auto;
     color: var(--gray-4);
   }
+  ol.grid {
+    display: grid;
+    gap: 16px 24px;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, 250px);;
+  }
+  ol.grid > li {
+    list-style: decimal;
+    text-transform: capitalize;
+  }
+  ol.grid > li::marker {
+    font-size: 0.85rem;
+    color: var(--gray-4);
+  }
   ul.sub-items {
     text-transform: capitalize;
   }
-  li {
+  li:not(.grid-li) {
     list-style: none;
     border: 1px solid #000;
     padding: 8px;
