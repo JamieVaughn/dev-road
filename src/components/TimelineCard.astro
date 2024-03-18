@@ -1,34 +1,49 @@
 ---
-import { Icon } from 'astro-icon/components'
-import dayjs from 'dayjs'
+import { Icon } from "astro-icon/components";
+import dayjs from "dayjs";
 const { item } = Astro.props;
 ---
-
 
 <li>
   <hgroup>
     <h4>{item.outline.topic}</h4>
-    <small>{dayjs(item.date).format('M/D/YYYY')}</small>
+    <small>{dayjs(item.date).format("M/D/YYYY")}</small>
   </hgroup>
-  <ol class="grid">{item.outline.key.split('\n').filter((i: string) => Boolean(i.trim())).map((k: string) => <li class="grid-li">{k}</li>)}</ol>
+  <ol class="grid">
+    {
+      item.outline.key
+        .split("\n")
+        .filter((i: string) => Boolean(i.trim()))
+        .map((k: string) => <li class="grid-li">{k}</li>)
+    }
+  </ol>
   <ul class="sub-items">
-    {item.quiz && <li>
-        <Icon name="quiz"/> 
-        <span>Quiz: </span>
-        <span>{item.quiz}</span>
-      </li>
+    {
+      item.quiz && (
+        <li>
+          <Icon name="quiz" />
+          <span>Quiz: </span>
+          <span>{item.quiz}</span>
+        </li>
+      )
     }
-    {item.hw && <li>
-        <Icon name="homework"/> 
-        <span>Homework: </span>
-        <span>{item.hw}</span>
-      </li>
+    {
+      item.hw && (
+        <li>
+          <Icon name="homework" />
+          <span>Homework: </span>
+          <span>{item.hw}</span>
+        </li>
+      )
     }
-    {item.project && <li>
-        <Icon name="project"/> 
-        <span>Project: </span>
-        <span>{item.project}</span>
-      </li>
+    {
+      item.project && (
+        <li>
+          <Icon name="project" />
+          <span>Project: </span>
+          <span>{item.project}</span>
+        </li>
+      )
     }
   </ul>
 </li>
@@ -47,11 +62,12 @@ const { item } = Astro.props;
     gap: 16px 24px;
     align-items: center;
     justify-content: center;
-    grid-template-columns: repeat(auto-fill, 250px);;
+    grid-template-columns: repeat(auto-fill, 250px);
   }
   ol.grid > li {
     list-style: decimal;
     text-transform: capitalize;
+    margin: 0;
   }
   ol.grid > li::marker {
     font-size: 0.85rem;
@@ -59,6 +75,7 @@ const { item } = Astro.props;
   }
   ul.sub-items {
     text-transform: capitalize;
+    padding: 0 20px;
   }
   li:not(.grid-li) {
     list-style: none;
@@ -70,5 +87,19 @@ const { item } = Astro.props;
   html[data-theme="light"] li {
     border-color: #fff;
     background-color: var(--gray-1);
+  }
+  html[data-theme="light"] ul.sub-items li {
+    border-color: #fff;
+    background-color: white;
+  }
+  html[data-theme="dark"] ul.sub-items li {
+    background-color: var(--extra-dark);
+  }
+  html[data-theme="dark"] ul.sub-items li svg {
+    background: white;
+    border-radius: 8px;
+    padding: 2px;
+    height: 24px;
+    width: 24px;
   }
 </style>

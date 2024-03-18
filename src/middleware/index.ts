@@ -1,4 +1,4 @@
-import { defineMiddleware } from "astro:middleware";
+import { defineMiddleware } from "astro:middleware"
 
 export const onRequest = defineMiddleware((context, next) => {
   // update type declaration in env.d.ts to type `locals` object
@@ -9,8 +9,8 @@ export const onRequest = defineMiddleware((context, next) => {
 
   const isProtectedRoute = context.url.pathname.includes('class') || context.url.pathname.includes('courses')
 
-  if ( isProtectedRoute && (!accessToken || !refreshToken)) {
+  if (isProtectedRoute && (!accessToken || !refreshToken)) {
     return Response.redirect(`${context.url.origin}/login`, 302)
   }
   return next()
-});
+})

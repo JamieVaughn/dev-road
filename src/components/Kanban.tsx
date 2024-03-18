@@ -1,45 +1,45 @@
-import { For, createSignal } from "solid-js";
-import { hw_1, hw_2 } from "../data/hw";
-import { hw_3 } from "../data/hw_old";
-import { projects_1, projects_2, projects_3 } from "../data/projects";
+import { For, createSignal } from 'solid-js'
+import { hw_1, hw_2 } from '../data/hw'
+import { hw_3 } from '../data/hw_old'
+import { projects_1, projects_2, projects_3 } from '../data/projects'
 import projectIcon from '../icons/project.svg'
 import homeworkIcon from '../icons/homework.svg'
 
 type KanbanTypes = {
-  hw?: number[];
-  projects?: number[];
-};
+  hw?: number[]
+  projects?: number[]
+}
 
 const hw1 = hw_1.filter((h): h is string => !!h)
 const hw2 = hw_2.filter((h): h is string => !!h)
 const hw3 = hw_3.filter((h): h is string => !!h)
 
-const hws: string[][] = [hw1, hw2, hw3];
+const hws: string[][] = [hw1, hw2, hw3]
 
 const proj1 = projects_1.filter((h): h is string => !!h)
 const proj2 = projects_2.filter((h): h is string => !!h)
 const proj3 = projects_3.filter((h): h is string => !!h)
 
-const projs: string[][] = [proj1, proj2, proj3];
+const projs: string[][] = [proj1, proj2, proj3]
 
 export function Kanban(props: KanbanTypes) {
   const [section, setSection] = createSignal(1)
-  const hw_todo = hws[section() - 1];
-  const hw_doing: string[] = [];
-  const hw_review: string[] = [];
-  const hw_done: string[] = [];
+  const hw_todo = hws[section() - 1]
+  const hw_doing: string[] = []
+  const hw_review: string[] = []
+  const hw_done: string[] = []
 
-  const proj_todo = projs[section() - 1];
-  const proj_doing: string[] = [];
-  const proj_review: string[] = [];
-  const proj_done: string[] = [];
+  const proj_todo = projs[section() - 1]
+  const proj_doing: string[] = []
+  const proj_review: string[] = []
+  const proj_done: string[] = []
 
   const lanes = [
-    { title: "Todo", hwk: hw_todo, prj: proj_todo },
-    { title: "Doing", hwk: hw_doing, prj: proj_doing },
-    { title: "In Review", hwk: hw_review, prj: proj_review },
-    { title: "Done", hwk: hw_done, prj: proj_done },
-  ];
+    { title: 'Todo', hwk: hw_todo, prj: proj_todo },
+    { title: 'Doing', hwk: hw_doing, prj: proj_doing },
+    { title: 'In Review', hwk: hw_review, prj: proj_review },
+    { title: 'Done', hwk: hw_done, prj: proj_done },
+  ]
 
   return (
     <div class="board">
@@ -49,7 +49,7 @@ export function Kanban(props: KanbanTypes) {
             <div
               id={`${title.toLowerCase()}-lane`}
               class="lane"
-              onDragOver={e => laneListener(e, title)}
+              onDragOver={(e) => laneListener(e, title)}
               onDragLeave={laneCleanup}
               onDragEnd={laneCleanup}
             >
@@ -62,7 +62,7 @@ export function Kanban(props: KanbanTypes) {
       </div>
       <style>{css}</style>
     </div>
-  );
+  )
 }
 
 const css = `
@@ -150,47 +150,69 @@ const css = `
   background-color: linen;
   outline: 2px dotted white;
 }
-`;
+html[data-theme="dark"] .board * {
+  color: var(--extra-dark);
+}
+`
 
-const allowSortDrop = true;
+const allowSortDrop = true
 
 function getDragAfterElement(mouseY: number, container?: HTMLElement) {
-  if(!container) return null;
+  if (!container) return null
   const draggableElements = [
-    ...container.querySelectorAll(".task:not(.dragging)"),
-  ];
+    ...container.querySelectorAll('.task:not(.dragging)'),
+  ]
   return draggableElements.reduce(
     (closest: any, child: any) => {
-      const box = child.getBoundingClientRect();
-      const offset = mouseY - box.top - box.height / 2;
+      const box = child.getBoundingClientRect()
+      const offset = mouseY - box.top - box.height / 2
       return offset < 0 && offset > closest.offset
         ? { offset: offset, element: child }
-        : closest;
+        : closest
     },
     { offset: Number.NEGATIVE_INFINITY }
-  ).element;
+  ).element
 }
 const laneCleanup = (e: DragEvent) => {
-  e?.stopPropagation();
-  document.querySelectorAll('.lane').forEach((lane) => lane.classList.remove("dragover"));
-};
+  e?.stopPropagation()
+  document
+    .querySelectorAll('.lane')
+    .forEach((lane) => lane.classList.remove('dragover'))
+}
 const laneListener = (e: DragEvent, title: string) => {
-  e.preventDefault();
-  const lane = document.getElementById(`${title.toLowerCase()}-lane`) ?? undefined;
-  lane?.classList?.add("dragover");
-  const afterElement = getDragAfterElement(e.clientY, lane);
-  const draggable = document.querySelector(".dragging");
+  e.preventDefault()
+  const lane =
+    document.getElementById(`${title.toLowerCase()}-lane`) ?? undefined
+  lane?.classList?.add('dragover')
+  const afterElement = getDragAfterElement(e.clientY, lane)
+  const draggable = document.querySelector('.dragging')
   allowSortDrop && afterElement
     ? lane?.insertBefore(draggable!, afterElement)
-    : lane?.appendChild(draggable!);
-};
-const tackComp = (icon: 'hw' | 'proj') => (task: string) => (
-  <p
-    class={`task ${icon}`}
-    draggable="true"
-    onDragStart={(e) => e.target.classList.add("dragging")}
-    onDragEnd={(e) => e.target.classList.remove("dragging")}
-  >
-    <img src={icon === 'hw' ? homeworkIcon.src : projectIcon.src} /> {task}
-  </p>
-);
+    : lane?.appendChild(draggable!)
+}
+const tackComp = (icon: 'hw' | 'proj') => (task: string) =>
+  (
+    <p
+      class={`task ${icon}`}
+      draggable="true"
+      onDragStart={(e) => e.target.classList.add('dragging')}
+      onDragEnd={(e) => e.target.classList.remove('dragging')}
+    >
+      <img src={icon === 'hw' ? homeworkIcon.src : projectIcon.src} /> {task}
+      {icon === 'proj' ? (
+        <>
+          <br />
+          <label class="hidden sr-only" for={`project-${task}`}>
+            Project Link:
+          </label>
+          <input
+            type="text"
+            placeholder="Project Link"
+            id={`project-${task}`}
+            name={`project-${task}`}
+            style="padding: 4px; margin-top: 4px; height: auto"
+          />
+        </>
+      ) : null}
+    </p>
+  )

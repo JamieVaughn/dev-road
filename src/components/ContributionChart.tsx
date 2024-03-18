@@ -1,49 +1,54 @@
-import { For } from "solid-js";
-import dayjs from "dayjs";
-import dayOfYear from "dayjs/plugin/dayOfYear";
-import isoWeeksInYear from "dayjs/plugin/isoWeeksInYear";
-import isLeapYear from "dayjs/plugin/isLeapYear";
-import isoWeek from "dayjs/plugin/isoWeek";
+import { For } from 'solid-js'
+import dayjs from 'dayjs'
+import dayOfYear from 'dayjs/plugin/dayOfYear'
+import isoWeeksInYear from 'dayjs/plugin/isoWeeksInYear'
+import isLeapYear from 'dayjs/plugin/isLeapYear'
+import isoWeek from 'dayjs/plugin/isoWeek'
 
-dayjs.extend(dayOfYear);
-dayjs.extend(isoWeeksInYear);
-dayjs.extend(isoWeek);
-dayjs.extend(isLeapYear);
-const starts: any = {};
+dayjs.extend(dayOfYear)
+dayjs.extend(isoWeeksInYear)
+dayjs.extend(isoWeek)
+dayjs.extend(isLeapYear)
+const starts: any = {}
 Array.from({ length: 12 }).map((_, i) => {
-  const twoDigit = String(i).length === 1 ? `0${i + 1}` : i + 1;
-  starts[i + 1] = dayjs(`${new Date().getFullYear()}-${twoDigit}-01`);
-});
-const twelveMonths = Array.from({ length: 12 }).map((_, i) => i + 1);
+  const twoDigit = String(i).length === 1 ? `0${i + 1}` : i + 1
+  starts[i + 1] = dayjs(`${new Date().getFullYear()}-${twoDigit}-01`)
+})
+const twelveMonths = Array.from({ length: 12 }).map((_, i) => i + 1)
 
 export function ContributionChart(props: { startDate?: string }) {
   const year = new Date().getFullYear()
-  const start = dayjs(`${year}-01-01`);
-  const startWeekDay = start.isoWeekday();
+  const start = dayjs(`${year}-01-01`)
+  const startWeekDay = start.isoWeekday()
 
   return (
     <div class="activity-chart">
       <time class="year">{year}</time>
-      <For each={[null, "M", null, "W", null, "F", null]}>
+      <For each={[null, 'M', null, 'W', null, 'F', null]}>
         {(day, i) => (
           <time style={`grid-row-start: ${i() + 2}`} class="weekday">
-            {day ?? ""}
+            {day ?? ''}
           </time>
         )}
       </For>
       <For each={twelveMonths}>
         {(month) => {
-          const offset = month === 7 ? 3 : 5 - (31 - starts[month].daysInMonth())
+          const offset =
+            month === 7 ? 3 : 5 - (31 - starts[month].daysInMonth())
           return (
-          <time
-            class="month"
-            style={`grid-column-end: span ${offset};`}>
-            {starts[month]?.format("MMM")}
-          </time>
-        )}}
+            <time class="month" style={`grid-column-end: span ${offset};`}>
+              {starts[month]?.format('MMM')}
+            </time>
+          )
+        }}
       </For>
       <For each={Array.from({ length: startWeekDay })}>
-        {_ => <time class="day placeholder" style="background-color: transparent;" />}
+        {(_) => (
+          <time
+            class="day placeholder"
+            style="background-color: transparent;"
+          />
+        )}
       </For>
       <For each={twelveMonths}>
         {(m) => (
@@ -56,20 +61,20 @@ export function ContributionChart(props: { startDate?: string }) {
               return (
                 <time
                   class={`day`}
-                  style={`background-color: ${m % 2 ? "#ddd" : "#f1f1f1"};`}
+                  style={`background-color: ${m % 2 ? '#ddd' : '#f1f1f1'};`}
                 >
                   <span class="tooltip">
-                    {starts[m].add(day, "day").format("YY-MM-DD")}
+                    {starts[m].add(day, 'day').format('YY-MM-DD')}
                   </span>
                 </time>
-              );
+              )
             }}
           </For>
         )}
       </For>
       <style>{css}</style>
     </div>
-  );
+  )
 }
 
 const css = `
@@ -171,4 +176,4 @@ time.day:hover .tooltip {
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
   border-top: 11px solid #333;
-}`;
+}`

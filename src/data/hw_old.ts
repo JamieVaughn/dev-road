@@ -15,7 +15,7 @@ export const hw_1 = [
   'CSS Grid',
   null,
   'FCC Proj Checkup',
-  null,	null,	null,	null,	null,
+  null, null, null, null, null,
 ]
 
 export const hw_2 = [
@@ -34,8 +34,8 @@ export const hw_2 = [
   null,
   'ES6',
   null,
-  'Intermediate Algorithm Scripting',	
-  null,	null,	null,	null,
+  'Intermediate Algorithm Scripting',
+  null, null, null, null,
 ]
 
 export const hw_3 = [

@@ -5,17 +5,17 @@ import { hw_1, hw_2, hw_3 } from "./hw"
 import { quizzes_1, quizzes_2, quizzes_3 } from "./quizzes"
 import { projects_1, projects_2, projects_3 } from "./projects"
 
-export const stringDates_1 = getClassTimeline(`${year}-${month}-${day}`, ['7/29/2024', '7/31/2024','8/1/2024'], 1)
+export const stringDates_1 = getClassTimeline(`${year}-${month}-${day}`, ['7/29/2024', '7/31/2024', '8/1/2024'], 1)
 export const stringDates_2 = getClassTimeline(`${2024}-${9}-${2}`, [], 2)
-export const stringDates_3 = getClassTimeline(`${2024}-${10}-${28}`, [], 3)								
+export const stringDates_3 = getClassTimeline(`${2024}-${10}-${28}`, [], 3)
 
 export type TimelineItem = {
-  date: string;
-  hours: number;
-  hw: string | null;
-  project: string | null;
-  quiz: string | null;
-  outline: string[];
+  date: string
+  hours: number
+  hw: string | null
+  project: string | null
+  quiz: string | null
+  outline: string[]
 }
 
 export const timeline_1 = sectionFactory().map((i, idx) => ({
@@ -49,8 +49,8 @@ export const timeline_3 = sectionFactory().map((i, idx) => ({
 @params startDate: string, skipDates: Array<string>, section: number
 */
 function getClassTimeline(
-  startDate: string = STARTDATE.toISOString(), 
-  skipDates: Array<string>, 
+  startDate: string = STARTDATE.toISOString(),
+  skipDates: Array<string>,
   section: number = 1
 ): string[] {
   // const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
@@ -65,10 +65,10 @@ function getClassTimeline(
     return date.toISOString().split('T')[0]
   }
   let i = 0
-  while(sectionClassDates.length < 20 && i < 27) {
-    sectionClassDates.push(translateDateObj(0+(i*7)))
-    sectionClassDates.push(translateDateObj(2+(i*7)))
-    sectionClassDates.push(translateDateObj(3+(i*7)))
+  while (sectionClassDates.length < 20 && i < 27) {
+    sectionClassDates.push(translateDateObj(0 + (i * 7)))
+    sectionClassDates.push(translateDateObj(2 + (i * 7)))
+    sectionClassDates.push(translateDateObj(3 + (i * 7)))
     sectionClassDates = sectionClassDates.filter(day => {
       return !skipDates.some(skipDate => dayjs(day).isSame(dayjs(skipDate)))
     })
@@ -81,7 +81,7 @@ function getClassTimeline(
 /*
 @params none
 */
-function sectionFactory () {
+function sectionFactory() {
   return (Array.from({ length: 20 })).map(() => ({
     date: '',
     hours: 3,
