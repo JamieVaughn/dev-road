@@ -22,11 +22,11 @@ export function ContributionChart(props: { startDate?: string }) {
   const startWeekDay = start.isoWeekday()
 
   return (
-    <div class="activity-chart">
-      <time class="year">{year}</time>
+    <div class='activity-chart'>
+      <time class='year'>{year}</time>
       <For each={[null, 'M', null, 'W', null, 'F', null]}>
         {(day, i) => (
-          <time style={`grid-row-start: ${i() + 2}`} class="weekday">
+          <time style={`grid-row-start: ${i() + 2}`} class='weekday'>
             {day ?? ''}
           </time>
         )}
@@ -36,7 +36,7 @@ export function ContributionChart(props: { startDate?: string }) {
           const offset =
             month === 7 ? 3 : 5 - (31 - starts[month].daysInMonth())
           return (
-            <time class="month" style={`grid-column-end: span ${offset};`}>
+            <time class='month' style={`grid-column-end: span ${offset};`}>
               {starts[month]?.format('MMM')}
             </time>
           )
@@ -45,8 +45,8 @@ export function ContributionChart(props: { startDate?: string }) {
       <For each={Array.from({ length: startWeekDay })}>
         {(_) => (
           <time
-            class="day placeholder"
-            style="background-color: transparent;"
+            class='day placeholder'
+            style='background-color: transparent;'
           />
         )}
       </For>
@@ -63,7 +63,7 @@ export function ContributionChart(props: { startDate?: string }) {
                   class={`day`}
                   style={`background-color: ${m % 2 ? '#ddd' : '#f1f1f1'};`}
                 >
-                  <span class="tooltip">
+                  <span class='tooltip'>
                     {starts[m].add(day, 'day').format('YY-MM-DD')}
                   </span>
                 </time>

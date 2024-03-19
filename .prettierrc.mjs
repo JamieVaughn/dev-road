@@ -2,16 +2,17 @@
 /** @type {import("prettier").Config} */
 export default {
   plugins: ['prettier-plugin-astro'],
+  files: ['src/**/*.[jt]s?(x)'],
   overrides: [
     {
-      files: ['*.astro', '*.ts', '*.tsx', '*.js', '*.mjs'],
+      files: ['*.astro'],
       options: {
         parser: 'astro',
-        semi: false,
-        singleQuote: true,
-        trailingComma: 'off',
-        astroAllowShorthand: true,
       },
     },
   ],
+  singleQuote: true,
+  semi: false,
+  trailingComma: 'always-multiline',
+  astroAllowShorthand: true,
 };

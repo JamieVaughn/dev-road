@@ -42,18 +42,18 @@ export function Kanban(props: KanbanTypes) {
   ]
 
   return (
-    <div class="board">
-      <div class="lanes">
+    <div class='board'>
+      <div class='lanes'>
         <For each={lanes}>
           {({ title, hwk, prj }) => (
             <div
               id={`${title.toLowerCase()}-lane`}
-              class="lane"
+              class='lane'
               onDragOver={(e) => laneListener(e, title)}
               onDragLeave={laneCleanup}
               onDragEnd={laneCleanup}
             >
-              <h2 class="heading">{title}</h2>
+              <h2 class='heading'>{title}</h2>
               <For each={hwk}>{tackComp('hw')}</For>
               <For each={prj}>{tackComp('proj')}</For>
             </div>
@@ -194,7 +194,7 @@ const tackComp = (icon: 'hw' | 'proj') => (task: string) =>
   (
     <p
       class={`task ${icon}`}
-      draggable="true"
+      draggable='true'
       onDragStart={(e) => e.target.classList.add('dragging')}
       onDragEnd={(e) => e.target.classList.remove('dragging')}
     >
@@ -202,15 +202,15 @@ const tackComp = (icon: 'hw' | 'proj') => (task: string) =>
       {icon === 'proj' ? (
         <>
           <br />
-          <label class="hidden sr-only" for={`project-${task}`}>
+          <label class='hidden sr-only' for={`project-${task}`}>
             Project Link:
           </label>
           <input
-            type="text"
-            placeholder="Project Link"
+            type='text'
+            placeholder='Project Link'
             id={`project-${task}`}
             name={`project-${task}`}
-            style="padding: 4px; margin-top: 4px; height: auto"
+            style='padding: 4px; margin-top: 4px; height: auto'
           />
         </>
       ) : null}

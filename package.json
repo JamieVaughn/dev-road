@@ -11,7 +11,7 @@
     "astro": "astro",
     "tsc": "tsc --noEmit",
     "lint": "eslint --fix",
-    "format": "prettier --write 'src/**/*.{ts,tsx,js,jsx,json,astro}'"
+    "format": "prettier --write src --single-quote --trailing-comma es5 --no-semi --jsx-single-quote"
   },
   "dependencies": {
     "@astrojs/check": "^0.4.1",

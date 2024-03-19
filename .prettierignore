@@ -1,1 +1,6 @@
-rss.xml.js
+*.css
+*.md
+*.mdx
+*.yaml
+*.d.ts
+*.xml.js

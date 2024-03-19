@@ -96,20 +96,20 @@ export function Calendar() {
   }, [selectedDate])
 
   return (
-    <div class="month">
-      <header class="month-header">
+    <div class='month'>
+      <header class='month-header'>
         <h1
-          class="calendar_month_header_selected_month"
-          style="color: var(--gray-8);"
+          class='calendar_month_header_selected_month'
+          style='color: var(--gray-8);'
         >
           {selectedDate().format('MMMM YYYY')}
         </h1>
-        <section class="month-header-buttons">
+        <section class='month-header-buttons'>
           <button onClick={() => panMonth('subtract')}> ← </button>
           <button
-            class="ghost"
+            class='ghost'
             onClick={() => panMonth()}
-            style="color: var(--gray-8);"
+            style='color: var(--gray-8);'
           >
             Today
           </button>
@@ -117,11 +117,11 @@ export function Calendar() {
         </section>
       </header>
 
-      <ol class="day-of-week olist">
+      <ol class='day-of-week olist'>
         <For each={WEEKDAYS}>{(d) => <li>{d}</li>}</For>
       </ol>
 
-      <ol class="days-grid olist">
+      <ol class='days-grid olist'>
         <For each={days()}>
           {(d, i) => {
             const timelineItem = fullTimeline.find(
@@ -140,11 +140,11 @@ export function Calendar() {
               >
                 <time datetime={d.date}>{d.dayOfMonth}</time>
                 {d.isCurrentMonth && (
-                  <div class="deliverables">
-                    <div style="direction: rtl; text-indent: 24px;">
+                  <div class='deliverables'>
+                    <div style='direction: rtl; text-indent: 24px;'>
                       {timelineItem?.outline?.topic}
                     </div>
-                    <ol class="sub-items">
+                    <ol class='sub-items'>
                       {timelineItem?.quiz && (
                         <li>
                           <span>Quiz:</span>

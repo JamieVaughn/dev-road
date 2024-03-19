@@ -145,21 +145,21 @@ export function SyllabusTable() {
   })
 
   return (
-    <table role="grid">
+    <table role='grid'>
       <thead>
         <tr>
-          <th scope="col" style="min-width: fit-content">
-            <span style="margin-top: 16px">Topic</span>
+          <th scope='col' style='min-width: fit-content'>
+            <span style='margin-top: 16px'>Topic</span>
           </th>
-          <th scope="col" style="min-width: fit-content">
-            <span style="margin-top: 16px">Project</span>
+          <th scope='col' style='min-width: fit-content'>
+            <span style='margin-top: 16px'>Project</span>
           </th>
-          <th style="display: flex; justify-content: center; align-items: center; gap: 1em; width: 225px;">
+          <th style='display: flex; justify-content: center; align-items: center; gap: 1em; width: 225px;'>
             <span>Level</span>
             <SelectMenu level={level} setLevel={setLevel} />
           </th>
           <th>
-            <span style="margin-top: 16px">Hours</span>
+            <span style='margin-top: 16px'>Hours</span>
           </th>
         </tr>
       </thead>
@@ -169,7 +169,7 @@ export function SyllabusTable() {
             <tr>
               <td>{row.topic}</td>
               <td>{row.project}</td>
-              <td style="text-align: center">{row.level}</td>
+              <td style='text-align: center'>{row.level}</td>
               <td>{row.hours}</td>
             </tr>
           )}
@@ -177,7 +177,7 @@ export function SyllabusTable() {
         <tr>
           <td></td>
           <td></td>
-          <td style="text-align: right">Total hours in Level {level()}:</td>
+          <td style='text-align: right'>Total hours in Level {level()}:</td>
           <td>{total()}</td>
         </tr>
       </tbody>
@@ -185,40 +185,40 @@ export function SyllabusTable() {
         <tr>
           <td></td>
           <td></td>
-          <td style="display: flex; gap: 8px;">
+          <td style='display: flex; gap: 8px;'>
             <button
-              class="ghost slim"
+              class='ghost slim'
               disabled={level() === 1}
               onclick={() => setLevel(level() <= 1 ? 1 : level() - 1)}
             >
               ‹
             </button>
             <button
-              class="ghost slim"
-              style="padding: 1px"
+              class='ghost slim'
+              style='padding: 1px'
               disabled={level() === 1}
               onclick={() => setLevel(1)}
             >
               1
             </button>
             <button
-              class="ghost slim"
-              style="padding: 1px"
+              class='ghost slim'
+              style='padding: 1px'
               disabled={level() === 2}
               onclick={() => setLevel(2)}
             >
               2
             </button>
             <button
-              class="ghost slim"
-              style="padding: 1px"
+              class='ghost slim'
+              style='padding: 1px'
               disabled={level() === 3}
               onclick={() => setLevel(3)}
             >
               3
             </button>
             <button
-              class="ghost slim"
+              class='ghost slim'
               disabled={level() === 3}
               onclick={() => setLevel(level() >= 3 ? 3 : level() + 1)}
             >
