@@ -3,24 +3,34 @@
     "browser": true,
     "es2021": true
   },
-  "extends": "standard-with-typescript",
+  "extends": [
+    "plugin:astro/recommended"
+  ],
+  "parser": "astro-eslint-parser",
   "parserOptions": {
+    "parser": "@typescript-eslint/parser",
     "ecmaVersion": "latest",
-    "sourceType": "module"
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "extraFileExtensions": [".astro"]
   },
   "rules": {},
   "overrides": [
     {
       "files": [
-        "src/**/*.js",
-        "src/**/*.ts",
-        "src/**/*.tsx",
-        "src/**/*.jsx",
+        "src/**/*.[jt]s?(x)",
         "src/**/*.astro"
       ],
       "rules": {
         "quotes": [2, "single"],
-        "no-unused-vars": "off"
+        "no-unused-vars": "off",
+        "no-console": "error",
+        "comma-dangle": ["off" ,"always-multiline"],
+        "semi": ["warn", "never"],
+        "no-spaced-func": "error",
+        "typescript-eslint/strict-boolean-expressions": "off"
       }
     }
   ]

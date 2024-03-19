@@ -4,11 +4,13 @@ export default {
   plugins: ['prettier-plugin-astro'],
   overrides: [
     {
-      files: ['*.astro', '*.ts', '*.tsx', '*.js', '*mjs'],
+      files: ['*.astro', '*.ts', '*.tsx', '*.js', '*.mjs'],
       options: {
         parser: 'astro',
         semi: false,
         singleQuote: true,
+        trailingComma: 'off',
+        astroAllowShorthand: true,
       },
     },
   ],

@@ -1,11 +1,19 @@
-import dayjs, { type Dayjs } from "dayjs"
-import { year, month, day, STARTDATE } from "./STARTDATE"
-import { outline_section_1, outline_section_2, outline_section_3 } from "./outline"
-import { hw_1, hw_2, hw_3 } from "./hw"
-import { quizzes_1, quizzes_2, quizzes_3 } from "./quizzes"
-import { projects_1, projects_2, projects_3 } from "./projects"
+import dayjs, { type Dayjs } from 'dayjs'
+import { year, month, day, STARTDATE } from './STARTDATE'
+import {
+  outline_section_1,
+  outline_section_2,
+  outline_section_3,
+} from './outline'
+import { hw_1, hw_2, hw_3 } from './hw'
+import { quizzes_1, quizzes_2, quizzes_3 } from './quizzes'
+import { projects_1, projects_2, projects_3 } from './projects'
 
-export const stringDates_1 = getClassTimeline(`${year}-${month}-${day}`, ['7/29/2024', '7/31/2024', '8/1/2024'], 1)
+export const stringDates_1 = getClassTimeline(
+  `${year}-${month}-${day}`,
+  ['7/29/2024', '7/31/2024', '8/1/2024'],
+  1
+)
 export const stringDates_2 = getClassTimeline(`${2024}-${9}-${2}`, [], 2)
 export const stringDates_3 = getClassTimeline(`${2024}-${10}-${28}`, [], 3)
 
@@ -57,7 +65,6 @@ function getClassTimeline(
   let sectionClassDates: Dayjs[] = []
   const startDateObj = new Date(startDate)
 
-
   const translateDateObj = (num: number): Dayjs => {
     return dayjs(startDateObj).add(num, 'day')
   }
@@ -66,28 +73,28 @@ function getClassTimeline(
   }
   let i = 0
   while (sectionClassDates.length < 20 && i < 27) {
-    sectionClassDates.push(translateDateObj(0 + (i * 7)))
-    sectionClassDates.push(translateDateObj(2 + (i * 7)))
-    sectionClassDates.push(translateDateObj(3 + (i * 7)))
-    sectionClassDates = sectionClassDates.filter(day => {
-      return !skipDates.some(skipDate => dayjs(day).isSame(dayjs(skipDate)))
+    sectionClassDates.push(translateDateObj(0 + i * 7))
+    sectionClassDates.push(translateDateObj(2 + i * 7))
+    sectionClassDates.push(translateDateObj(3 + i * 7))
+    sectionClassDates = sectionClassDates.filter((day) => {
+      return !skipDates.some((skipDate) => dayjs(day).isSame(dayjs(skipDate)))
     })
     i++
   }
 
-  return sectionClassDates.map(date => formatDayString(date)).slice(0, 20)
+  return sectionClassDates.map((date) => formatDayString(date)).slice(0, 20)
 }
 
 /*
 @params none
 */
 function sectionFactory() {
-  return (Array.from({ length: 20 })).map(() => ({
+  return Array.from({ length: 20 }).map(() => ({
     date: '',
     hours: 3,
     hw: '',
     project: '',
     quiz: '',
-    outline: []
+    outline: [],
   }))
 }

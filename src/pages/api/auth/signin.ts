@@ -1,13 +1,13 @@
-import type { APIRoute } from "astro"
-import { supabase } from "../../../lib/supabase"
+import type { APIRoute } from 'astro'
+import { supabase } from '../../../lib/supabase'
 
 export const POST: APIRoute = async ({ request, cookies, redirect }) => {
   const formData = await request.formData()
-  const email = formData.get("email")?.toString()
-  const password = formData.get("password")?.toString()
+  const email = formData.get('email')?.toString()
+  const password = formData.get('password')?.toString()
 
   if (!email || !password) {
-    return new Response("Email and password are required", { status: 400 })
+    return new Response('Email and password are required', { status: 400 })
   }
 
   const { data, error } = await supabase.auth.signInWithPassword({
@@ -20,15 +20,15 @@ export const POST: APIRoute = async ({ request, cookies, redirect }) => {
   }
 
   const { access_token, refresh_token } = data.session
-  cookies.set("sb-access-token", access_token, {
-    sameSite: "strict",
-    path: "/",
+  cookies.set('sb-access-token', access_token, {
+    sameSite: 'strict',
+    path: '/',
     secure: true,
   })
-  cookies.set("sb-refresh-token", refresh_token, {
-    sameSite: "strict",
-    path: "/",
+  cookies.set('sb-refresh-token', refresh_token, {
+    sameSite: 'strict',
+    path: '/',
     secure: true,
   })
-  return redirect("/class/progress")
+  return redirect('/class/progress')
 }

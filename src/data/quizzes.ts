@@ -18,7 +18,7 @@ export const quizzes_1 = [
   'markdown',
   'images',
   null,
-  'svg'
+  'svg',
 ]
 
 export const quizzes_2 = [

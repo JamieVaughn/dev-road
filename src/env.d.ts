@@ -11,6 +11,6 @@ interface ImportMeta {
 }
 declare namespace App {
   interface Locals {
-     title: string
+    title: string
   }
 }
