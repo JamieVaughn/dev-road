@@ -67,16 +67,29 @@ Create an account & Login with email/password to gain access to the learning res
 - Redux
 
 # Todo
-
-- Migrate sheets curriculum items in
-- Use timeline or progress for that? (cards appear as date approaches & each card has links to relevant slides, HW & resources)
-- kanban board with auto-populated tickets for hw/projects as dates approach
-- links to dev communities/forums/discords/slacks
-- ebook for MVP-FE
+- Migrate sheets curriculum items fully in
+- Update timeline cards to have links to relevant slides, HW & resources
+- Hide timeline cards until their datetime arrives (provide empty state on page if classes isn't started)
+- Save kanban board ticket state to supanase
+- Hide kanban board tickets until their datetime arrives
 - list of learning APIs (public apis list, jsonplaceholder, docket, space api)
 - list of code sandboxes (codepen, codesandbox, babel, specific pens of mine)
-- list of project ideas & inspiration to get started (portfolio pg examples, demos, designs, final proj ideas)
-- make it a PWA
-- alumni network roster
-- login with linkedin & github options (and save the identities)
 - Setup monitoring/logging for errors/user analytics
+- fix code editor in slides
+- Launch apply page and segment off MCC's from others
+
+## v2.0.0
+- integrate stripe payments
+- ebook for MVP-FE
+- Record & integrate audio track segments
+- Launch newsletter
+
+## v3.0.0
+- list of project ideas & inspiration to get started (portfolio pg examples, demos, designs, final proj ideas)
+- links to dev communities/forums/discords/slacks
+- login with linkedin & github options (and save the identities)
+- alumni network roster
+- make it a PWA
+- Have current courses portal for multi-course system (not just FE dev course)
+- Integrate Liqvid segment tracks & convert slides to liqvids
+- Create code challenge interactive page (similar to solid/svelte tuts?)
