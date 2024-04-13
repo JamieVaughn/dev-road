@@ -1,30 +1,35 @@
 ---
-import Home from "../../layouts/Home.astro";
-import { checkAuth } from "../../lib/checkAuth";
-import { hw_1, hw_2} from "../../data/hw";
-import { hw_3 } from "../../data/hw_old";
-import { projects_1, projects_2, projects_3 } from "../../data/projects";
-import HorizontalLine from "../../components/HorizontalLine.astro";
-import { ContributionChart } from "../../components/ContributionChart";
-import { Kanban } from "../../components/Kanban";
-import { supabase } from "../../lib/supabase";
+import Home from '../../layouts/Home.astro'
+import { checkAuth } from '../../lib/checkAuth'
+import { hw_1, hw_2} from '../../data/hw'
+import { hw_3 } from '../../data/hw_old'
+import { projects_1, projects_2, projects_3 } from '../../data/projects'
+import HorizontalLine from '../../components/HorizontalLine.astro'
+import { ContributionChart } from '../../components/ContributionChart'
+import { Kanban } from '../../components/Kanban'
+import { supabase } from '../../lib/supabase'
 
-const { cookies, redirect } = Astro;
+const { cookies, redirect } = Astro
 
 const auth = await checkAuth({ cookies, redirect })
   .then((data) => data)
-  .catch((err) => console.log(err));
+  .catch((err) => console.log(err))
 
-const email = auth.user.email;
+const email = auth.user.email
 
-const { data: profile, error } = await supabase
+const { data: profile } = await supabase
   .from('profile')
   .select()
-  .eq("email", email)
-  .single();
+  .eq('email', email)
+  .single()
+
+const { data: kanban, error } = await supabase
+      .from('kanban')
+      .select('*')
   
-const name = profile.first_name || profile.last_name ? `${profile.first_name} ${profile.last_name}` : null;
-const username = name ?? email.split("@")[0];
+const name = profile.first_name || profile.last_name ? `${profile.first_name} ${profile.last_name}` : null
+const username = name ?? email.split('@')[0]
+const kanbanData = kanban ? kanban : []
 ---
 
 <Home>
@@ -37,7 +42,7 @@ const username = name ?? email.split("@")[0];
   <ContributionChart client:idle />
   <HorizontalLine />
     <h6 class="center">Kanban Board</h6>
-    <Kanban client:idle />
+    <Kanban client:idle data={kanban} />
   <HorizontalLine />
   <h3 class="center">Homework</h3>
   <div class="container">

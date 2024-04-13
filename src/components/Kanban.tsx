@@ -1,11 +1,13 @@
-import { For, createSignal } from 'solid-js'
+import { For, createEffect, createResource, createSignal } from 'solid-js'
 import { hw_1, hw_2 } from '../data/hw'
 import { hw_3 } from '../data/hw_old'
 import { projects_1, projects_2, projects_3 } from '../data/projects'
 import projectIcon from '../icons/project.svg'
 import homeworkIcon from '../icons/homework.svg'
+// import { supabase } from '../lib/supabase'
 
 type KanbanTypes = {
+  data: any[]
   hw?: number[]
   projects?: number[]
 }
@@ -22,7 +24,25 @@ const proj3 = projects_3.filter((h): h is string => !!h)
 
 const projs: string[][] = [proj1, proj2, proj3]
 
+
+
 export function Kanban(props: KanbanTypes) {
+  // const [kanban, setKanban] = createSignal()
+  // const updateKanban = async () => {
+  // const { data, error } = await supabase
+  //   .from('kanban')
+  //   .insert({ 
+  //     [taskType]: 'otherValue', 
+  //     history: {[taskText]: ['doing', Date.now()]} 
+  //   })
+  //   .eq('some_column', 'someValue')
+  //   .select()
+  //   if(error) return error
+  //   return data
+  // }
+  // const [data, {mutate, refetch}] = createResource(updateKanban)
+  
+
   const [section, setSection] = createSignal(1)
   const hw_todo = hws[section() - 1]
   const hw_doing: string[] = []
@@ -140,7 +160,7 @@ const css = `
 .task.dragging img {
   filter: invert(1);
 }
-.task.dragging {
+.lane .task.dragging {
   background-color: rgb(75, 0, 130);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
   color: white;
@@ -173,12 +193,17 @@ function getDragAfterElement(mouseY: number, container?: HTMLElement) {
     { offset: Number.NEGATIVE_INFINITY }
   ).element
 }
-const laneCleanup = (e: DragEvent) => {
+const laneCleanup = async (e: DragEvent) => {
   e?.stopPropagation()
+  // console.log(e); //, taskType, taskText)
+  // const taskType = e.target?.classList?.contains('hw') ? 'hw' : 'proj'
+  // const taskText = e.target?.textContent
+
   document
     .querySelectorAll('.lane')
     .forEach((lane) => lane.classList.remove('dragover'))
 }
+
 const laneListener = (e: DragEvent, title: string) => {
   e.preventDefault()
   const lane =

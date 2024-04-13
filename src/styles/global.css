@@ -4,7 +4,7 @@
   https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
  */
-@font-face {
+/* @font-face {
 	font-family: 'Atkinson';
 	src: url('/fonts/atkinson-regular.woff') format('woff');
 	font-weight: 400;
@@ -17,9 +17,10 @@
 	font-weight: 700;
 	font-style: normal;
 	font-display: swap;
-}
+} */
 body {
-	font-family: 'Atkinson', Verdana, sans-serif;
+	/* font-family: 'Atkinson', Verdana, sans-serif; */
+	font-family: system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, Helvetica, Arial, "Helvetica Neue", sans-serif;
 	margin: 0;
 	padding: 0;
 	text-align: left;
