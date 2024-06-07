@@ -23,6 +23,9 @@ dependencies:
   '@astrojs/solid-js':
     specifier: ^4.0.1
     version: 4.0.1(solid-js@1.8.12)(vite@5.0.12)
+  '@solid-primitives/storage':
+    specifier: ^3.3.0
+    version: 3.3.0(solid-js@1.8.12)
   '@supabase/supabase-js':
     specifier: ^2.39.3
     version: 2.39.3
@@ -1331,6 +1334,27 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
+
+  /@solid-primitives/storage@3.3.0(solid-js@1.8.12):
+    resolution: {integrity: sha512-kHFbKLHg0QJ2DblF9M1hU6wvlennPGWKCsuXj2oAxB7157odhDdcoB0DEOr/C8RWjZsIxBgEle5Q45CNqCQ1fw==}
+    peerDependencies:
+      solid-js: ^1.6.12
+      solid-start: '*'
+    peerDependenciesMeta:
+      solid-start:
+        optional: true
+    dependencies:
+      '@solid-primitives/utils': 6.2.3(solid-js@1.8.12)
+      solid-js: 1.8.12
+    dev: false
+
+  /@solid-primitives/utils@6.2.3(solid-js@1.8.12):
+    resolution: {integrity: sha512-CqAwKb2T5Vi72+rhebSsqNZ9o67buYRdEJrIFzRXz3U59QqezuuxPsyzTSVCacwS5Pf109VRsgCJQoxKRoECZQ==}
+    peerDependencies:
+      solid-js: ^1.6.12
+    dependencies:
+      solid-js: 1.8.12
+    dev: false
 
   /@supabase/functions-js@2.1.5:
     resolution: {integrity: sha512-BNzC5XhCzzCaggJ8s53DP+WeHHGT/NfTsx2wUSSGKR2/ikLFQTBCDzMvGz/PxYMqRko/LwncQtKXGOYp1PkPaw==}

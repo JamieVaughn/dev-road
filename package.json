@@ -20,6 +20,7 @@
     "@astrojs/rss": "^4.0.2",
     "@astrojs/sitemap": "^3.0.5",
     "@astrojs/solid-js": "^4.0.1",
+    "@solid-primitives/storage": "^3.3.0",
     "@supabase/supabase-js": "^2.39.3",
     "astro": "^4.2.1",
     "astro-icon": "^1.0.2",

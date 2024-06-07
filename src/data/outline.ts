@@ -419,7 +419,7 @@ export const outline_section_3 = [
     topic: 'Builds & Node.js',
     key: `Vite & Node & npm
   VS Code Code Snippet: for react component boilerplate
-  "https://beta.reactjs.org/
+  "https://react.dev/
   Intro slides"
   build command in Vite & inspect output, Try using a Vite template
   JSX, props, syntehtic events`,
