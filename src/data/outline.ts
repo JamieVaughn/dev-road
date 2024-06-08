@@ -264,7 +264,7 @@ export const outline_section_2 = [
   create DOM form procedurally code along?`,
   },
   {
-    topic: 'ES6+',
+    topic: 'ES6 & Beyond',
     key: `calculator code along w/ math.js ( refactored using new Function)
   default params
   Map, WeakMap, Sets, 
@@ -375,7 +375,7 @@ export const outline_section_2 = [
   Code-along Modal`,
   },
   {
-    topic: 'careers',
+    topic: 'Careers',
     key: `Career docs for section 2
   Interpreting a Job description
   show off Dragon Dropper
@@ -392,7 +392,7 @@ export const outline_section_2 = [
 
 export const outline_section_3 = [
   {
-    topic: 'Knockout Dragon clicker',
+    topic: 'Knockout Dragon Clicker',
     key: `survey & show where we are on Roadmap.sh
   Translatable framework skills
   CDNs (knockout cdn)
@@ -512,7 +512,7 @@ export const outline_section_3 = [
   suspense and data fetching`,
   },
   {
-    topic: 'React router',
+    topic: 'React Router',
     key: `https://codesandbox.io/s/react-router-challenge-yvkl7
   https://codesandbox.io/s/react-router-challenge-qzgt3
   https://developer.mozilla.org/en-US/docs/Web/API/History_API

@@ -92,6 +92,8 @@ const css = `
 .year {
   font-size: 0.5em;
   grid-column: 1 / span 2;
+  white-space: nowrap;
+  translate: -8px 0;
 }
 /*** month headings ** */
 

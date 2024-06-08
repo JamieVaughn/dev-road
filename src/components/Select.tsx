@@ -1,4 +1,4 @@
-import { type Accessor, type Setter } from 'solid-js'
+import type { Accessor, Setter } from 'solid-js'
 
 export function SelectMenu(props: {
   level: Accessor<number>

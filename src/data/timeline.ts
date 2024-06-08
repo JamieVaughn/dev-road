@@ -1,4 +1,5 @@
-import dayjs, { type Dayjs } from 'dayjs'
+import dayjs from 'dayjs'
+import type { Dayjs } from 'dayjs'
 import { year, month, day, STARTDATE } from './STARTDATE'
 import {
   outline_section_1,

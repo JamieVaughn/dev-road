@@ -23,13 +23,33 @@ const { data: profile } = await supabase
   .eq('email', email)
   .single()
 
-const { data: kanban, error } = await supabase
+const { data: kanbanData, error } = await supabase
       .from('kanban')
       .select('*')
+      .eq('user_id', profile.user_id)
+      .single()
+
+// console.log(kanbanData)
+
+if (kanbanData.hw === null) {
+  const hw1 = hw_1.filter((h): h is string => !!h)
+  const hw2 = hw_2.filter((h): h is string => !!h)
+  const hw3 = hw_3.filter((h): h is string => !!h)
+  const hws: string[][] = [hw1, hw2, hw3]
+  const proj1 = projects_1.filter((h): h is string => !!h);
+  const proj2 = projects_2.filter((h): h is string => !!h);
+  const proj3 = projects_3.filter((h): h is string => !!h);
+  const projs: string[][] = [proj1, proj2, proj3];
+  const initializedBoard = {
+    todo: hws[0],
+    doing: [],
+    review: [],
+    done: [],
+  }
+}
   
 const name = profile.first_name || profile.last_name ? `${profile.first_name} ${profile.last_name}` : null
 const username = name ?? email.split('@')[0]
-const kanbanData = kanban ? kanban : []
 ---
 
 <Home>
@@ -42,7 +62,7 @@ const kanbanData = kanban ? kanban : []
   <ContributionChart client:idle />
   <HorizontalLine />
     <h6 class="center">Kanban Board</h6>
-    <Kanban client:idle data={kanban} />
+    <Kanban client:idle data={kanbanData} />
   <HorizontalLine />
   <h3 class="center">Homework</h3>
   <div class="container">
