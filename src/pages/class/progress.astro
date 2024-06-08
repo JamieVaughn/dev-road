@@ -6,7 +6,7 @@ import { hw_3 } from '../../data/hw_old'
 import { projects_1, projects_2, projects_3 } from '../../data/projects'
 import HorizontalLine from '../../components/HorizontalLine.astro'
 import { ContributionChart } from '../../components/ContributionChart'
-import { Kanban } from '../../components/Kanban'
+import { KanbanDemo } from '../../components/KanbanDemo'
 import { supabase } from '../../lib/supabase'
 
 const { cookies, redirect } = Astro
@@ -62,7 +62,7 @@ const username = name ?? email.split('@')[0]
   <ContributionChart client:idle />
   <HorizontalLine />
     <h6 class="center">Kanban Board</h6>
-    <Kanban client:idle data={kanbanData} />
+     <KanbanDemo client:idle />
   <HorizontalLine />
   <h3 class="center">Homework</h3>
   <div class="container">

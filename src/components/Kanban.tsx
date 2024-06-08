@@ -97,10 +97,6 @@ export function Kanban(props: KanbanTypes) {
                   <div
                     class={`task ${t.type}`}
                     draggable='true'
-                    onClick={(e) => (
-                      console.log('clicked'),
-                      e.target.classList.toggle('dragging')
-                    )}
                     onDragStart={(e) => (
                       console.log('dragging'),
                       e.target.classList.add('dragging')
@@ -249,7 +245,7 @@ function getDragAfterElement(mouseY: number, container?: HTMLElement) {
     { offset: Number.NEGATIVE_INFINITY }
   ).element
 }
-const laneCleanup = async (e: DragEvent) => {
+const laneCleanup = (e: DragEvent) => {
   e?.stopPropagation()
   document
     .querySelectorAll('.lane')
