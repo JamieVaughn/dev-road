@@ -77,6 +77,8 @@ Create an account & Login with email/password to gain access to the learning res
 - Launch newsletter
 - list of code sandboxes (codepen, codesandbox, babel, specific pens of mine)
 - integrate stripe payments
+- Admin route for student analytics
+- integrate tally utils into admin route
 
 ## v2.0.0
 - ebook for MVP-FE

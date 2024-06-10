@@ -29,27 +29,37 @@ const { data: kanbanData, error } = await supabase
       .eq('user_id', profile.user_id)
       .single()
 
-// console.log(kanbanData)
-
-if (kanbanData.hw === null) {
+const getInitializedBoard = (todos: string[]) => ({
+    todo: todos,
+    doing: [],
+    review: [],
+    done: [],
+  }) // satisfies {todo: string[], doing: string[], review: string[], done: string[]}
+let initializeData
+if (await kanbanData === null) {
   const hw1 = hw_1.filter((h): h is string => !!h)
   const hw2 = hw_2.filter((h): h is string => !!h)
   const hw3 = hw_3.filter((h): h is string => !!h)
   const hws: string[][] = [hw1, hw2, hw3]
-  const proj1 = projects_1.filter((h): h is string => !!h);
-  const proj2 = projects_2.filter((h): h is string => !!h);
-  const proj3 = projects_3.filter((h): h is string => !!h);
-  const projs: string[][] = [proj1, proj2, proj3];
-  const initializedBoard = {
-    todo: hws[0],
-    doing: [],
-    review: [],
-    done: [],
-  }
+  const section1Hw = getInitializedBoard(hw1)
+  const proj1 = projects_1.filter((h): h is string => !!h)
+  const proj2 = projects_2.filter((h): h is string => !!h)
+  const proj3 = projects_3.filter((h): h is string => !!h)
+  const projs: string[][] = [proj1, proj2, proj3]
+  const section1Proj = getInitializedBoard(proj1)
+  const { data } = await supabase
+  .from('kanban')
+  .upsert({ hw: JSON.stringify(section1Hw), proj: JSON.stringify(section1Proj), history: JSON.stringify([])})
+  .eq('user_id', profile.user_id)
+  .select()
+  .single()
+  initializeData = data
 }
   
 const name = profile.first_name || profile.last_name ? `${profile.first_name} ${profile.last_name}` : null
 const username = name ?? email.split('@')[0]
+const user_id = profile.user_id
+const kanban = kanbanData ? {hw: JSON.parse(kanbanData.hw), proj: JSON.parse(kanbanData.proj), history: JSON.parse(kanbanData.history)} : initializeData
 ---
 
 <Home>
@@ -62,7 +72,7 @@ const username = name ?? email.split('@')[0]
   <ContributionChart client:idle />
   <HorizontalLine />
     <h6 class="center">Kanban Board</h6>
-     <KanbanDemo client:idle />
+     <KanbanDemo client:idle data={kanban} user_id={user_id} />
   <HorizontalLine />
   <h3 class="center">Homework</h3>
   <div class="container">

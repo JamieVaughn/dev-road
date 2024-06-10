@@ -1,50 +1,88 @@
-import { For, createSignal } from "solid-js";
+import {
+  For,
+  createEffect,
+  createSignal,
+  type Setter,
+  onCleanup,
+} from "solid-js";
 import { hw_1, hw_2 } from "../data/hw";
 import { hw_3 } from "../data/hw_old";
 import { projects_1, projects_2, projects_3 } from "../data/projects";
 import projectIcon from "../icons/project.svg";
 import homeworkIcon from "../icons/homework.svg";
+import { supabase } from "../lib/supabase";
+import { css } from "./KanbanDemo.css";
 
-type KanbanTypes = {
-  hw: number[];
-  projects: number[];
+type Tasks = {
+  todo: string[];
+  doing: string[];
+  review: string[];
+  done: string[];
 };
 
-const hw1 = hw_1.filter((h): h is string => !!h);
-const hw2 = hw_2.filter((h): h is string => !!h);
-const hw3 = hw_3.filter((h): h is string => !!h);
+type KanbanTypes = {
+  data: { hw: Tasks; proj: Tasks };
+  user_id: string;
+  hw?: number[];
+  projects?: number[];
+};
 
-const hws: string[][] = [hw1, hw2, hw3];
+// const hw1 = hw_1.filter((h): h is string => !!h);
+// const hw2 = hw_2.filter((h): h is string => !!h);
+// const hw3 = hw_3.filter((h): h is string => !!h);
 
-const proj1 = projects_1.filter((h): h is string => !!h);
-const proj2 = projects_2.filter((h): h is string => !!h);
-const proj3 = projects_3.filter((h): h is string => !!h);
+// const hws: string[][] = [hw1, hw2, hw3];
 
-const projs: string[][] = [proj1, proj2, proj3];
+// const proj1 = projects_1.filter((h): h is string => !!h);
+// const proj2 = projects_2.filter((h): h is string => !!h);
+// const proj3 = projects_3.filter((h): h is string => !!h);
+
+// const projs: string[][] = [proj1, proj2, proj3];
 
 export function KanbanDemo(props: KanbanTypes) {
   const [section, setSection] = createSignal(1);
-  const hw_todo = hws[section() - 1];
-  const hw_doing: string[] = [];
-  const hw_review: string[] = [];
-  const hw_done: string[] = [];
+  const [selected, setSelected] = createSignal(null);
+  const [history, setHistory] = createSignal(props.data.history ?? []);
 
-  const proj_todo = projs[section() - 1];
-  const proj_doing: string[] = [];
-  const proj_review: string[] = [];
-  const proj_done: string[] = [];
-
-  const lanes = [
-    { title: "Todo", hw: hw_todo, proj: proj_todo },
-    { title: "Doing", hw: hw_doing, proj: proj_doing },
-    { title: "In Review", hw: hw_review, proj: proj_review },
-    { title: "Done", hw: hw_done, proj: proj_done },
-  ];
+  const [lanes, setLanes] = createSignal([
+    { title: "todo", hw: props.data.hw.todo, proj: props.data.proj.todo },
+    { title: "doing", hw: props.data.hw.doing, proj: props.data.proj.doing },
+    {
+      title: "in review",
+      hw: props.data.hw.review,
+      proj: props.data.proj.review,
+    },
+    { title: "done", hw: props.data.hw.done, proj: props.data.proj.done },
+  ]);
+  createEffect(() => {
+    console.log("lanes", {
+      lanes: lanes(),
+    });
+    supabase
+      .from("kanban")
+      .update({
+        hw: JSON.stringify({
+          todo: lanes()[0].hw,
+          doing: lanes()[1].hw,
+          review: lanes()[2].hw,
+          done: lanes()[3].hw,
+        }),
+        proj: JSON.stringify({
+          todo: lanes()[0].proj,
+          doing: lanes()[1].proj,
+          review: lanes()[2].proj,
+          done: lanes()[3].proj,
+        }),
+        history: JSON.stringify(props.data.history.concat(history())),
+      })
+      .eq("user_id", props.user_id)
+      .select()
+  });
 
   return (
     <div class="board">
       <div class="lanes">
-        <For each={lanes}>
+        <For each={lanes()}>
           {({ title, hw, proj }) => (
             <div
               id={`${title.toLowerCase()}-lane`}
@@ -54,8 +92,30 @@ export function KanbanDemo(props: KanbanTypes) {
               onDragEnd={laneCleanup}
             >
               <h2 class="heading">{title}</h2>
-              <For each={hw}>{(item) => taskComp(item, "hw")}</For>
-              <For each={proj}>{(item) => taskComp(item, "proj")}</For>
+              <For each={hw}>
+                {(item) =>
+                  taskComp(
+                    item,
+                    "hw",
+                    setLanes,
+                    selected,
+                    setSelected,
+                    setHistory
+                  )
+                }
+              </For>
+              <For each={proj}>
+                {(item) =>
+                  taskComp(
+                    item,
+                    "proj",
+                    setLanes,
+                    selected,
+                    setSelected,
+                    setHistory
+                  )
+                }
+              </For>
             </div>
           )}
         </For>
@@ -64,98 +124,6 @@ export function KanbanDemo(props: KanbanTypes) {
     </div>
   );
 }
-
-const css = `
-.board * {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-.board *::-webkit-scrollbar {
-  display: none;
-}
-.board {
-  margin: 0 auto;
-  padding: 16px;
-  width: fit-content;
-  border-radius: 4px;
-  max-height: 80vh;
-  overflow: hidden;
-  background: linear-gradient(45deg, var(--violet), rebeccapurple, var(--tan));
-}
-.board h2 {
-  font-weight: 700;
-  font-family: sans-serif;
-  font-size: 28px;
-  padding: 16px 16px 4px;
-  position: sticky;
-  top: 0;
-  background: white;
-  background-color: #f4f4f4;
-}
-.lanes {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  overflow: scroll;
-  height: 100%;
-}
-.lane {
-  display: flex;
-  gap: 8px;
-  flex-direction: column;
-  background: #f4f4f4;
-  border-radius: 4px;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
-  max-width: 320px;
-  min-height: 130.5px;
-  min-width: 225px;
-  flex-shrink: 0;
-  overflow: scroll;
-  max-height: calc(80vh - 32px);
-  padding-bottom: 16px;
-}
-.task {
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  padding: 8px 12px;
-  margin: 0 8px;
-  border-radius: 4px;
-  text-transform: capitalize;
-  font-size: 16px;
-  transition: transform 0.5s;
-  cursor: grab;
-}
-.task.proj img {
-  vertical-align: top;
-}
-.task.hw img {
-  margin-right: 4px;
-}
-.task.hw {
-  background-color: rgba(244, 81, 30, 0.05);
-}
-.task.proj {
-  background-color: rgb(245, 230, 255, 0.5);
-}
-.task:active {
-  cursor: grabbing;
-}
-.task:hover {
-  outline: 2px dashed indigo;
-}
-.task.dragging img {
-  filter: invert(1);
-}
-.task.dragging {
-  background-color: rgb(75, 0, 130);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-  color: white;
-  transform: rotate(3deg) scale(1.1);
-}
-.dragover {
-  background-color: linen;
-  outline: 2px dotted white;
-}
-`;
 
 function getDragAfterElement(mouseY: number, container?: HTMLElement) {
   if (!container) return null;
@@ -190,12 +158,55 @@ const laneListener = (e: DragEvent, title: string, allowSortDrop = true) => {
     ? lane?.insertBefore(draggable!, afterElement)
     : lane?.appendChild(draggable!);
 };
-const taskComp = (task: string, type: "hw" | "proj") => (
+const taskComp = (
+  task: string,
+  type: "hw" | "proj",
+  setLanes: Setter,
+  selected: Accessor,
+  setSelected: Setter,
+  setHistory: Setter
+) => (
   <p
     class={`task ${type}`}
     draggable="true"
-    onDragStart={(e) => e.target.classList.add("dragging")}
-    onDragEnd={(e) => e.target.classList.remove("dragging")}
+    onDragStart={(e) => {
+      e.target.classList.add("dragging");
+      setSelected({ lane: e.target.parentNode?.id.split("-")[0], task });
+    }}
+    onDragEnd={(e) => {
+      e.target.classList.remove("dragging");
+      const dropLane = e.target.parentNode?.id.split("-")[0];
+      if (selected()) {
+        setLanes((prev) => {
+          const result = prev.map((lane) => {
+            if (lane.title === selected().lane) {
+              return {
+                ...lane,
+                [type]: lane[type].filter((t) => t !== selected().task),
+              };
+            }
+            if (lane.title === dropLane) {
+              return {
+                ...lane,
+                [type]: lane[type].concat(selected().task),
+              };
+            }
+            return lane;
+          });
+          setHistory((prev) =>
+            prev.concat({
+              timestamp: Date.now(),
+              task: selected().task,
+              fromLane: selected().lane,
+              toLane: dropLane,
+              type,
+            })
+          );
+          return result;
+        });
+      }
+      setSelected(null);
+    }}
   >
     <img src={type === "hw" ? homeworkIcon.src : projectIcon.src} />
     <span>{task}</span>
@@ -209,7 +220,6 @@ const taskComp = (task: string, type: "hw" | "proj") => (
           placeholder="Project Link"
           id={`project-${task}`}
           name={`project-${task}`}
-          style="padding: 4px; margin-top: 4px; height: auto"
         />
       </div>
     )}
