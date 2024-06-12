@@ -40,12 +40,12 @@ export const css = `
   background: #f4f4f4;
   border-radius: 4px;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
-  max-width: 320px;
-  min-height: 130.5px;
-  min-width: 225px;
+  max-width: 300px;
+  min-width: 280px;
   flex-shrink: 0;
   overflow: scroll;
   max-height: calc(80vh - 32px);
+  min-height: 100%;
   padding-bottom: 16px;
 }
 .task {
