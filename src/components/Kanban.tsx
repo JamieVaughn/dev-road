@@ -6,7 +6,7 @@ import {
   type Accessor,
   type Setter,
 } from "solid-js";
-import { makePersisted } from '@solid-primitives/storage'
+import { makePersisted } from "@solid-primitives/storage";
 import projectIcon from "../icons/project.svg";
 import homeworkIcon from "../icons/homework.svg";
 import { css } from "./Kanban.css";
@@ -16,46 +16,59 @@ type Tasks = {
   doing: string[];
   review: string[];
   done: string[];
+  history: {
+    timestamp: number;
+    task: string;
+    fromLane: string;
+    toLane: string;
+    type: string;
+  }[];
 };
 
+// data: { hw: Tasks; proj: Tasks };
 type KanbanTypes = {
-  data: { hw: Tasks; proj: Tasks };
+  hw: Tasks;
+  proj: Tasks;
   user_id: string;
   email: string;
-  hw?: number[];
-  projects?: number[];
 };
 
-const fetchKanbanResource = async (body: string) => (await fetch('/api/kanban/update', {method: 'POST', body})).json()
+const fetchKanbanResource = async (options: {body: string, origin: string}) =>
+  (await fetch(`${options.origin}/api/kanban/update`, { method: "POST", body: options.body })).json();
 
 export function Kanban(props: KanbanTypes) {
+  // console.log("props", props)
   const [section, setSection] = createSignal(1);
   const [selected, setSelected] = createSignal(null);
-  const [history, setHistory] = createSignal(props.data.history ?? []);
+  const [historyHw, setHistoryHw] = createSignal(props.hw?.history ?? []);
+  const [historyProj, setHistoryProj] = createSignal(props.proj?.history ?? []);
 
   const [lanes, setLanes] = createSignal([
-    { title: "todo", hw: props.data.hw.todo, proj: props.data.proj.todo },
-    { title: "doing", hw: props.data.hw.doing, proj: props.data.proj.doing },
-    {
-      title: "in review",
-      hw: props.data.hw.review,
-      proj: props.data.proj.review,
-    },
-    { title: "done", hw: props.data.hw.done, proj: props.data.proj.done },
+    { title: "todo", hw: props.hw.todo, proj: props.proj.todo },
+    { title: "doing", hw: props.hw.doing, proj: props.proj.doing },
+    { title: "review", hw: props.hw.review, proj: props.proj.review },
+    { title: "done", hw: props.hw.done, proj: props.proj.done },
   ]);
 
-  const [kanban] = createResource(JSON.stringify({
-    lanes: lanes(),
-    history: history(),
-    email: props.email,
-  }), fetchKanbanResource)
-
+  const [kanban] = createResource({
+    origin: 'http://localhost:4321',
+    body: JSON.stringify({
+      lanes: lanes(),
+      historyHw: historyHw(),
+      historyProj: historyProj(),
+      email: props.email,
+    })},
+    fetchKanbanResource
+  );
 
   createEffect(() => {
-    console.log("history", {
-      history: history(),
-    });
-    kanban()
+    console.log('post', {
+      lanes: lanes(),
+      historyHw: historyHw(),
+      historyProj: historyProj(),
+      email: props.email,
+    })
+    kanban();
   });
 
   return (
@@ -79,7 +92,7 @@ export function Kanban(props: KanbanTypes) {
                     setLanes,
                     selected,
                     setSelected,
-                    setHistory
+                    setHistoryHw
                   )
                 }
               </For>
@@ -91,7 +104,7 @@ export function Kanban(props: KanbanTypes) {
                     setLanes,
                     selected,
                     setSelected,
-                    setHistory
+                    setHistoryProj
                   )
                 }
               </For>
@@ -128,7 +141,7 @@ const laneCleanup = (e: DragEvent) => {
 };
 const laneListener = (e: DragEvent, title: string, allowSortDrop = false) => {
   e.preventDefault();
-  if(!e.target?.id.includes('-lane')) return
+  if (!e.target?.id.includes("-lane")) return;
   const lane =
     document.getElementById(`${title.toLowerCase()}-lane`) ?? undefined;
   lane?.classList?.add("dragover");
@@ -146,7 +159,7 @@ const taskComp = (
   setSelected: Setter<any>,
   setHistory: Setter<any>
 ) => (
-  <p
+  <div
     class={`task ${type}`}
     draggable="true"
     onDragStart={(e) => {
@@ -155,10 +168,10 @@ const taskComp = (
     }}
     onDragEnd={(e) => {
       e.target.classList.remove("dragging");
-      const laneId = e.target.parentNode?.id
-      if(!laneId || laneId.startsWith(selected().lane)) {
-        setSelected(null)
-        return
+      const laneId = e.target.parentNode?.id;
+      if (!laneId || laneId.startsWith(selected().lane)) {
+        setSelected(null);
+        return;
       }
 
       const dropLane = laneId.split("-")[0];
@@ -210,5 +223,5 @@ const taskComp = (
         />
       </div>
     )}
-  </p>
+  </div>
 );

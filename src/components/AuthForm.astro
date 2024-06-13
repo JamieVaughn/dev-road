@@ -5,6 +5,10 @@ interface Props {
   reset?: boolean;
 }
 const { action, title, reset } = Astro.props;
+
+const x = Math.ceil(Math.random() * 10);
+const y = Math.ceil(Math.random() * 10);
+const op = ['+', '-', '*'][Math.floor(Math.random() * 3)];
 ---
 
 <article>
@@ -14,7 +18,7 @@ const { action, title, reset } = Astro.props;
       <span>to access to the course content.</span>
     </hgroup>
     <slot />
-    <form action={action} method="post">
+    <form action={action} method="POST">
       <label for="email">Email</label>
       <input
         type="text"
@@ -37,6 +41,21 @@ const { action, title, reset } = Astro.props;
         required
       />
       <button type="submit" class="contrast">{title}</button>
+      {title === 'Sign up' && (
+        <div class="puzzle">
+          <label for="puzzle">{`${x} ${op} ${y} is`}</label>
+          <input
+            type="text"
+            id="puzzle"
+            name="puzzle"
+            placeholder="Confirm Puzzle"
+            aria-label="Confirm Puzzle"
+            autocomplete="current-puzzle"
+            required
+            pattern={eval(`${x} ${op} ${y}`)}
+          />
+        </div>
+      )}
     </form>
     {reset && <a href="/reset">Reset Password</a>}
   </div>
@@ -65,10 +84,10 @@ const { action, title, reset } = Astro.props;
     text-align: center;
     display: block;
   }
-  #email:user-valid, #password:user-valid {
+  #email:user-valid, #password:user-valid, #puzzle:user-valid {
     outline: 3px solid rgb(119, 218, 161, 0.5);
   }
-  #email:user-invalid, #password:user-invalid {
+  #email:user-invalid, #password:user-invalid, #puzzle:user-invalid {
     outline: 3px solid crimson;
   }
   label:has(+ input:user-valid):after {
@@ -82,5 +101,14 @@ const { action, title, reset } = Astro.props;
     padding-left: 0.5em;
     content: '⨯';
     color: crimson;
+  }
+  .puzzle label {
+    white-space: nowrap;
+    flex-grow: 2;
+    margin-top: 10px;
+  }
+  .puzzle {
+    display: flex;
+    gap: 1em;
   }
 </style>

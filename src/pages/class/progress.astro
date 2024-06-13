@@ -23,43 +23,60 @@ const { data: profile } = await supabase
   .eq('email', email)
   .single()
 
-const { data: kanbanData, error } = await supabase
-      .from('kanban')
+const name = profile.first_name || profile.last_name ? `${profile.first_name} ${profile.last_name}` : null
+const username = name ?? email.split('@')[0]
+const user_id = profile.user_id
+
+const { data: kanban_hw, error: error_hw } = await supabase
+      .from('kanban_hw')
       .select('*')
       .eq('user_id', profile.user_id)
       .single()
 
-const getInitializedBoard = (todos: string[]) => ({
+const { data: kanban_proj, error: error_proj } = await supabase
+      .from('kanban_proj')
+      .select('*')
+      .eq('user_id', profile.user_id)
+      .single()
+
+console.log('errors', {error_hw, error_proj})
+
+const createKanbanBoard = (todos: string[], doing?: string[], review?: string[], done?: []) => ({
     todo: todos,
-    doing: [],
-    review: [],
-    done: [],
+    doing: doing ?? [],
+    review: review ?? [],
+    done: done ?? [],
+    history: []
   }) // satisfies {todo: string[], doing: string[], review: string[], done: string[]}
 let initializeData
-if (await kanbanData === null) {
+if (kanban_hw === null) {
   const hw1 = hw_1.filter((h): h is string => !!h)
   const hw2 = hw_2.filter((h): h is string => !!h)
   const hw3 = hw_3.filter((h): h is string => !!h)
   const hws: string[][] = [hw1, hw2, hw3]
-  const section1Hw = getInitializedBoard(hw1)
+  // const section1Hw = getInitializedBoard(hw1)
   const proj1 = projects_1.filter((h): h is string => !!h)
   const proj2 = projects_2.filter((h): h is string => !!h)
   const proj3 = projects_3.filter((h): h is string => !!h)
   const projs: string[][] = [proj1, proj2, proj3]
-  const section1Proj = getInitializedBoard(proj1)
-  const { data } = await supabase
-  .from('kanban')
-  .upsert({ hw: section1Hw, proj: section1Proj, history: []})
+  // const section1Proj = getInitializedBoard(proj1)
+  await supabase
+  .from('kanban_hw')
+  .upsert({ todo: hw1})
   .eq('user_id', profile.user_id)
   .select()
   .single()
-  initializeData = data
+  await supabase
+  .from('kanban_proj')
+  .upsert({ todo: proj1})
+  .eq('user_id', profile.user_id)
+  .select()
+  .single()
+  initializeData = createKanbanBoard([...hw1, ...proj1])
 }
   
-const name = profile.first_name || profile.last_name ? `${profile.first_name} ${profile.last_name}` : null
-const username = name ?? email.split('@')[0]
-const user_id = profile.user_id
-const kanban = kanbanData ? {hw: kanbanData.hw, proj: kanbanData.proj, history: kanbanData.history} : initializeData
+const kanbanHw = kanban_hw ?? initializeData
+const kanbanProj = kanban_proj ?? initializeData
 ---
 
 <Home>
@@ -72,7 +89,7 @@ const kanban = kanbanData ? {hw: kanbanData.hw, proj: kanbanData.proj, history: 
   <ContributionChart client:idle />
   <HorizontalLine />
     <h6 class="center">Kanban Board</h6>
-     <Kanban client:idle data={kanban} user_id={user_id} email={email} />
+     <Kanban client:idle hw={kanbanHw} proj={kanbanProj} user_id={user_id} email={email} />
   <HorizontalLine />
   <h3 class="center">Homework</h3>
   <div class="container">

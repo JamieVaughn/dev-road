@@ -1,7 +1,11 @@
 ---
-const { message } = Astro.props
+const { message, enable } = Astro.props
+let print = ''
+if(!!enable) {
+	print = JSON.stringify(message ?? '', null, 2)
+}
 ---
 
-<script id="Header" data-message={JSON.stringify(message, null, 2)}>
-	console.log('message', document.querySelector('#Header').dataset.message)
+<script id="Header" data-message={print}>
+	console.log(document.querySelector('#Header').dataset.message)
 </script>

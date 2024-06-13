@@ -14,17 +14,18 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     email,
     password,
   })
+  console.log('auth', error)
+
 
   if (error) {
-    return new Response(error.message, { status: 500 })
+    new Response(error.message, { status: 500 })
+    return redirect('/signup')
   }
 
-  // const _profile = await supabase
-  // .from('profile')
-  // .insert([
-  //   { email },
-  // ])
-  // .select()
+  const _profile = await supabase
+  .from('profile')
+  .insert([{ email }])
+  .select()
 
   return redirect('/login')
 }

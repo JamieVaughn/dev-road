@@ -3,12 +3,16 @@ import HeaderLink from "./HeaderLink.astro";
 import { SITE_TITLE } from "../data/consts";
 import ThemeIcon from "./ThemeIcon.astro";
 import { Icon } from "astro-icon/components";
-import MessageScript from "./MessageScript.astro";
+import MessageScript from './MessageScript.astro'
+import { checkAuth} from '../lib/checkAuth'
 
-const { auth } = Astro.props;
+const { cookies, redirect } = Astro
+
+const auth = await checkAuth({cookies, redirect})
+  .catch(err => console.log(err))
 ---
 
-<MessageScript message={auth} />
+<MessageScript message={auth} enable={false}/>
 <header>
   <nav>
     <ul class="logo">
