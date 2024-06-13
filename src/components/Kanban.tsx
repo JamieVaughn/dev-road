@@ -2,13 +2,13 @@ import {
   For,
   createEffect,
   createSignal,
+  createResource,
   type Accessor,
   type Setter,
 } from "solid-js";
 import { makePersisted } from '@solid-primitives/storage'
 import projectIcon from "../icons/project.svg";
 import homeworkIcon from "../icons/homework.svg";
-import { supabase } from "../lib/supabase";
 import { css } from "./Kanban.css";
 
 type Tasks = {
@@ -26,6 +26,8 @@ type KanbanTypes = {
   projects?: number[];
 };
 
+const fetchKanbanResource = async (body: string) => (await fetch('/api/kanban/update', {method: 'POST', body})).json()
+
 export function Kanban(props: KanbanTypes) {
   const [section, setSection] = createSignal(1);
   const [selected, setSelected] = createSignal(null);
@@ -42,31 +44,18 @@ export function Kanban(props: KanbanTypes) {
     { title: "done", hw: props.data.hw.done, proj: props.data.proj.done },
   ]);
 
+  const [kanban] = createResource(JSON.stringify({
+    lanes: lanes(),
+    history: history(),
+    email: props.email,
+  }), fetchKanbanResource)
+
+
   createEffect(() => {
-    console.log("lanes", {
-      lanes: lanes(),
+    console.log("history", {
+      history: history(),
     });
-    const res = supabase
-      .from("kanban")
-      .update({
-        hw: {
-          todo: lanes()[0].hw,
-          doing: lanes()[1].hw,
-          review: lanes()[2].hw,
-          done: lanes()[3].hw,
-        },
-        proj:{
-          todo: lanes()[0].proj,
-          doing: lanes()[1].proj,
-          review: lanes()[2].proj,
-          done: lanes()[3].proj,
-        },
-        history: history(),
-      })
-      .eq("user_id", props.user_id)
-      // .match({user_id: props.user_id})
-      .select()
-      .maybeSingle()
+    kanban()
   });
 
   return (
