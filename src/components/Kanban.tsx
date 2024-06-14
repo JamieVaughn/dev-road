@@ -11,21 +11,28 @@ import projectIcon from "../icons/project.svg";
 import homeworkIcon from "../icons/homework.svg";
 import { css } from "./Kanban.css";
 
+type HistoryItemType = {
+  timestamp: number;
+  task: string;
+  fromLane: string;
+  toLane: string;
+  type: string;
+}
+
 type Tasks = {
   todo: string[];
   doing: string[];
   review: string[];
   done: string[];
-  history: {
-    timestamp: number;
-    task: string;
-    fromLane: string;
-    toLane: string;
-    type: string;
-  }[];
+  history: HistoryItemType[];
 };
 
-// data: { hw: Tasks; proj: Tasks };
+type LaneType = {
+  title: string;
+  hw: string[];
+  proj: string[];
+}
+
 type KanbanTypes = {
   hw: Tasks;
   proj: Tasks;
@@ -43,7 +50,7 @@ export function Kanban(props: KanbanTypes) {
   const [historyHw, setHistoryHw] = createSignal(props.hw?.history ?? []);
   const [historyProj, setHistoryProj] = createSignal(props.proj?.history ?? []);
 
-  const [lanes, setLanes] = createSignal([
+  const [lanes, setLanes] = createSignal<LaneType[]>([
     { title: "todo", hw: props.hw.todo, proj: props.proj.todo },
     { title: "doing", hw: props.hw.doing, proj: props.proj.doing },
     { title: "review", hw: props.hw.review, proj: props.proj.review },
@@ -141,7 +148,8 @@ const laneCleanup = (e: DragEvent) => {
 };
 const laneListener = (e: DragEvent, title: string, allowSortDrop = false) => {
   e.preventDefault();
-  if (!e.target?.id.includes("-lane")) return;
+  const target = e.target as HTMLElement;
+  if (!target?.id.includes("-lane")) return;
   const lane =
     document.getElementById(`${title.toLowerCase()}-lane`) ?? undefined;
   lane?.classList?.add("dragover");
@@ -150,11 +158,12 @@ const laneListener = (e: DragEvent, title: string, allowSortDrop = false) => {
   allowSortDrop && afterElement
     ? lane?.insertBefore(draggable!, afterElement)
     : lane?.appendChild(draggable!);
-};
+}
+
 const taskComp = (
   task: string,
   type: "hw" | "proj",
-  setLanes: Setter<any>,
+  setLanes: Setter<LaneType[]>,
   selected: Accessor<any>,
   setSelected: Setter<any>,
   setHistory: Setter<any>
@@ -163,12 +172,14 @@ const taskComp = (
     class={`task ${type}`}
     draggable="true"
     onDragStart={(e) => {
+      const parent = e.target?.parentNode as  HTMLElement
       e.target.classList.add("dragging");
-      setSelected({ lane: e.target.parentNode?.id.split("-")[0], task });
+      setSelected({ lane: parent?.id.split("-")[0], task });
     }}
     onDragEnd={(e) => {
+      const parent = e.target?.parentNode as  HTMLElement
       e.target.classList.remove("dragging");
-      const laneId = e.target.parentNode?.id;
+      const laneId = parent?.id;
       if (!laneId || laneId.startsWith(selected().lane)) {
         setSelected(null);
         return;
