@@ -59,6 +59,7 @@
     --primary-focus: rgba(244, 81, 30, 0.25);
     --primary-inverse: #fff;
     --background-color: var(--extra-dark);
+    --card-background-color: #021a39;
   }
 
   /* Deep-orange (Common styles) */
