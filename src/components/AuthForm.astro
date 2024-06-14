@@ -4,11 +4,11 @@ interface Props {
   title: string;
   reset?: boolean;
 }
-const { action, title, reset } = Astro.props;
+const { action, title, reset } = Astro.props
 
-const x = Math.ceil(Math.random() * 10);
-const y = Math.ceil(Math.random() * 10);
-const op = ['+', '-', '*'][Math.floor(Math.random() * 3)];
+const x = Math.ceil(Math.random() * 10)
+const y = Math.ceil(Math.random() * 10)
+const op = ['+', '-', '*'][Math.floor(Math.random() * 3)]
 ---
 
 <article>
