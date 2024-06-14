@@ -7,9 +7,14 @@ interface Props {
 const { action, title, reset } = Astro.props
 
 const x = Math.ceil(Math.random() * 10)
-const y = Math.ceil(Math.random() * 10)
+const y = Math.ceil(Math.random() * (11 - x))
 const op = ['+', '-', '*'][Math.floor(Math.random() * 3)]
-const pattern = `^${eval(`${x} ${op} ${y}`)}$`
+const value = () => ({
+  '+': x + y,
+  '-': x - y,
+  '*': x * y
+})[op]
+const pattern = `^${value()}$`
 ---
 
 <article>
@@ -51,7 +56,6 @@ const pattern = `^${eval(`${x} ${op} ${y}`)}$`
             name="puzzle"
             placeholder="Confirm Puzzle"
             aria-label="Confirm Puzzle"
-            autocomplete="current-puzzle"
             required
             pattern={pattern}
           />
