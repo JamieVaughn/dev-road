@@ -9,6 +9,7 @@ const { action, title, reset } = Astro.props
 const x = Math.ceil(Math.random() * 10)
 const y = Math.ceil(Math.random() * 10)
 const op = ['+', '-', '*'][Math.floor(Math.random() * 3)]
+const pattern = `^${eval(`${x} ${op} ${y}`)}$`
 ---
 
 <article>
@@ -52,7 +53,7 @@ const op = ['+', '-', '*'][Math.floor(Math.random() * 3)]
             aria-label="Confirm Puzzle"
             autocomplete="current-puzzle"
             required
-            pattern={eval(`${x} ${op} ${y}`)}
+            pattern={pattern}
           />
         </div>
       )}
