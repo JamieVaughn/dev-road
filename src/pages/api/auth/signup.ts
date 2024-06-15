@@ -13,6 +13,8 @@ export const POST: APIRoute = async ({ request, redirect }) => {
   const { error } = await supabase.auth.signUp({
     email,
     password,
+    confirm: true,
+    email_confirm: true,
   })
   console.log('auth', error)
 

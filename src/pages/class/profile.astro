@@ -1,36 +1,36 @@
 ---
-import Home from "../../layouts/Home.astro";
-import { checkAuth } from "../../lib/checkAuth";
-import { supabase } from "../../lib/supabase";
+import Home from '../../layouts/Home.astro'
+import { checkAuth } from '../../lib/checkAuth'
+import { supabase } from '../../lib/supabase'
 
-const { cookies, redirect } = Astro;
+const { cookies, redirect } = Astro
 
 const auth = await checkAuth({ cookies, redirect })
   .then((data) => data)
-  .catch((err) => console.log(err))
+  // .catch((err) => redirect('/login'))
 
-const email = auth.user.email;
+const email = auth?.user?.email
 
 const { data: profile, error } = await supabase
-  .from("profile")
+  .from('profile')
   .select()
-  .eq("email", email)
-  .single();
+  .eq('email', email)
+  .single()
 
-const name = profile.first_name || profile.last_name ? `${profile.first_name} ${profile.last_name}` : null;
-const user = name ?? email.split("@")[0];
-
+const user = !error && profile && (profile?.first_name || profile?.last_name) 
+              ? `${profile?.first_name} ${profile?.last_name}` 
+              : email.split('@')[0]
 ---
 
 <Home>
   <hgroup class="center">
     <h1>My Profile</h1>
     <form action="/api/auth/signout" method="get">
-      <button type="submit" class="ghost medium not-you"
-        >Not You? Click here</button
-      >
+      <button type="submit" class="ghost medium not-you">
+        Not You? Click here
+      </button>
     </form>
-    {error && <p class="error">There was an error finding your profile: {error.message}</p>}
+    {error && <p class="error">We couldn't retrieve all of your profile info.</p>}
   </hgroup>
   <article>
     <div style="flex: 0 2 40vw; text-align: center;">
@@ -50,8 +50,8 @@ const user = name ?? email.split("@")[0];
         <p class="badge">
           {
             auth?.user?.identities[0].identity_data.email_verified
-              ? "verified"
-              : "unverified"
+              ? 'verified'
+              : 'unverified'
           }
         </p>
       </div>
@@ -133,10 +133,10 @@ const user = name ?? email.split("@")[0];
         cols="30"
         rows="4"
       >
-        {profile?.hobbies ?? ""}
+        {profile?.hobbies ?? ''}
       </textarea>
       <button type="submit" disabled={!email}
-        >{email ? "Submit" : "We could not authenticate you"}</button
+        >{email ? 'Submit' : 'We could not authenticate you'}</button
       >
     </form>
   </article>
@@ -161,8 +161,8 @@ const user = name ?? email.split("@")[0];
     margin-inline: auto;
   }
   .error {
-    color: crimson; 
-    font-size: 0.5em;
+    color: var(--error-color);
+    font-size: 0.75em;
   }
   .email-info {
     display: flex;
