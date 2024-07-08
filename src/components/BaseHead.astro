@@ -1,10 +1,10 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
+// import { ViewTransitions } from 'astro:transitions'
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
-import '../styles/pico.min.css';
-import '../styles/global.css';
-import '../styles/override.css';
+import '../styles/pico.min.css'
+import '../styles/global.css'
+import '../styles/override.css'
 
 interface Props {
 	title: string;
@@ -12,9 +12,9 @@ interface Props {
 	image?: string;
 }
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 
-const { title, description, image = '/gradient_blue_green.jpg' } = Astro.props;
+const { title, description, image = '/gradient_blue_green.jpg' } = Astro.props
 ---
 
 <!-- Global Metadata -->
@@ -49,4 +49,9 @@ const { title, description, image = '/gradient_blue_green.jpg' } = Astro.props;
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
-<ViewTransitions />
+<!-- <ViewTransitions /> -->
+<style>
+	@view-transition {
+		navigation: auto;
+	}
+</style>

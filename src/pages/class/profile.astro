@@ -18,8 +18,8 @@ const { data: profile, error } = await supabase
   .single()
 
 const user = !error && profile && (profile?.first_name || profile?.last_name) 
-              ? `${profile?.first_name} ${profile?.last_name}` 
-              : email.split('@')[0]
+              ? `${profile.first_name ?? ''} ${profile.last_name ?? ''}` 
+              : email?.split('@')[0]
 ---
 
 <Home>
