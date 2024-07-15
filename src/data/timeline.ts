@@ -1,6 +1,6 @@
 import dayjs from 'dayjs'
 import type { Dayjs } from 'dayjs'
-import { year, month, day, STARTDATE } from './STARTDATE'
+import { year, month, day, dateOffsets, STARTDATES } from './STARTDATE'
 import {
   outline_section_1,
   outline_section_2,
@@ -11,12 +11,12 @@ import { quizzes_1, quizzes_2, quizzes_3 } from './quizzes'
 import { projects_1, projects_2, projects_3 } from './projects'
 
 export const stringDates_1 = getClassTimeline(
-  `${year}-${month}-${day}`,
-  ['7/29/2024', '7/31/2024', '8/1/2024'],
+  `${dateOffsets[0].year}-${dateOffsets[0].month}-${dateOffsets[0].day}`,
+  ['9/30/2024', '10/2/2024', '10/3/2024'],
   1
 )
-export const stringDates_2 = getClassTimeline(`${2024}-${9}-${2}`, [], 2)
-export const stringDates_3 = getClassTimeline(`${2024}-${10}-${28}`, [], 3)
+export const stringDates_2 = getClassTimeline(`${dateOffsets[1].year}-${dateOffsets[1].month}-${dateOffsets[1].day}`, ['11/25/2024', '11/27/2024', '11/28/2024', '12/23/2024', '12/25/2024', '12/26/2024', '12/30/2024', '1/1/2025', '1/2/2025'], 2)
+export const stringDates_3 = getClassTimeline(`${dateOffsets[2].year}-${dateOffsets[2].month}-${dateOffsets[2].day}`, ['2/3/2025', '2/5/2025', '2/6/2025'], 3)
 
 export type TimelineItem = {
   date: string
@@ -58,7 +58,7 @@ export const timeline_3 = sectionFactory().map((i, idx) => ({
 @params startDate: string, skipDates: Array<string>, section: number
 */
 function getClassTimeline(
-  startDate: string = STARTDATE.toISOString(),
+  startDate: string = STARTDATES.section1Date.toISOString(),
   skipDates: Array<string>,
   section: number = 1
 ): string[] {
